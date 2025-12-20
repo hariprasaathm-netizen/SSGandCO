@@ -22,9 +22,15 @@ jobs:
 
       - name: Ensure readable
         run: chmod -R a+rX site
-
+      - name: Push to gh-pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git push https://x-access-token:${GITHUB_TOKEN}@github.com/hariprasaathm-netizen/SSGandCO.git gh-pages
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./site/ropesandtwists.in
+
+          

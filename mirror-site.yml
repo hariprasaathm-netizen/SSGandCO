@@ -1,0 +1,30 @@
+# Mirror ropesandtwists site and publish to gh-pages
+name: Mirror ropesandtwists site
+on:
+  workflow_dispatch:
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install wget
+        run: sudo apt-get update && sudo apt-get install -y wget
+
+      - name: Mirror site
+        run: |
+          rm -rf site
+          mkdir -p site
+          # Mirror the site into site/ropesandtwists.in
+          wget --mirror --convert-links --adjust-extension --page-requisites --no-parent -P site https://ropesandtwists.in/
+
+      - name: Ensure readable
+        run: chmod -R a+rX site
+
+      - name: Deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./site/ropesandtwists.in

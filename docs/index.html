@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Your Site — Under Construction</title>
+  <meta name="description" content="Simple placeholder site — under construction" />
+  <link href="styles.css" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">
+          <!-- simple CSS-based logo -->
+          <svg width="40" height="40" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Logo">
+            <rect rx="18" width="100" height="100" fill="url(#g)"/>
+            <defs>
+              <linearGradient id="g" x1="0" x2="1">
+                <stop offset="0" stop-color="#7f5af0"/>
+                <stop offset="1" stop-color="#2cb67d"/>
+              </linearGradient>
+            </defs>
+            <text x="50%" y="58%" text-anchor="middle" font-family="Inter, sans-serif" font-size="44" fill="white" font-weight="700">S</text>
+          </svg>
+        </div>
+        <a class="brand-title" href="#">SSGandCO</a>
+      </div>
+
+      <nav class="nav" id="site-nav">
+        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navList">☰</button>
+        <ul class="nav-list" id="navList">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Portfolio</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-content">
+          <h1>Website Under Construction</h1>
+          <p class="lead">Thanks for visiting — we're polishing things up. Come back soon!</p>
+
+          <div class="construction-card" aria-live="polite">
+            <h2 class="card-title">Custom message</h2>
+            <p id="customMessage">This site is being redesigned. Expected launch: Soon. For urgent inquiries, <a href="mailto:hello@example.com">email us</a>.</p>
+            <p class="hint">To change this text, edit the &lt;p id="customMessage"&gt; in <code>index.html</code>.</p>
+
+            <div class="card-actions">
+              <a class="btn primary" href="mailto:hello@example.com">Notify me</a>
+              <a class="btn ghost" href="#">Learn more</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-hidden="true">
+          <!-- Decorative banner graphic using CSS gradient background (see styles.css) -->
+          <div class="banner-graphic"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="info container">
+      <h3>Progress</h3>
+      <ul>
+        <li>Design: in progress</li>
+        <li>Content: being prepared</li>
+        <li>Deployment: planned via GitHub Pages</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> SSGandCO — Built with ❤️. Follow us:
+        <a href="#" aria-label="Twitter">Twitter</a> · <a href="#" aria-label="Instagram">Instagram</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // small scripts: mobile nav + year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const navToggle = document.getElementById('navToggle');
+    const navList = document.getElementById('navList');
+    navToggle.addEventListener('click', () => {
+      const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+      navToggle.setAttribute('aria-expanded', String(!expanded));
+      navList.classList.toggle('open');
+    });
+
+    // Optional: replace custom message from URL query param ?message=...
+    (function() {
+      const params = new URLSearchParams(location.search);
+      const m = params.get('message');
+      if (m) {
+        const el = document.getElementById('customMessage');
+        el.textContent = decodeURIComponent(m);
+      }
+    })();
+  </script>
+</body>
+</html>

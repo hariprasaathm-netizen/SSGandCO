@@ -2,6 +2,9 @@
 name: Mirror ropesandtwists site
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - main
 
 jobs:
   mirror:
@@ -22,11 +25,22 @@ jobs:
 
       - name: Ensure readable
         run: chmod -R a+rX site
-      
+
+      - name: Ensure publish_dir exists
+        run: |
+          PUBLISH_DIR=./site/ropesandtwists.in
+          if [ ! -d "$PUBLISH_DIR" ] || [ -z "$(ls -A "$PUBLISH_DIR" 2>/dev/null || true)" ]; then
+            mkdir -p "$PUBLISH_DIR"
+            cat > "$PUBLISH_DIR/index.html" <<'EOF'
+<!doctype html>
+<meta charset="utf-8">
+<title>Mirror placeholder</title>
+<p>Mirror did not download any files. This is a placeholder.</p>
+EOF
+          fi
+
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./site/ropesandtwists.in
-
-          

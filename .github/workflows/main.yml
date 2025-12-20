@@ -18,7 +18,7 @@ jobs:
           rm -rf site
           mkdir -p site
           # Mirror the site into site/ropesandtwists.in
-          wget --mirror --convert-links --adjust-extension --page-requisites --no-parent -P site https://ropesandtwists.in/
+          wget --mirror --convert-links --adjust-extension --page-requisites --no-parent -P site https://ropesandtwists.in/ || true
 
       - name: Ensure readable
         run: chmod -R a+rX site

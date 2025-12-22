@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Senniah Gowder & Co — Under Construction</title>
+  <meta name="description" content="Senniah Gowder & Co - Quality jute bags, ropes, and coir products from Coimbatore, Tamil Nadu. Website coming soon!" />
+  <link href="styles.css" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Language Selection Popup -->
+  <div id="languagePopup" class="language-popup">
+    <div class="popup-content">
+      <h2 data-en="Select Language" data-ta="மொழியைத் தேர்ந்தெடுக்கவும்">Select Language</h2>
+      <div class="language-buttons">
+        <button onclick="setLanguage('en')" class="lang-btn">
+          <span class="flag">🔤</span>
+          English
+        </button>
+        <button onclick="setLanguage('ta')" class="lang-btn">
+          <span class="flag">ஸ்ரீ</span>
+          தமிழ்
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Language Toggle -->
+  <div class="language-toggle">
+    <div class="radio-group">
+      <input type="radio" id="lang-en" name="language" value="en" onchange="switchLanguage('en')">
+      <label for="lang-en">🔤 EN</label>
+      <input type="radio" id="lang-ta" name="language" value="ta" onchange="switchLanguage('ta')">
+      <label for="lang-ta">ஸ்ரீ தமிழ்</label>
+    </div>
+  </div>
+  
+  <main>
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-visual">
+          <img src="banner.png" alt="Senniah Gowder & Co - Quality jute bags, ropes, and coir products" class="banner-image" />
+        </div>
+
+        <div class="hero-content">
+          <div class="construction-badge">
+            <span class="badge-icon">🚧</span>
+            <span data-en="Under Construction" data-ta="கட்டுமானத்தில்">Under Construction</span>
+          </div>
+
+          <h1 data-en="We're Building Something Great!" data-ta="நாங்கள் ஒரு சிறந்த வலைத்தளத்தை உருவாக்கி வருகிறோம்!">We're Building Something Great!</h1>
+          <p class="lead" data-en="Our new website is currently under construction and Thanks for the Visit. We're working hard to bring you an amazing online experience showcasing our quality jute bags, ropes, and coir products." data-ta="எங்கள் புதிய வலைத்தளம் தற்போது கட்டுமானத்தில் உள்ளது, வருகைக்கு நன்றி. எங்கள் தரமான சணல் பைகள், கயிறுகள் மற்றும் தென்னை நார் பொருட்களை காட்சிப்படுத்தும் அற்புதமான ஆன்லைன் அனுபவத்தை உங்களுக்கு வழங்க நாங்கள் கடினமாக உழைத்து வருகிறோம்.">Our new website is currently under construction and Thanks for the Visit. We're working hard to bring you an amazing online experience showcasing our quality jute bags, ropes, and coir products.</p>
+
+          <div class="construction-card" aria-live="polite">
+            <h2 class="card-title" data-en="Coming Soon" data-ta="விரைவில் வருகிறது">Coming Soon</h2>
+            <p id="customMessage" data-en="Thank you for your patience! Our full website will be launching soon with our complete product catalog and easy ordering options." data-ta="உங்கள் பொறுமைக்கு நன்றி! எங்கள் முழு வலைத்தளம் விரைவில் எங்கள் முழுமையான தயாரிப்பு பட்டியல் மற்றும் எளிதான ஆர்டர் விருப்பங்களுடன் தொடங்கப்படும்.">Thank you for your patience! Our full website will be launching soon with our complete product catalog and easy ordering options.</p>
+
+            <div class="contact-info">
+              <p><strong data-en="Visit us at:" data-ta="எங்களை இங்கே பார்வையிடுங்கள்:">Visit us at:</strong></p>
+              <p>464, Rangai Gowder Street, Prakasam,<br>
+              Town Hall, Coimbatore - 641001,<br>
+              Tamil Nadu, India</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> Senniah Gowder & Co — <span data-en="Quality Products Since Generations" data-ta="தலைமுறைகளாக தரமான பொருட்கள்">Quality Products Since Generations</span></p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    
+    // Language functionality
+    function setLanguage(lang) {
+      localStorage.setItem('selectedLanguage', lang);
+      document.documentElement.lang = lang;
+      
+      const elements = document.querySelectorAll('[data-en][data-ta]');
+      elements.forEach(el => {
+        el.textContent = el.getAttribute('data-' + lang);
+      });
+      
+      document.getElementById('languagePopup').style.display = 'none';
+      document.getElementById('lang-' + lang).checked = true;
+      
+      if (lang === 'ta') {
+        document.body.style.fontFamily = '"Noto Sans Tamil", sans-serif';
+      } else {
+        document.body.style.fontFamily = '"Inter", sans-serif';
+      }
+    }
+    
+    function switchLanguage(lang) {
+      setLanguage(lang);
+    }
+    
+    // Check for saved language preference
+    window.addEventListener('load', () => {
+      const savedLang = localStorage.getItem('selectedLanguage');
+      if (savedLang) {
+        setLanguage(savedLang);
+      } else {
+        document.getElementById('languagePopup').style.display = 'flex';
+        document.getElementById('lang-en').checked = true;
+      }
+    });
+  </script>
+</body>
+</html>

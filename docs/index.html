@@ -3,14 +3,33 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Senniah Gowder & Co — Under Construction</title>
-  <meta name="description" content="Senniah Gowder & Co - Quality jute bags, ropes, and coir products from Coimbatore, Tamil Nadu. Website coming soon!" />
-  <link href="styles.css" rel="stylesheet" />
+  <title>Senniah Gowder & Co — Quality Products</title>
+  <meta name="description" content="Senniah Gowder & Co - Premium manufacturer of coir products, construction materials, household items, and ropes from Coimbatore, Tamil Nadu." />
+  <link href="business-styles.css" rel="stylesheet" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@300;400;600;800&display=swap" rel="stylesheet">
 </head>
 <body>
+  <!-- Welcome Popup -->
+  <div id="welcomePopup" class="welcome-popup">
+    <div class="welcome-content">
+      <div class="timer-circle">
+        <span id="timer">30</span>
+      </div>
+      <button class="close-btn" onclick="closeWelcomePopup()">&times;</button>
+      <h2 data-en="Welcome!" data-ta="வரவேற்கிறோம்!">Welcome!</h2>
+      <p data-en="Our business is dedicated to offering only quality products that meet society's needs, honoring commitments, adhering to regulations, striving for zero waste, and ensuring environmental sustainability" data-ta="எங்கள் வணிகம் சமுதாயத்தின் தேவைகளை பூர்த்தி செய்யும் தரமான பொருட்களை மட்டுமே வழங்குவதில் அர்ப்பணிப்புடன் உள்ளது, உறுதிமொழிகளை மதித்து, விதிமுறைகளை கடைபிடித்து, பூஜ்ய கழிவுக்கு பாடுபட்டு, சுற்றுச்சூழல் நிலைத்தன்மையை உறுதி செய்கிறது">Our business is dedicated to offering only quality products that meet society's needs, honoring commitments, adhering to regulations, striving for zero waste, and ensuring environmental sustainability</p>
+      <h3 data-en="Our Vision" data-ta="எங்கள் பார்வை">Our Vision</h3>
+      <ul class="vision-list">
+        <li><strong>A</strong> – <span data-en="Assured Quality" data-ta="உறுதியான தரம்">Assured Quality</span></li>
+        <li><strong>B</strong> – <span data-en="Best Service" data-ta="சிறந்த சேவை">Best Service</span></li>
+        <li><strong>I</strong> – <span data-en="Iconic Ropes" data-ta="சின்னமான கயிறுகள்">Iconic Ropes</span></li>
+        <li><strong>R</strong> – <span data-en="Reasonable Price" data-ta="நியாயமான விலை">Reasonable Price</span></li>
+      </ul>
+    </div>
+  </div>
+
   <!-- Language Selection Popup -->
   <div id="languagePopup" class="language-popup">
     <div class="popup-content">
@@ -21,7 +40,7 @@
           English
         </button>
         <button onclick="setLanguage('ta')" class="lang-btn">
-          <span class="flag">🅰️</span>
+          <span class="flag">ஸ்ரீ</span>
           தமிழ்
         </button>
       </div>
@@ -31,53 +50,297 @@
   <!-- Language Toggle -->
   <div class="language-toggle">
     <div class="radio-group">
-      <input type="radio" id="lang-en" name="language" value="en" onchange="switchLanguage('en')">
+      <input type="radio" id="lang-en" name="language" value="en" onchange="switchLanguage('en')" checked>
       <label for="lang-en">🔤 EN</label>
       <input type="radio" id="lang-ta" name="language" value="ta" onchange="switchLanguage('ta')">
-      <label for="lang-ta">🅰️ தமிழ்</label>
+      <label for="lang-ta">ஸ்ரீ தமிழ்</label>
     </div>
   </div>
-  
-  <main>
-    <section class="hero">
-      <div class="container hero-inner">
-        <div class="hero-visual">
-          <img src="banner.png" alt="Senniah Gowder & Co - Quality jute bags, ropes, and coir products" class="banner-image" />
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <div class="nav-brand" style="display: flex; align-items: center; gap: 15px;">
+        <img src="AboutUsImage.png" alt="Senniah Gowder & Co Logo" class="header-logo" style="order: -1;">
+        <div class="brand-text" style="display: flex; flex-direction: column; gap: 5px;">
+          <h1 style="margin: 0; white-space: nowrap;" data-en="Senniah Gowder & Co" data-ta="சென்னையா கவுடர் & கோ">Senniah Gowder & Co</h1>
+          <p style="color: blue; margin: 0; white-space: nowrap; font-size: 14px;" data-en="RopesandTwists promotes handloom, designed products out of coir & jute and cotton procured in India." data-ta="RopesandTwists promotes handloom, designed products out of coir & jute and cotton procured in India.">RopesandTwists promotes handloom, designed products out of coir & jute and cotton procured in India.</p>
+        </div>
+      </div>
+      <nav class="nav-menu">
+        <a href="#home" data-en="Home" data-ta="முகப்பு">Home</a>
+        <a href="#products" data-en="Products" data-ta="தயாரிப்புகள்">Products</a>
+        <a href="#about" data-en="About" data-ta="எங்களைப் பற்றி">About</a>
+        <a href="#contact" data-en="Contact" data-ta="தொடர்பு">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="hero-background"></div>
+    <div class="container">
+      <div class="hero-content">
+        <h2 data-en="Premium Quality Products from Coimbatore" data-ta="கோயம்புத்தூரிலிருந்து உயர்தர பொருட்கள்">Premium Quality Products from Coimbatore</h2>
+        <p data-en="We are also involved in Rope materials for packaging, House keeping items (Mats, brushes, brooms etc), Biodegradable products, Essential things for domestic animals, Twine/Ropes for Construction and Electricals" data-ta="நாங்கள் பேக்கேஜிங்கிற்கான கயிறு பொருட்கள், வீட்டு பராமரிப்பு பொருட்கள் (பாய்கள், தூரிகைகள், விளக்குமாறுகள் போன்றவை), மக்கும் பொருட்கள், வீட்டு விலங்குகளுக்கான அத்தியாவசிய பொருட்கள், கட்டுமானம் மற்றும் மின்சார பொருட்களுக்கான கயிறுகள்/நூல்களிலும் ஈடுபட்டுள்ளோம்">We are also involved in Rope materials for packaging, House keeping items (Mats, brushes, brooms etc), Biodegradable products, Essential things for domestic animals, Twine/Ropes for Construction and Electricals</p>
+        
+        <div class="quality-vision">
+          <p data-en="The products are sourced from verified vendors at the best possible pricing to meet the needs of the customers." data-ta="வாடிக்கையாளர்களின் தேவைகளை பூர்த்தி செய்ய சரியான விலையில் சார்ந்த விக்ரயாளர்களிலிருந்து பொருட்கள் பெறப்படுகின்றன.">The products are sourced from verified vendors at the best possible pricing to meet the needs of the customers.</p>
+          <p data-en="We value our customers, and our goal is to effectively meet their demands" data-ta="நாங்கள் எங்கள் வாடிக்கையாளர்களை மதிக்கிறோம், அவர்களின் தேவைகளை பரியாயமாக பூர்த்தி செய்வது எங்கள் இலக்காகும்">We value our customers, and our goal is to effectively meet their demands</p>
+        </div>
+        <!-- <div class="hero-buttons">
+          <button class="btn-primary" onclick="scrollToSection('products')" data-en="View Products" data-ta="தயாரிப்புகளைப் பார்க்கவும்">View Products</button>
+          <button class="btn-secondary" onclick="scrollToSection('contact')" data-en="Get Quote" data-ta="மேற்கோள் பெறவும்">Get Quote</button>
+        </div> -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Products Section -->
+  <section id="products" class="products">
+    <div class="container">
+      <h2 class="section-title" data-en="Our Product Categories" data-ta="எங்கள் தயாரிப்பு வகைகள்">Our Product Categories</h2>
+      
+      <div class="products-grid">
+        <!-- Ropes -->
+        <div class="product-card">
+          <div class="product-image ropes-image">
+            <div class="product-overlay">
+              <div class="product-icon">🪢</div>
+              <h3 data-en="Ropes & Twines" data-ta="கயிறுகள் மற்றும் நூல்கள்">Ropes & Twines</h3>
+              <p data-en="High-Quality Multi-Purpose Ropes" data-ta="உயர்தர பல்நோக்கு கயிறுகள்">High-Quality Multi-Purpose Ropes</p>
+            </div>
+          </div>
+          <div class="product-details">
+            <ul>
+              <li data-en="Jute, Coir & Natural Fiber Ropes" data-ta="சணல்,தென்னை நார் மற்றும் இயற்கை நார் கயிறுகள்">Jute & Natural Fiber Ropes</li>
+              <li data-en="Cotton & Synthetic Ropes" data-ta="பருத்தி மற்றும் செயற்கை கயிறுகள்">Cotton & Synthetic Ropes</li>
+              <li data-en="Marine & Industrial Ropes" data-ta="கடல் மற்றும் தொழில்துறை கயிறுகள்">Marine & Industrial Ropes</li>
+            </ul>
+          </div>
         </div>
 
-        <div class="hero-content">
-          <div class="construction-badge">
-            <span class="badge-icon">🚧</span>
-            <span data-en="Under Construction" data-ta="கட்டுமானத்தில்">Under Construction</span>
+        <!-- Biodegradable Products -->
+        <div class="product-card">
+          <div class="product-image construction-image">
+            <div class="product-overlay">
+              <div class="product-icon">🌱</div>
+              <h3 data-en="Biodegradable Products" data-ta="மக்கும் பொருட்கள்">Biodegradable Products</h3>
+              <p data-en="Eco-Friendly & Sustainable Solutions" data-ta="சுற்றுச்சூழல் நட்பு மற்றும் நிலையான தீர்வுகள்">Eco-Friendly & Sustainable Solutions</p>
+            </div>
           </div>
+          <div class="product-details">
+            <ul>
+              <li data-en="Biodegradable Bags" data-ta="மக்கும் பைகள்">Biodegradable Bags</li>
+              <li data-en="Compostable Packaging" data-ta="உரமாக்கக்கூடிய பேக்கேஜிங்">Compostable Packaging</li>
+              <li data-en="Natural Fiber Products" data-ta="இயற்கை நார் பொருட்கள்">Natural Fiber Products</li>
+            </ul>
+          </div>
+        </div>
 
-          <h1 data-en="We're Building Something Great!" data-ta="நாங்கள் ஒரு சிறந்த வலைத்தளத்தை உருவாக்கி வருகிறோம்!">We're Building Something Great!</h1>
-          <p class="lead" data-en="Our new website is currently under construction and Thanks for the Visit. We're working hard to bring you an amazing online experience showcasing our quality jute bags, ropes, and coir products." data-ta="எங்கள் புதிய வலைத்தளம் தற்போது கட்டுமானத்தில் உள்ளது, வருகைக்கு நன்றி. எங்கள் தரமான சணல் பைகள், கயிறுகள் மற்றும் தென்னை நார் பொருட்களை காட்சிப்படுத்தும் அற்புதமான ஆன்லைன் அனுபவத்தை உங்களுக்கு வழங்க நாங்கள் கடினமாக உழைத்து வருகிறோம்.">Our new website is currently under construction and Thanks for the Visit. We're working hard to bring you an amazing online experience showcasing our quality jute bags, ropes, and coir products.</p>
+        <!-- Niwar and Packaging Items -->
+        <div class="product-card">
+          <div class="product-image household-image">
+            <div class="product-overlay">
+              <div class="product-icon">📦</div>
+              <h3 data-en="Niwar and Packaging Items" data-ta="நிவார் மற்றும் பேக்கேஜிங் பொருட்கள்">Niwar and Packaging Items</h3>
+              <p data-en="Quality Straps & Packaging Solutions" data-ta="தரமான கட்டுப்படைகள் & பேக்கேஜிங் தீர்வுகள்">Quality Straps & Packaging Solutions</p>
+            </div>
+          </div>
+          <div class="product-details">
+            <ul>
+              <li data-en="Niwar Straps" data-ta="நிவார் கட்டுப்படைகள்">Niwar Straps</li>
+              <li data-en="Packaging Materials" data-ta="பேக்கேஜிங் பொருட்கள்">Packaging Materials</li>
+              <li data-en="Binding Solutions" data-ta="கட்டுதல் தீர்வுகள்">Binding Solutions</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-          <div class="construction-card" aria-live="polite">
-            <h2 class="card-title" data-en="Coming Soon" data-ta="விரைவில் வருகிறது">Coming Soon</h2>
-            <p id="customMessage" data-en="Thank you for your patience! Our full website will be launching soon with our complete product catalog and easy ordering options." data-ta="உங்கள் பொறுமைக்கு நன்றி! எங்கள் முழு வலைத்தளம் விரைவில் எங்கள் முழுமையான தயாரிப்பு பட்டியல் மற்றும் எளிதான ஆர்டர் விருப்பங்களுடன் தொடங்கப்படும்.">Thank you for your patience! Our full website will be launching soon with our complete product catalog and easy ordering options.</p>
+  <!-- About Section -->
+  <section id="about" class="about">
+    <div class="container">
+      <div class="about-content">
+        <div class="about-text">
+          <h2 data-en="About Senniah Gowder & Co" data-ta="சென்னையா கவுடர் & கோ பற்றி">About Senniah Gowder & Co</h2>
+          
+          <h3 data-en="Profile" data-ta="சுயவிவரம்">Profile</h3>
+          <p data-en="The business deals with promoting products based on coir, ropes, and jute from Senniah Gowder & Co." data-ta="இந்த வணிகம் சென்னையா கவுடர் & கோ வின் தென்னை நார், கயிறுகள் மற்றும் சணல் அடிப்படையிலான தயாரிப்புகளை விளம்பரப்படுத்துகிறது.">The business deals with promoting products based on coir, ropes, and jute from Senniah Gowder & Co.</p>
+          
+          <p data-en="Senniah Gowder & Co was founded before 1950s on Rangai Gowder Street (Big Bazaar/Townhall), which is a historic business market place in Coimbatore. The shop was opened offering rope and essential products for cows from around the city for customers to take home." data-ta="சென்னையா கவுடர் & கோ 1950 களுக்கு முன்பு ரங்கை கவுடர் தெருவில் (பிக் பஜார்/டவுன்ஹால்) நிறுவப்பட்டது, இது கோயம்புத்தூரில் ஒரு வரலாற்று வணிக சந்தை இடமாகும். இந்த கடை நகரத்தைச் சுற்றியுள்ள மாடுகளுக்கான கயிறு மற்றும் அத்தியாவசிய பொருட்களை வாடிக்கையாளர்கள் வீட்டிற்கு எடுத்துச் செல்ல திறக்கப்பட்டது.">Senniah Gowder & Co was founded before 1950s on Rangai Gowder Street (Big Bazaar/Townhall), which is a historic business market place in Coimbatore. The shop was opened offering rope and essential products for cows from around the city for customers to take home.</p>
+          
+          <p data-en="With decades of experience in manufacturing and supplying quality products, we have established ourselves as a trusted name in Coimbatore and across Tamil Nadu. Our commitment to quality, reliability, and customer satisfaction has made us a preferred choice for businesses and individuals alike." data-ta="தரமான பொருட்களை உற்பத்தி செய்வதிலும் வழங்குவதிலும் பல தசாப்த கால அனுபவத்துடன், கோயம்புத்தூர் மற்றும் தமிழ்நாடு முழுவதும் நம்பகமான பெயராக நம்மை நிலைநிறுத்திக் கொண்டுள்ளோம். தரம், நம்பகத்தன்மை மற்றும் வாடிக்கையாளர் திருப்திக்கான எங்கள் அர்ப்பணிப்பு வணிகங்கள் மற்றும் தனிநபர்களுக்கு விருப்பமான தேர்வாக மாற்றியுள்ளது.">With decades of experience in manufacturing and supplying quality products, we have established ourselves as a trusted name in Coimbatore and across Tamil Nadu. Our commitment to quality, reliability, and customer satisfaction has made us a preferred choice for businesses and individuals alike.</p>
+          
+      
+        </div>
+        
+        
+      </div>
+    </div>
+  </section>
 
-            <div class="contact-info">
-              <p><strong data-en="Visit us at:" data-ta="எங்களை இங்கே பார்வையிடுங்கள்:">Visit us at:</strong></p>
+  <!-- Contact Section -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <h2 class="section-title" data-en="Get In Touch" data-ta="தொடர்பு கொள்ளுங்கள்">Get In Touch</h2>
+      
+      <div class="contact-content">
+        <div class="contact-info">
+          <div class="contact-card">
+            <div class="contact-icon">📍</div>
+            <div>
+              <h3 data-en="Visit Our Store" data-ta="எங்கள் கடையைப் பார்வையிடுங்கள்">Visit Our Store</h3>
               <p>464, Rangai Gowder Street, Prakasam,<br>
               Town Hall, Coimbatore - 641001,<br>
               Tamil Nadu, India</p>
             </div>
           </div>
+          
+          <div class="contact-card">
+            <div class="contact-icon">📞</div>
+            <div>
+              <h3 data-en="Call Us" data-ta="எங்களை அழைக்கவும்">Call Us</h3>
+              <p data-en="For inquiries and orders" data-ta="விசாரணைகள் மற்றும் ஆர்டர்களுக்கு">For inquiries and orders</p>
+              <p><strong>+91 9843425424</strong></p>
+            </div>
+          </div>
+          
+          <div class="contact-card">
+            <div class="contact-icon">📱</div>
+            <div>
+              <h3 data-en="WhatsApp" data-ta="வாட்ஸ்அப்">WhatsApp</h3>
+              <p data-en="Quick messaging and support" data-ta="வேகமான செய்தி மற்றும் ஆதரவு">Quick messaging and support</p>
+              <p><strong><a href="https://wa.me/919843425424" target="_blank" style="color: #25D366; text-decoration: none;">+91 9843425424</a></strong></p>
+            </div>
+          </div>
+          
+          <div class="contact-card">
+            <div class="contact-icon">🧭</div>
+            <div>
+              <h3 data-en="Get Directions" data-ta="திசைகளைப் பெறவும்">Get Directions</h3>
+              <p data-en="Navigate to our store" data-ta="எங்கள் கடைக்கு செல்லவும்">Navigate to our store</p>
+              <p><strong><a href="https://maps.google.com/?q=464,+Rangai+Gowder+St,+Prakasam,+Town+Hall,+Coimbatore,+Tamil+Nadu+641001" target="_blank" style="color: #4285F4; text-decoration: none;">464, Rangai Gowder St, Prakasam, Town Hall, Coimbatore, Tamil Nadu 641001</a></strong></p>
+            </div>
+          </div>
+          
+          <div class="contact-card">
+            <div class="contact-icon">📧</div>
+            <div>
+              <h3 data-en="Email Us" data-ta="எமைல் அனுப்பவும்">Email Us</h3>
+              <p data-en="Send us your requirements" data-ta="உங்கள் தேவைகளை அனுப்பவும்">Send us your requirements</p>
+              <p><strong><a href="mailto:senniahgowderandco@gmail.com" style="color: var(--primary); text-decoration: none;">senniahgowderandco@gmail.com</a></strong></p>
+            </div>
+          </div>
+          
+          <div class="contact-card">
+            <div class="contact-icon">⏰</div>
+            <div>
+              <h3 data-en="Business Hours" data-ta="வணிக நேரம்">Business Hours</h3>
+              <p data-en="Monday - Saturday: 9:00 AM - 7:00 PM" data-ta="திங்கள் - சனி: காலை 9:00 - மாலை 7:00">Monday - Saturday: 9:00 AM - 7:00 PM</p>
+              <p data-en="Sunday: Closed" data-ta="ஞாயிறு: மூடப்பட்டுள்ளது">Sunday: Closed</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="contact-form">
+          <h3 data-en="Send Us a Message" data-ta="எங்களுக்கு ஒரு செய்தி அனுப்பவும்">Send Us a Message</h3>
+          <form id="contactForm">
+            <div class="form-group">
+              <input type="text" id="name" required>
+              <label for="name" data-en="Your Name" data-ta="உங்கள் பெயர்">Your Name</label>
+            </div>
+            
+            <div class="form-group">
+              <input type="email" id="email" required>
+              <label for="email" data-en="Email Address" data-ta="மின்னஞ்சல் முகவரி">Email Address</label>
+            </div>
+            
+            <div class="form-group">
+              <input type="tel" id="phone">
+              <label for="phone" data-en="Phone Number" data-ta="தொலைபேசி எண்">Phone Number</label>
+            </div>
+            
+            <div class="form-group">
+              <select id="category" required>
+                <option value="">Select Product Category</option>
+                <option value="ropes" data-en="Ropes & Twines" data-ta="கயிறுகள் மற்றும் நூல்கள்">Ropes & Twines</option>
+                <option value="construction" data-en="Construction Materials" data-ta="கட்டுமான பொருட்கள்">Construction Materials</option>
+                <option value="household" data-en="Household Items" data-ta="வீட்டு பொருட்கள்">Household Items</option>
+              </select>
+              <label for="category" data-en="Product Category" data-ta="தயாரிப்பு வகை">Product Category</label>
+            </div>
+            
+            <div class="form-group">
+              <textarea id="message" rows="4" required></textarea>
+              <label for="message" data-en="Your Message" data-ta="உங்கள் செய்தி">Your Message</label>
+            </div>
+            
+            <button type="submit" class="btn-primary" data-en="Send Message" data-ta="செய்தி அனுப்பவும்">Send Message</button>
+          </form>
         </div>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
 
-  <footer class="site-footer">
+  <!-- Footer -->
+  <footer class="footer">
     <div class="container">
-      <p>© <span id="year"></span> Senniah Gowder & Co — <span data-en="Quality Products Since Generations" data-ta="தலைமுறைகளாக தரமான பொருட்கள்">Quality Products Since Generations</span></p>
+      <div class="footer-content">
+        <div class="footer-brand">
+          <h3 data-en="Senniah Gowder & Co" data-ta="சென்னையா கவுடர் & கோ">Senniah Gowder & Co</h3>
+          <p data-en="Your trusted partner for quality products" data-ta="தரமான பொருட்களுக்கான உங்கள் நம்பகமான பங்குதாரர்">Your trusted partner for quality products</p>
+        </div>
+        
+        <div class="footer-links">
+          <h4 data-en="Quick Links" data-ta="விரைவு இணைப்புகள்">Quick Links</h4>
+          <ul>
+            <li><a href="#home" data-en="Home" data-ta="முகப்பு">Home</a></li>
+            <li><a href="#products" data-en="Products" data-ta="தயாரிப்புகள்">Products</a></li>
+            <li><a href="#about" data-en="About" data-ta="எங்களைப் பற்றி">About</a></li>
+            <li><a href="#contact" data-en="Contact" data-ta="தொடர்பு">Contact</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-contact">
+          <h4 data-en="Contact Info" data-ta="தொடர்பு தகவல்">Contact Info</h4>
+          <p>464, Rangai Gowder Street<br>Coimbatore - 641001</p>
+          <p>Tamil Nadu, India</p>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <div class="disclaimer">
+          <p data-en="This is an advertisement & informative website about ropes, coir and jute products" data-ta="இது கயிறுகள், தென்னை நார் மற்றும் சணல் பொருட்கள் பற்றிய விளம்பர மற்றும் தகவல் வலைத்தளம்">This is an advertisement & informative website about ropes, coir and jute products</p>
+        </div>
+        <p>© <span id="year"></span> Senniah Gowder & Co — <span data-en="All Rights Reserved" data-ta="அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை">All Rights Reserved</span></p>
+      </div>
     </div>
   </footer>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+    
+    // Welcome popup timer
+    let welcomeTimer = 30;
+    let timerInterval;
+    
+    function startWelcomeTimer() {
+      const timerElement = document.getElementById('timer');
+      timerInterval = setInterval(() => {
+        welcomeTimer--;
+        timerElement.textContent = welcomeTimer;
+        if (welcomeTimer <= 0) {
+          closeWelcomePopup();
+        }
+      }, 1000);
+    }
+    
+    function closeWelcomePopup() {
+      clearInterval(timerInterval);
+      document.getElementById('welcomePopup').style.display = 'none';
+    }
     
     // Language functionality
     function setLanguage(lang) {
@@ -86,7 +349,20 @@
       
       const elements = document.querySelectorAll('[data-en][data-ta]');
       elements.forEach(el => {
-        el.textContent = el.getAttribute('data-' + lang);
+        const text = el.getAttribute('data-' + lang);
+        if (text) {
+          if (el.tagName === 'OPTION') {
+            el.textContent = text;
+          } else if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+            if (el.placeholder !== undefined) {
+              el.placeholder = text;
+            }
+          } else if (el.tagName === 'LABEL') {
+            el.textContent = text;
+          } else {
+            el.textContent = text;
+          }
+        }
       });
       
       document.getElementById('languagePopup').style.display = 'none';
@@ -103,15 +379,50 @@
       setLanguage(lang);
     }
     
-    // Check for saved language preference
+    // Smooth scrolling
+    function scrollToSection(sectionId) {
+      document.getElementById(sectionId).scrollIntoView({ 
+        behavior: 'smooth' 
+      });
+    }
+    
+    // Form handling
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const lang = localStorage.getItem('selectedLanguage') || 'en';
+      const message = lang === 'ta' ? 'செய்தி அனுப்பப்பட்டது! விரைவில் நாங்கள் உங்களைத் தொடர்பு கொள்வோம்.' : 'Message sent successfully! We will contact you soon.';
+      alert(message);
+      this.reset();
+    });
+    
+    // Initialize language and welcome popup
     window.addEventListener('load', () => {
+      // Show welcome popup and start timer
+      document.getElementById('welcomePopup').style.display = 'flex';
+      startWelcomeTimer();
+      
       const savedLang = localStorage.getItem('selectedLanguage');
       if (savedLang) {
         setLanguage(savedLang);
       } else {
-        document.getElementById('languagePopup').style.display = 'flex';
-        document.getElementById('lang-en').checked = true;
+        // Show language popup after welcome popup closes
+        setTimeout(() => {
+          if (document.getElementById('welcomePopup').style.display === 'none') {
+            document.getElementById('languagePopup').style.display = 'flex';
+          }
+        }, 30500);
       }
+    });
+    
+    // Smooth scroll for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
     });
   </script>
 </body>

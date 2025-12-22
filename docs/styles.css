@@ -242,3 +242,217 @@ h1{
     font-size: 0.8rem;
   }
 }
+
+/* Product Landing Page Styles */
+.site-header {
+  background: linear-gradient(135deg, var(--accent1) 0%, var(--accent2) 100%);
+  color: white;
+  padding: 2rem 0;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(139, 69, 19, 0.2);
+}
+
+.company-name {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.tagline {
+  margin: 0.5rem 0 0;
+  font-size: 1rem;
+  opacity: 0.95;
+}
+
+.hero-banner {
+  background: linear-gradient(135deg, rgba(139, 69, 19, 0.05) 0%, rgba(212, 165, 116, 0.05) 100%);
+  padding: 3rem 0;
+  text-align: center;
+}
+
+.hero-banner h2 {
+  font-size: 2rem;
+  margin: 0 0 1rem;
+  color: var(--accent1);
+}
+
+.hero-banner p {
+  font-size: 1.1rem;
+  color: var(--muted);
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.categories {
+  padding: 4rem 0;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2rem;
+  color: var(--accent1);
+  margin: 0 0 3rem;
+}
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.category-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(139, 69, 19, 0.08);
+  border: 1px solid rgba(139, 69, 19, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  text-align: center;
+}
+
+.category-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 50px rgba(139, 69, 19, 0.15);
+}
+
+.category-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.category-card h3 {
+  color: var(--accent1);
+  margin: 0 0 1rem;
+  font-size: 1.4rem;
+}
+
+.category-card p {
+  color: var(--muted);
+  margin: 0 0 1.5rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.category-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+}
+
+.category-card ul li {
+  padding: 0.5rem 0;
+  color: #3d3428;
+  border-bottom: 1px solid rgba(139, 69, 19, 0.1);
+  font-size: 0.9rem;
+}
+
+.category-card ul li:last-child {
+  border-bottom: none;
+}
+
+.category-card ul li:before {
+  content: "✓ ";
+  color: var(--accent1);
+  font-weight: bold;
+  margin-right: 0.5rem;
+}
+
+.contact-section {
+  background: linear-gradient(135deg, rgba(139, 69, 19, 0.05) 0%, rgba(212, 165, 116, 0.05) 100%);
+  padding: 4rem 0;
+}
+
+.contact-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 3rem;
+}
+
+.contact-info h3,
+.contact-form h3 {
+  color: var(--accent1);
+  margin: 0 0 1.5rem;
+  font-size: 1.5rem;
+}
+
+.contact-details {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(139, 69, 19, 0.08);
+}
+
+.contact-details p {
+  margin: 0.5rem 0;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.contact-details strong {
+  color: var(--accent1);
+}
+
+.contact-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  padding: 0.8rem;
+  border: 1px solid rgba(139, 69, 19, 0.2);
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  background: white;
+}
+
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--accent1);
+  box-shadow: 0 0 0 3px rgba(139, 69, 19, 0.1);
+}
+
+.contact-form button {
+  background: linear-gradient(135deg, var(--accent1) 0%, var(--accent2) 100%);
+  color: white;
+  border: none;
+  padding: 1rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.contact-form button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(139, 69, 19, 0.3);
+}
+
+@media (max-width: 768px) {
+  .company-name {
+    font-size: 1.5rem;
+  }
+  
+  .hero-banner h2 {
+    font-size: 1.5rem;
+  }
+  
+  .section-title {
+    font-size: 1.5rem;
+  }
+  
+  .category-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .contact-content {
+    grid-template-columns: 1fr;
+  }
+}

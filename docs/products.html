@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Senniah Gowder & Co — Quality Products</title>
+  <meta name="description" content="Senniah Gowder & Co - Quality coir, construction materials, household items, and ropes from Coimbatore, Tamil Nadu." />
+  <link href="styles.css" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Language Selection Popup -->
+  <div id="languagePopup" class="language-popup">
+    <div class="popup-content">
+      <h2 data-en="Select Language" data-ta="மொழியைத் தேர்ந்தெடுக்கவும்">Select Language</h2>
+      <div class="language-buttons">
+        <button onclick="setLanguage('en')" class="lang-btn">
+          <span class="flag">🔤</span>
+          English
+        </button>
+        <button onclick="setLanguage('ta')" class="lang-btn">
+          <span class="flag">ஸ்ரீ</span>
+          தமிழ்
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Language Toggle -->
+  <div class="language-toggle">
+    <div class="radio-group">
+      <input type="radio" id="lang-en" name="language" value="en" onchange="switchLanguage('en')">
+      <label for="lang-en">🔤 EN</label>
+      <input type="radio" id="lang-ta" name="language" value="ta" onchange="switchLanguage('ta')">
+      <label for="lang-ta">ஸ்ரீ தமிழ்</label>
+    </div>
+  </div>
+  
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container">
+      <div class="header-content">
+        <h1 class="company-name">Senniah Gowder & Co</h1>
+        <p class="tagline" data-en="Quality Products Since Generations" data-ta="தலைமுறைகளாக தரமான பொருட்கள்">Quality Products Since Generations</p>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero-banner">
+      <div class="container">
+        <div class="hero-content">
+          <h2 data-en="Premium Quality Products" data-ta="உயர்தர பொருட்கள்">Premium Quality Products</h2>
+          <p data-en="Trusted manufacturer and supplier of coir, construction materials, household items, and ropes" data-ta="கயிறு, கட்டுமான பொருட்கள், வீட்டு பொருட்கள் மற்றும் கயிறுகளின் நம்பகமான உற்பத்தியாளர் மற்றும் சப்ளையர்">Trusted manufacturer and supplier of coir, construction materials, household items, and ropes</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Product Categories -->
+    <section class="categories">
+      <div class="container">
+        <h2 class="section-title" data-en="Our Product Categories" data-ta="எங்கள் தயாரிப்பு வகைகள்">Our Product Categories</h2>
+        
+        <div class="category-grid">
+          <!-- Coir Products -->
+          <div class="category-card">
+            <div class="category-icon">🥥</div>
+            <h3 data-en="Coir Products" data-ta="தென்னை நார் பொருட்கள்">Coir Products</h3>
+            <p data-en="Natural coir fiber products, mats, and eco-friendly solutions" data-ta="இயற்கை தென்னை நார் பொருட்கள், பாய்கள் மற்றும் சுற்றுச்சூழல் நட்பு தீர்வுகள்">Natural coir fiber products, mats, and eco-friendly solutions</p>
+            <ul>
+              <li data-en="Coir Mats" data-ta="தென்னை நார் பாய்கள்">Coir Mats</li>
+              <li data-en="Coir Fiber" data-ta="தென்னை நார்">Coir Fiber</li>
+              <li data-en="Coir Pith" data-ta="தென்னை நார் கழிவு">Coir Pith</li>
+            </ul>
+          </div>
+
+          <!-- Construction Materials -->
+          <div class="category-card">
+            <div class="category-icon">🏗️</div>
+            <h3 data-en="Construction Materials" data-ta="கட்டுமான பொருட்கள்">Construction Materials</h3>
+            <p data-en="Durable construction supplies and building materials" data-ta="நீடித்த கட்டுமான பொருட்கள் மற்றும் கட்டிட பொருட்கள்">Durable construction supplies and building materials</p>
+            <ul>
+              <li data-en="Building Supplies" data-ta="கட்டிட பொருட்கள்">Building Supplies</li>
+              <li data-en="Hardware Items" data-ta="வன்பொருள் பொருட்கள்">Hardware Items</li>
+              <li data-en="Tools & Equipment" data-ta="கருவிகள் மற்றும் உபகரணங்கள்">Tools & Equipment</li>
+            </ul>
+          </div>
+
+          <!-- Household Items -->
+          <div class="category-card">
+            <div class="category-icon">🏠</div>
+            <h3 data-en="Household Items" data-ta="வீட்டு பொருட்கள்">Household Items</h3>
+            <p data-en="Essential household products for daily use" data-ta="தினசரி பயன்பாட்டிற்கான அத்தியாவசிய வீட்டு பொருட்கள்">Essential household products for daily use</p>
+            <ul>
+              <li data-en="Kitchen Items" data-ta="சமையலறை பொருட்கள்">Kitchen Items</li>
+              <li data-en="Cleaning Supplies" data-ta="சுத்தம் செய்யும் பொருட்கள்">Cleaning Supplies</li>
+              <li data-en="Storage Solutions" data-ta="சேமிப்பு தீர்வுகள்">Storage Solutions</li>
+            </ul>
+          </div>
+
+          <!-- Ropes -->
+          <div class="category-card">
+            <div class="category-icon">🪢</div>
+            <h3 data-en="Ropes & Twines" data-ta="கயிறுகள் மற்றும் நூல்கள்">Ropes & Twines</h3>
+            <p data-en="High-quality ropes and twines for various applications" data-ta="பல்வேறு பயன்பாடுகளுக்கான உயர்தர கயிறுகள் மற்றும் நூல்கள்">High-quality ropes and twines for various applications</p>
+            <ul>
+              <li data-en="Jute Ropes" data-ta="சணல் கயிறுகள்">Jute Ropes</li>
+              <li data-en="Cotton Ropes" data-ta="பருத்தி கயிறுகள்">Cotton Ropes</li>
+              <li data-en="Synthetic Ropes" data-ta="செயற்கை கயிறுகள்">Synthetic Ropes</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+      <div class="container">
+        <div class="contact-content">
+          <div class="contact-info">
+            <h3 data-en="Get in Touch" data-ta="தொடர்பு கொள்ளுங்கள்">Get in Touch</h3>
+            <div class="contact-details">
+              <p><strong data-en="Address:" data-ta="முகவரி:">Address:</strong></p>
+              <p>464, Rangai Gowder Street, Prakasam,<br>
+              Town Hall, Coimbatore - 641001,<br>
+              Tamil Nadu, India</p>
+            </div>
+          </div>
+          
+          <div class="contact-form">
+            <h3 data-en="Request Quote" data-ta="மேற்கோள் கோரிக்கை">Request Quote</h3>
+            <form>
+              <input type="text" placeholder="Name / பெயர்" required>
+              <input type="email" placeholder="Email / மின்னஞ்சல்" required>
+              <select required>
+                <option value="" data-en="Select Category" data-ta="வகையைத் தேர்ந்தெடுக்கவும்">Select Category</option>
+                <option value="coir" data-en="Coir Products" data-ta="தென்னை நார் பொருட்கள்">Coir Products</option>
+                <option value="construction" data-en="Construction Materials" data-ta="கட்டுமான பொருட்கள்">Construction Materials</option>
+                <option value="household" data-en="Household Items" data-ta="வீட்டு பொருட்கள்">Household Items</option>
+                <option value="ropes" data-en="Ropes & Twines" data-ta="கயிறுகள் மற்றும் நூல்கள்">Ropes & Twines</option>
+              </select>
+              <textarea placeholder="Message / செய்தி" rows="4" required></textarea>
+              <button type="submit" data-en="Send Inquiry" data-ta="விசாரணை அனுப்பவும்">Send Inquiry</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> Senniah Gowder & Co — <span data-en="Quality Products Since Generations" data-ta="தலைமுறைகளாக தரமான பொருட்கள்">Quality Products Since Generations</span></p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    
+    // Language functionality
+    function setLanguage(lang) {
+      localStorage.setItem('selectedLanguage', lang);
+      document.documentElement.lang = lang;
+      
+      const elements = document.querySelectorAll('[data-en][data-ta]');
+      elements.forEach(el => {
+        if (el.tagName === 'OPTION') {
+          el.textContent = el.getAttribute('data-' + lang);
+        } else if (el.placeholder !== undefined) {
+          el.placeholder = el.getAttribute('data-' + lang);
+        } else {
+          el.textContent = el.getAttribute('data-' + lang);
+        }
+      });
+      
+      document.getElementById('languagePopup').style.display = 'none';
+      document.getElementById('lang-' + lang).checked = true;
+      
+      if (lang === 'ta') {
+        document.body.style.fontFamily = '"Noto Sans Tamil", sans-serif';
+      } else {
+        document.body.style.fontFamily = '"Inter", sans-serif';
+      }
+    }
+    
+    function switchLanguage(lang) {
+      setLanguage(lang);
+    }
+    
+    // Check for saved language preference
+    window.addEventListener('load', () => {
+      const savedLang = localStorage.getItem('selectedLanguage');
+      if (savedLang) {
+        setLanguage(savedLang);
+      } else {
+        document.getElementById('languagePopup').style.display = 'flex';
+        document.getElementById('lang-en').checked = true;
+      }
+    });
+
+    // Form handling
+    document.querySelector('form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert(document.documentElement.lang === 'ta' ? 'விசாரணை அனுப்பப்பட்டது!' : 'Inquiry sent successfully!');
+    });
+  </script>
+</body>
+</html>

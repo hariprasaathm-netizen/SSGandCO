@@ -35,13 +35,18 @@
   <button id="scrollToTop" class="scroll-to-top" onclick="scrollToTop()" style="display: none; position: fixed; bottom: 20px; right: 20px; background: #007bff; color: white; border: none; border-radius: 50%; width: 50px; height: 50px; font-size: 18px; cursor: pointer; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.3); transition: all 0.3s ease;">↑</button>
   
   <!-- Product Info Popup -->
-  <div id="productPopup" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 2000; justify-content: center; align-items: center;">
-    <div style="background: white; padding: 30px; border-radius: 10px; max-width: 500px; width: 90%; max-height: 80%; overflow-y: auto;">
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-        <h3 id="popupTitle" style="margin: 0;">Product Details</h3>
-        <button onclick="closeProductPopup()" style="background: none; border: none; font-size: 24px; cursor: pointer;">&times;</button>
+  <div id="productPopup" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 2000; justify-content: center; align-items: center;">
+    <div style="background: white; padding: 0; border-radius: 15px; max-width: 600px; width: 90%; max-height: 85%; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+      <div id="popupHeader" style="background: linear-gradient(135deg, #007bff, #0056b3); color: white; padding: 20px; position: relative;">
+        <button onclick="closeProductPopup()" style="position: absolute; top: 15px; right: 20px; background: rgba(255,255,255,0.2); border: none; color: white; font-size: 24px; cursor: pointer; border-radius: 50%; width: 35px; height: 35px;">&times;</button>
+        <div style="display: flex; align-items: center; gap: 15px;">
+          <div id="popupIcon" style="font-size: 40px;">🪢</div>
+          <h3 id="popupTitle" style="margin: 0; font-size: 24px;">Product Details</h3>
+        </div>
       </div>
-      <div id="popupContent"></div>
+      <div style="padding: 25px; overflow-y: auto; max-height: 400px;">
+        <div id="popupContent"></div>
+      </div>
     </div>
   </div>
   <!-- Welcome Popup -->
@@ -97,7 +102,7 @@
         <img src="AboutUsImage.png" alt="Senniah Gowder & Co Logo" class="header-logo" style="order: -1; max-width: 120px; height: auto; min-width: 100px; background: white; padding: 8px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
         <div class="brand-text" style="display: flex; flex-direction: column; gap: 5px; flex: 1; min-width: 0;">
           <h1 style="margin: 0; font-size: clamp(1.2rem, 4vw, 1.8rem);" data-en="Senniah Gowder & Co" data-ta="சென்னையா கவுடர் & கோ">Senniah Gowder & Co</h1>
-          <p style="color: blue; margin: 0; font-size: clamp(0.8rem, 2.5vw, 14px); line-height: 1.3;" data-en="RopesandTwists promotes handloom, designed products out of coir & jute and cotton procured in India." data-ta="RopesandTwists promotes handloom, designed products out of coir & jute and cotton procured in India.">RopesandTwists promotes handloom, designed products out of coir & jute and cotton procured in India.</p>
+          <p style="color: blue; margin: 0; font-size: clamp(0.8rem, 2.5vw, 14px); line-height: 1.3;" data-en="RopesandTwists promotes handloom, designed products out of coir & jute and cotton procured in India." data-ta="ரோப்ஸ்அண்ட்ட்விஸ்ட்ஸ் இந்தியாவில் பெறப்பட்ட தென்னை நார், சணல் மற்றும் பருத்தியிலிருந்து கைத்தறி, வடிவமைக்கப்பட்ட பொருட்களை ஊக்குவிக்கிறது.">RopesandTwists promotes handloom, designed products out of coir & jute and cotton procured in India.</p>
         </div>
       </div>
       <nav class="nav-menu">
@@ -481,56 +486,154 @@
       const popup = document.getElementById('productPopup');
       const title = document.getElementById('popupTitle');
       const content = document.getElementById('popupContent');
+      const icon = document.getElementById('popupIcon');
+      const lang = localStorage.getItem('selectedLanguage') || 'en';
       
       const productData = {
         ropes: {
-          title: 'Ropes & Twines - Detailed Information',
-          content: `
-            <h4>Premium Quality Ropes for All Applications</h4>
-            <ul>
-              <li><strong>Jute Ropes:</strong> Natural, biodegradable, perfect for packaging and decoration</li>
-              <li><strong>Coir Ropes:</strong> Coconut fiber ropes, excellent for marine and outdoor use</li>
-              <li><strong>Cotton Ropes:</strong> Soft, strong, ideal for crafts and general purpose</li>
-              <li><strong>Synthetic Ropes:</strong> Weather-resistant, high strength for industrial use</li>
-              <li><strong>Marine Ropes:</strong> Specially treated for saltwater resistance</li>
-            </ul>
-            <p><strong>Applications:</strong> Packaging, Construction, Marine, Agriculture, Crafts</p>
-            <p><strong>Available Sizes:</strong> 3mm to 50mm diameter</p>
-          `
+          icon: '🪢',
+          title: { en: 'Ropes & Twines - Detailed Information', ta: 'கயிறுகள் & நூல்கள் - விரிவான தகவல்' },
+          content: {
+            en: `
+              <div style="text-align: center; margin-bottom: 20px;">
+                <div style="font-size: 60px; margin-bottom: 10px;">🪢</div>
+              </div>
+              <h4 style="color: #007bff; border-bottom: 2px solid #007bff; padding-bottom: 5px;">Premium Quality Ropes for All Applications</h4>
+              <div style="display: grid; gap: 15px; margin: 20px 0;">
+                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #007bff;">
+                  <strong style="color: #007bff;">Jute Ropes:</strong> Natural, biodegradable, perfect for packaging and decoration
+                </div>
+                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #28a745;">
+                  <strong style="color: #28a745;">Coir Ropes:</strong> Coconut fiber ropes, excellent for marine and outdoor use
+                </div>
+                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #ffc107;">
+                  <strong style="color: #ffc107;">Cotton Ropes:</strong> Soft, strong, ideal for crafts and general purpose
+                </div>
+                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #dc3545;">
+                  <strong style="color: #dc3545;">Synthetic Ropes:</strong> Weather-resistant, high strength for industrial use
+                </div>
+              </div>
+              <p><strong>Applications:</strong> Packaging, Construction, Marine, Agriculture, Crafts</p>
+              <p><strong>Available Sizes:</strong> 3mm to 50mm diameter</p>
+            `,
+            ta: `
+              <div style="text-align: center; margin-bottom: 20px;">
+                <div style="font-size: 60px; margin-bottom: 10px;">🪢</div>
+              </div>
+              <h4 style="color: #007bff; border-bottom: 2px solid #007bff; padding-bottom: 5px;">அனைத்து பயன்பாடுகளுக்கும் உயர்தர கயிறுகள்</h4>
+              <div style="display: grid; gap: 15px; margin: 20px 0;">
+                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #007bff;">
+                  <strong style="color: #007bff;">சணல் கயிறுகள்:</strong> இயற்கை, மக்கும், பேக்கேஜிங் மற்றும் அலங்காரத்திற்கு சிறந்தது
+                </div>
+                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #28a745;">
+                  <strong style="color: #28a745;">தென்னை நார் கயிறுகள்:</strong> தென்னை நார் கயிறுகள், கடல் மற்றும் வெளிப்புற பயன்பாட்டிற்கு சிறந்தது
+                </div>
+                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #ffc107;">
+                  <strong style="color: #ffc107;">பருத்தி கயிறுகள்:</strong> மென்மையான, வலுவான, கைவினைப்பொருட்கள் மற்றும் பொது நோக்கத்திற்கு ஏற்றது
+                </div>
+                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #dc3545;">
+                  <strong style="color: #dc3545;">செயற்கை கயிறுகள்:</strong> வானிலை எதிர்ப்பு, தொழில்துறை பயன்பாட்டிற்கு அதிக வலிமை
+                </div>
+              </div>
+              <p><strong>பயன்பாடுகள்:</strong> பேக்கேஜிங், கட்டுமானம், கடல், விவசாயம், கைவினைப்பொருட்கள்</p>
+              <p><strong>கிடைக்கும் அளவுகள்:</strong> 3mm முதல் 50mm விட்டம்</p>
+            `
+          }
         },
         biodegradable: {
-          title: 'Biodegradable Products - Eco-Friendly Solutions',
-          content: `
-            <h4>Sustainable & Environment-Friendly Products</h4>
-            <ul>
-              <li><strong>Biodegradable Bags:</strong> Made from natural materials, completely decomposable</li>
-              <li><strong>Compostable Packaging:</strong> Food-safe, breaks down in composting conditions</li>
-              <li><strong>Natural Fiber Products:</strong> Jute and coir based eco-friendly items</li>
-              <li><strong>Plant-based Materials:</strong> Corn starch and other bio-materials</li>
-            </ul>
-            <p><strong>Benefits:</strong> Zero plastic waste, Soil enrichment, Carbon footprint reduction</p>
-            <p><strong>Certifications:</strong> BIS approved, Eco-friendly standards compliant</p>
-          `
+          icon: '🌱',
+          title: { en: 'Biodegradable Products - Eco-Friendly Solutions', ta: 'மக்கும் பொருட்கள் - சுற்றுச்சூழல் நட்பு தீர்வுகள்' },
+          content: {
+            en: `
+              <div style="text-align: center; margin-bottom: 20px;">
+                <div style="font-size: 60px; margin-bottom: 10px;">🌱</div>
+              </div>
+              <h4 style="color: #28a745; border-bottom: 2px solid #28a745; padding-bottom: 5px;">Sustainable & Environment-Friendly Products</h4>
+              <div style="display: grid; gap: 15px; margin: 20px 0;">
+                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #28a745;">
+                  <strong style="color: #28a745;">Biodegradable Bags:</strong> Made from natural materials, completely decomposable
+                </div>
+                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #20c997;">
+                  <strong style="color: #20c997;">Compostable Packaging:</strong> Food-safe, breaks down in composting conditions
+                </div>
+                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #6f42c1;">
+                  <strong style="color: #6f42c1;">Natural Fiber Products:</strong> Jute and coir based eco-friendly items
+                </div>
+              </div>
+              <p><strong>Benefits:</strong> Zero plastic waste, Soil enrichment, Carbon footprint reduction</p>
+              <p><strong>Certifications:</strong> BIS approved, Eco-friendly standards compliant</p>
+            `,
+            ta: `
+              <div style="text-align: center; margin-bottom: 20px;">
+                <div style="font-size: 60px; margin-bottom: 10px;">🌱</div>
+              </div>
+              <h4 style="color: #28a745; border-bottom: 2px solid #28a745; padding-bottom: 5px;">நிலையான மற்றும் சுற்றுச்சூழல் நட்பு பொருட்கள்</h4>
+              <div style="display: grid; gap: 15px; margin: 20px 0;">
+                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #28a745;">
+                  <strong style="color: #28a745;">மக்கும் பைகள்:</strong> இயற்கை பொருட்களால் தயாரிக்கப்பட்ட, முழுமையாக மக்கும்
+                </div>
+                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #20c997;">
+                  <strong style="color: #20c997;">உரமாக்கக்கூடிய பேக்கேஜிங்:</strong> உணவு பாதுகாப்பு, உரமாக்கல் நிலைமைகளில் சிதைகிறது
+                </div>
+                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #6f42c1;">
+                  <strong style="color: #6f42c1;">இயற்கை நார் பொருட்கள்:</strong> சணல் மற்றும் தென்னை நார் அடிப்படையிலான சுற்றுச்சூழல் நட்பு பொருட்கள்
+                </div>
+              </div>
+              <p><strong>நன்மைகள்:</strong> பிளாஸ்டிக் கழிவு இல்லை, மண் வளம், கார்பன் தடம் குறைப்பு</p>
+              <p><strong>சான்றிதழ்கள்:</strong> BIS அங்கீகரிக்கப்பட்ட, சுற்றுச்சூழல் நட்பு தரநிலைகள் இணக்கம்</p>
+            `
+          }
         },
         niwar: {
-          title: 'Niwar & Packaging Items - Professional Solutions',
-          content: `
-            <h4>Industrial Grade Strapping & Packaging</h4>
-            <ul>
-              <li><strong>Niwar Straps:</strong> Heavy-duty cotton straps for secure packaging</li>
-              <li><strong>Packaging Materials:</strong> Comprehensive range for all packaging needs</li>
-              <li><strong>Binding Solutions:</strong> Professional grade binding materials</li>
-              <li><strong>Custom Sizes:</strong> Tailored solutions for specific requirements</li>
-            </ul>
-            <p><strong>Industries Served:</strong> Textiles, Agriculture, Manufacturing, Export</p>
-            <p><strong>Strength:</strong> High tensile strength, tear-resistant</p>
-          `
+          icon: '📦',
+          title: { en: 'Niwar & Packaging Items - Professional Solutions', ta: 'நிவார் & பேக்கேஜிங் பொருட்கள் - தொழில்முறை தீர்வுகள்' },
+          content: {
+            en: `
+              <div style="text-align: center; margin-bottom: 20px;">
+                <div style="font-size: 60px; margin-bottom: 10px;">📦</div>
+              </div>
+              <h4 style="color: #fd7e14; border-bottom: 2px solid #fd7e14; padding-bottom: 5px;">Industrial Grade Strapping & Packaging</h4>
+              <div style="display: grid; gap: 15px; margin: 20px 0;">
+                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #fd7e14;">
+                  <strong style="color: #fd7e14;">Niwar Straps:</strong> Heavy-duty cotton straps for secure packaging
+                </div>
+                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #6610f2;">
+                  <strong style="color: #6610f2;">Packaging Materials:</strong> Comprehensive range for all packaging needs
+                </div>
+                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #e83e8c;">
+                  <strong style="color: #e83e8c;">Binding Solutions:</strong> Professional grade binding materials
+                </div>
+              </div>
+              <p><strong>Industries Served:</strong> Textiles, Agriculture, Manufacturing, Export</p>
+              <p><strong>Strength:</strong> High tensile strength, tear-resistant</p>
+            `,
+            ta: `
+              <div style="text-align: center; margin-bottom: 20px;">
+                <div style="font-size: 60px; margin-bottom: 10px;">📦</div>
+              </div>
+              <h4 style="color: #fd7e14; border-bottom: 2px solid #fd7e14; padding-bottom: 5px;">தொழில்துறை தர கட்டுப்படை மற்றும் பேக்கேஜிங்</h4>
+              <div style="display: grid; gap: 15px; margin: 20px 0;">
+                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #fd7e14;">
+                  <strong style="color: #fd7e14;">நிவார் கட்டுப்படைகள்:</strong> பாதுகாப்பான பேக்கேஜிங்கிற்கான கனமான பருத்தி கட்டுப்படைகள்
+                </div>
+                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #6610f2;">
+                  <strong style="color: #6610f2;">பேக்கேஜிங் பொருட்கள்:</strong> அனைத்து பேக்கேஜிங் தேவைகளுக்கும் விரிவான வரம்பு
+                </div>
+                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #e83e8c;">
+                  <strong style="color: #e83e8c;">கட்டுதல் தீர்வுகள்:</strong> தொழில்முறை தர கட்டுதல் பொருட்கள்
+                </div>
+              </div>
+              <p><strong>சேவை செய்யும் தொழில்கள்:</strong> ஜவுளி, விவசாயம், உற்பத்தி, ஏற்றுமதி</p>
+              <p><strong>வலிமை:</strong> அதிக இழுவிசை வலிமை, கிழிப்பு எதிர்ப்பு</p>
+            `
+          }
         }
       };
       
       const data = productData[product];
-      title.textContent = data.title;
-      content.innerHTML = data.content;
+      icon.textContent = data.icon;
+      title.textContent = data.title[lang];
+      content.innerHTML = data.content[lang];
       popup.style.display = 'flex';
     }
     

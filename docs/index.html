@@ -57,6 +57,17 @@
       </div>
       <button class="close-btn" onclick="closeWelcomePopup()">&times;</button>
       <h2 data-en="Welcome!" data-ta="வரவேற்கிறோம்!">Welcome!</h2>
+      <div style="margin: 15px 0; text-align: center;">
+        <p style="margin-bottom: 10px; font-size: 14px; color: #666;" data-en="Choose your language:" data-ta="உங்கள் மொழியைத் தேர்ந்தெடுக்கவும்:">Choose your language:</p>
+        <div style="display: flex; gap: 10px; justify-content: center;">
+          <button onclick="setLanguage('en')" style="background: #007bff; color: white; border: none; padding: 8px 15px; border-radius: 20px; cursor: pointer; font-size: 12px;">
+            🔤 English
+          </button>
+          <button onclick="setLanguage('ta')" style="background: #28a745; color: white; border: none; padding: 8px 15px; border-radius: 20px; cursor: pointer; font-size: 12px;">
+            ஸ்ரீ தமிழ்
+          </button>
+        </div>
+      </div>
       <p data-en="Our business is dedicated to offering only quality products that meet society's needs, honoring commitments, adhering to regulations, striving for zero waste, and ensuring environmental sustainability" data-ta="எங்கள் வணிகம் சமுதாயத்தின் தேவைகளை பூர்த்தி செய்யும் தரமான பொருட்களை மட்டுமே வழங்குவதில் அர்ப்பணிப்புடன் உள்ளது, உறுதிமொழிகளை மதித்து, விதிமுறைகளை கடைபிடித்து, பூஜ்ய கழிவுக்கு பாடுபட்டு, சுற்றுச்சூழல் நிலைத்தன்மையை உறுதி செய்கிறது">Our business is dedicated to offering only quality products that meet society's needs, honoring commitments, adhering to regulations, striving for zero waste, and ensuring environmental sustainability</p>
       <h3 data-en="Our Vision" data-ta="எங்கள் பார்வை">Our Vision</h3>
       <ul class="vision-list">
@@ -86,7 +97,7 @@
   </div>
   
   <!-- Language Toggle -->
-  <div class="language-toggle">
+  <div class="language-toggle" style="position: fixed; top: 10px; right: 10px; background: rgba(255,255,255,0.95); padding: 8px; border-radius: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); z-index: 1001;">
     <div class="radio-group">
       <input type="radio" id="lang-en" name="language" value="en" onchange="switchLanguage('en')" checked>
       <label for="lang-en">🔤 EN</label>
@@ -102,7 +113,7 @@
         <img src="AboutUsImage.png" alt="Senniah Gowder & Co Logo" class="header-logo" style="order: -1; max-width: 120px; height: auto; min-width: 100px; background: white; padding: 8px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
         <div class="brand-text" style="display: flex; flex-direction: column; gap: 5px; flex: 1; min-width: 0;">
           <h1 style="margin: 0; font-size: clamp(1.2rem, 4vw, 1.8rem);" data-en="Senniah Gowder & Co" data-ta="சென்னையா கவுடர் & கோ">Senniah Gowder & Co</h1>
-          <p style="color: blue; margin: 0; font-size: clamp(0.8rem, 2.5vw, 14px); line-height: 1.3;" data-en="RopesandTwists promotes handloom, designed products out of coir & jute and cotton procured in India." data-ta="ரோப்ஸ்அண்ட்ட்விஸ்ட்ஸ் இந்தியாவில் பெறப்பட்ட தென்னை நார், சணல் மற்றும் பருத்தியிலிருந்து கைத்தறி, வடிவமைக்கப்பட்ட பொருட்களை ஊக்குவிக்கிறது.">RopesandTwists promotes handloom, designed products out of coir & jute and cotton procured in India.</p>
+          <p style="color: blue; margin: 0; font-size: clamp(0.8rem, 2.5vw, 14px); line-height: 1.3;" data-en="RopesandTwists designs and facilitates workshops focused on crafting products made from coir, jute, cotton, and other natural fibers" data-ta="ரோப்ஸ்அண்ட்ட்விஸ்ட்ஸ் தென்னை நார், சணல், பருத்தி மற்றும் பிற இயற்கை நார்களிலிருந்து பொருட்களை உருவாக்குவதில் கவனம் செலுத்தும் பட்டறைகளை வடிவமைத்து நடத்துகிறது">RopesandTwists designs and facilitates workshops focused on crafting products made from coir, jute, cotton, and other natural fibers</p>
         </div>
       </div>
       <nav class="nav-menu">
@@ -230,9 +241,9 @@
       <div class="contact-content">
         <div class="contact-info">
           <div class="contact-card">
-            <div class="contact-icon">📍</div>
+            <div class="contact-icon">🏪</div>
             <div>
-              <h3 data-en="Visit Our Store" data-ta="எங்கள் கடையைப் பார்வையிடுங்கள்">Visit Our Store</h3>
+              <h3 data-en="📍 Visit Our Store" data-ta="📍 எங்கள் கடையைப் பார்வையிடுங்கள்">📍 Visit Our Store</h3>
               <p>464, Rangai Gowder Street, Prakasam,<br>
               Town Hall, Coimbatore - 641001,<br>
               Tamil Nadu, India</p>
@@ -240,45 +251,45 @@
           </div>
           
           <div class="contact-card">
-            <div class="contact-icon">📞</div>
+            <div class="contact-icon">☎️</div>
             <div>
-              <h3 data-en="Call Us" data-ta="எங்களை அழைக்கவும்">Call Us</h3>
+              <h3 data-en="📞 Call Us" data-ta="📞 எங்களை அழைக்கவும்">📞 Call Us</h3>
               <p data-en="For inquiries and orders" data-ta="விசாரணைகள் மற்றும் ஆர்டர்களுக்கு">For inquiries and orders</p>
               <p><strong>+91 9843425424</strong></p>
             </div>
           </div>
           
           <div class="contact-card">
-            <div class="contact-icon">📱</div>
+            <div class="contact-icon">💬</div>
             <div>
-              <h3 data-en="WhatsApp" data-ta="வாட்ஸ்அப்">WhatsApp</h3>
+              <h3 data-en="📱 WhatsApp" data-ta="📱 வாட்ஸ்அப்">📱 WhatsApp</h3>
               <p data-en="Quick messaging and support" data-ta="வேகமான செய்தி மற்றும் ஆதரவு">Quick messaging and support</p>
               <p><strong><a href="https://wa.me/919843425424" target="_blank" style="color: #25D366; text-decoration: none;">+91 9843425424</a></strong></p>
             </div>
           </div>
           
           <div class="contact-card">
-            <div class="contact-icon">🧭</div>
+            <div class="contact-icon">🗺️</div>
             <div>
-              <h3 data-en="Get Directions" data-ta="திசைகளைப் பெறவும்">Get Directions</h3>
+              <h3 data-en="🧭 Get Directions" data-ta="🧭 திசைகளைப் பெறவும்">🧭 Get Directions</h3>
               <p data-en="Navigate to our store" data-ta="எங்கள் கடைக்கு செல்லவும்">Navigate to our store</p>
               <p><strong><a href="https://maps.google.com/?q=464,+Rangai+Gowder+St,+Prakasam,+Town+Hall,+Coimbatore,+Tamil+Nadu+641001" target="_blank" style="color: #4285F4; text-decoration: none;">464, Rangai Gowder St, Prakasam, Town Hall, Coimbatore, Tamil Nadu 641001</a></strong></p>
             </div>
           </div>
           
           <div class="contact-card">
-            <div class="contact-icon">📧</div>
+            <div class="contact-icon">✉️</div>
             <div>
-              <h3 data-en="Email Us" data-ta="எமைல் அனுப்பவும்">Email Us</h3>
+              <h3 data-en="📧 Email Us" data-ta="📧 எமைல் அனுப்பவும்">📧 Email Us</h3>
               <p data-en="Send us your requirements" data-ta="உங்கள் தேவைகளை அனுப்பவும்">Send us your requirements</p>
               <p><strong><a href="mailto:senniahgowderandco@gmail.com" style="color: var(--primary); text-decoration: none;">senniahgowderandco@gmail.com</a></strong></p>
             </div>
           </div>
           
           <div class="contact-card">
-            <div class="contact-icon">⏰</div>
+            <div class="contact-icon">🕘</div>
             <div>
-              <h3 data-en="Business Hours" data-ta="வணிக நேரம்">Business Hours</h3>
+              <h3 data-en="⏰ Business Hours" data-ta="⏰ வணிக நேரம்">⏰ Business Hours</h3>
               <p data-en="Monday - Saturday: 9:00 AM - 7:00 PM" data-ta="திங்கள் - சனி: காலை 9:00 - மாலை 7:00">Monday - Saturday: 9:00 AM - 7:00 PM</p>
               <p data-en="Sunday: Closed" data-ta="ஞாயிறு: மூடப்பட்டுள்ளது">Sunday: Closed</p>
             </div>
@@ -320,6 +331,20 @@
             
             <button type="submit" class="btn-primary" data-en="Send Message" data-ta="செய்தி அனுப்பவும்">Send Message</button>
           </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gratitude Section -->
+  <section class="gratitude" style="background: linear-gradient(135deg, #fffff0, #e6f3ff); padding: 60px 0; text-align: center; border-top: 1px solid #dee2e6;">
+    <div class="container">
+      <div style="max-width: 800px; margin: 0 auto;">
+        <div style="font-size: 48px; margin-bottom: 20px;">🙏</div>
+        <h2 style="color: #495057; margin-bottom: 30px; font-size: 2rem;" data-en="Gratitude" data-ta="நன்றியுணர்வு">Gratitude</h2>
+        <div style="background: white; padding: 40px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-left: 5px solid #007bff;">
+          <p style="font-size: 1.1rem; line-height: 1.8; color: #495057; margin-bottom: 20px;" data-en="Thank you for visiting the website. We value your time" data-ta="வலைத்தளத்தைப் பார்வையிட்டதற்கு நன்றி. உங்கள் நேரத்தை நாங்கள் மதிக்கிறோம்">Thank you for visiting the website. We value your time</p>
+          <p style="font-size: 1.1rem; line-height: 1.8; color: #495057; font-style: italic; margin: 0;" data-en="In memory of my grandfather, Shanmugam Senniah, whose expertise in ropes is enshrined here as a tribute to his enduring legacy." data-ta="கயிறுகளில் நிபுணத்துவம் பெற்ற என் தாத்தா சண்முகம் சென்னையாவின் நினைவாக, அவரது நிலையான மரபுக்கு அஞ்சலியாக இங்கே பொறிக்கப்பட்டுள்ளது.">In memory of my grandfather, Shanmugam Senniah, whose expertise in ropes is enshrined here as a tribute to his enduring legacy.</p>
         </div>
       </div>
     </div>
@@ -500,17 +525,21 @@
               </div>
               <h4 style="color: #007bff; border-bottom: 2px solid #007bff; padding-bottom: 5px;">Premium Quality Ropes for All Applications</h4>
               <div style="display: grid; gap: 15px; margin: 20px 0;">
-                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #007bff;">
-                  <strong style="color: #007bff;">Jute Ropes:</strong> Natural, biodegradable, perfect for packaging and decoration
+                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #007bff; display: flex; align-items: center; gap: 12px;">
+                  <div style="font-size: 24px;">🌾</div>
+                  <div><strong style="color: #007bff;">Jute Ropes:</strong> Natural, biodegradable, perfect for packaging and decoration</div>
                 </div>
-                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #28a745;">
-                  <strong style="color: #28a745;">Coir Ropes:</strong> Coconut fiber ropes, excellent for marine and outdoor use
+                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #28a745; display: flex; align-items: center; gap: 12px;">
+                  <div style="font-size: 24px;">🥥</div>
+                  <div><strong style="color: #28a745;">Coir Ropes:</strong> Coconut fiber ropes, excellent for marine and outdoor use</div>
                 </div>
-                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #ffc107;">
-                  <strong style="color: #ffc107;">Cotton Ropes:</strong> Soft, strong, ideal for crafts and general purpose
+                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #ffc107; display: flex; align-items: center; gap: 12px;">
+                  <div style="font-size: 24px;">🌸</div>
+                  <div><strong style="color: #ffc107;">Cotton Ropes:</strong> Soft, strong, ideal for crafts and general purpose</div>
                 </div>
-                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #dc3545;">
-                  <strong style="color: #dc3545;">Synthetic Ropes:</strong> Weather-resistant, high strength for industrial use
+                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #dc3545; display: flex; align-items: center; gap: 12px;">
+                  <div style="font-size: 24px;">⚙️</div>
+                  <div><strong style="color: #dc3545;">Synthetic Ropes:</strong> Weather-resistant, high strength for industrial use</div>
                 </div>
               </div>
               <p><strong>Applications:</strong> Packaging, Construction, Marine, Agriculture, Crafts</p>
@@ -522,17 +551,21 @@
               </div>
               <h4 style="color: #007bff; border-bottom: 2px solid #007bff; padding-bottom: 5px;">அனைத்து பயன்பாடுகளுக்கும் உயர்தர கயிறுகள்</h4>
               <div style="display: grid; gap: 15px; margin: 20px 0;">
-                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #007bff;">
-                  <strong style="color: #007bff;">சணல் கயிறுகள்:</strong> இயற்கை, மக்கும், பேக்கேஜிங் மற்றும் அலங்காரத்திற்கு சிறந்தது
+                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #007bff; display: flex; align-items: center; gap: 12px;">
+                  <div style="font-size: 24px;">🌾</div>
+                  <div><strong style="color: #007bff;">சணல் கயிறுகள்:</strong> இயற்கை, மக்கும், பேக்கேஜிங் மற்றும் அலங்காரத்திற்கு சிறந்தது</div>
                 </div>
-                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #28a745;">
-                  <strong style="color: #28a745;">தென்னை நார் கயிறுகள்:</strong> தென்னை நார் கயிறுகள், கடல் மற்றும் வெளிப்புற பயன்பாட்டிற்கு சிறந்தது
+                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #28a745; display: flex; align-items: center; gap: 12px;">
+                  <div style="font-size: 24px;">🥥</div>
+                  <div><strong style="color: #28a745;">தென்னை நார் கயிறுகள்:</strong> தென்னை நார் கயிறுகள், கடல் மற்றும் வெளிப்புற பயன்பாட்டிற்கு சிறந்தது</div>
                 </div>
-                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #ffc107;">
-                  <strong style="color: #ffc107;">பருத்தி கயிறுகள்:</strong> மென்மையான, வலுவான, கைவினைப்பொருட்கள் மற்றும் பொது நோக்கத்திற்கு ஏற்றது
+                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #ffc107; display: flex; align-items: center; gap: 12px;">
+                  <div style="font-size: 24px;">🌸</div>
+                  <div><strong style="color: #ffc107;">பருத்தி கயிறுகள்:</strong> மென்மையான, வலுவான, கைவினைப்பொருட்கள் மற்றும் பொது நோக்கத்திற்கு ஏற்றது</div>
                 </div>
-                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #dc3545;">
-                  <strong style="color: #dc3545;">செயற்கை கயிறுகள்:</strong> வானிலை எதிர்ப்பு, தொழில்துறை பயன்பாட்டிற்கு அதிக வலிமை
+                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #dc3545; display: flex; align-items: center; gap: 12px;">
+                  <div style="font-size: 24px;">⚙️</div>
+                  <div><strong style="color: #dc3545;">செயற்கை கயிறுகள்:</strong> வானிலை எதிர்ப்பு, தொழில்துறை பயன்பாட்டிற்கு அதிக வலிமை</div>
                 </div>
               </div>
               <p><strong>பயன்பாடுகள்:</strong> பேக்கேஜிங், கட்டுமானம், கடல், விவசாயம், கைவினைப்பொருட்கள்</p>

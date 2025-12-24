@@ -51,6 +51,9 @@
   <!-- Scroll to Top Button -->
   <button id="scrollToTop" class="scroll-to-top" onclick="scrollToTop()" style="display: none; position: fixed; bottom: 20px; right: 20px; background: #007bff; color: white; border: none; border-radius: 50%; width: 50px; height: 50px; font-size: 18px; cursor: pointer; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.3); transition: all 0.3s ease;">↑</button>
   
+  <!-- WhatsApp Button -->
+  <a href="https://wa.me/917449027832?text=Hello%2C%20I%20am%20interested%20in%20your%20rope%20products.%20Please%20provide%20more%20information." target="_blank" class="whatsapp-btn" style="display: block; position: fixed; bottom: 80px; right: 20px; background: #25D366; color: white; border: none; border-radius: 50%; width: 50px; height: 50px; font-size: 24px; cursor: pointer; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.3); transition: all 0.3s ease; text-decoration: none; display: flex; align-items: center; justify-content: center;">💬</a>
+  
   <!-- Image Enlargement Popup -->
   <div id="imagePopup" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 3000; justify-content: center; align-items: center;">
     <div style="position: relative; max-width: 90%; max-height: 90%;">
@@ -122,12 +125,12 @@
   </div>
   
   <!-- Language Toggle -->
-  <div class="language-toggle" style="position: fixed; top: 10px; right: 10px; background: rgba(255,255,255,0.95); padding: 8px; border-radius: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); z-index: 1001;">
+  <div class="language-toggle" style="position: fixed !important; top: 10px !important; left: 10px !important; background: rgba(255,255,255,0.95) !important; padding: 4px !important; border-radius: 12px !important; box-shadow: 0 2px 10px rgba(0,0,0,0.1) !important; z-index: 1001 !important; font-size: 11px !important; transform: scale(0.9) !important;">
     <div class="radio-group">
       <input type="radio" id="lang-en" name="language" value="en" onchange="switchLanguage('en')" checked>
-      <label for="lang-en">🔤 EN</label>
+      <label for="lang-en" style="padding: 4px 7px !important; font-size: 11px !important;">🔤 EN</label>
       <input type="radio" id="lang-ta" name="language" value="ta" onchange="switchLanguage('ta')">
-      <label for="lang-ta">ஸ்ரீ தமிழ்</label>
+      <label for="lang-ta" style="padding: 4px 7px !important; font-size: 11px !important;">ஸ்ரீ தமிழ்</label>
     </div>
   </div>
 
@@ -135,7 +138,7 @@
   <header class="header">
     <div class="container">
       <div class="nav-brand" style="display: flex; align-items: center; gap: 15px; flex-wrap: wrap; justify-content: flex-start;">
-        <img src="AboutUsImage.png" alt="Senniah Gowder & Co Logo" class="header-logo" style="order: -1; max-width: 120px; height: auto; min-width: 100px; background: white; padding: 8px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+        <img src="AboutUsImage.png" alt="Senniah Gowder & Co Logo" class="header-logo" style="order: -1; max-width: 140px; height: auto; min-width: 120px; background: white; padding: 10px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
         <div class="brand-text" style="display: flex; flex-direction: column; gap: 5px; flex: 1; min-width: 0;">
           <h1 style="margin: 0; font-size: clamp(1.2rem, 4vw, 1.8rem);" data-en="Senniah Gowder & Co" data-ta="சென்னையா கவுடர் & கோ">Senniah Gowder & Co</h1>
           <p style="color: blue; margin: 0; font-size: clamp(0.8rem, 2.5vw, 14px); line-height: 1.3;" data-en="RopesandTwists designs and facilitates workshops focused on crafting products made from coir, jute, cotton, and other natural fibers" data-ta="ரோப்ஸ்அண்ட்ட்விஸ்ட்ஸ் தென்னை நார், சணல், பருத்தி மற்றும் பிற இயற்கை நார்களிலிருந்து பொருட்களை உருவாக்குவதில் கவனம் செலுத்தும் பட்டறைகளை வடிவமைத்து நடத்துகிறது">RopesandTwists designs and facilitates workshops focused on crafting products made from coir, jute, cotton, and other natural fibers</p>
@@ -155,7 +158,7 @@
     <div class="hero-background"></div>
     <div class="container">
       <div class="hero-content">
-        <h2 data-en="Premium Quality Products from Coimbatore" data-ta="கோயம்புத்தூரிலிருந்து உயர்தர பொருட்கள்">Premium Quality Products from Coimbatore</h2>
+        <h2 data-en="Crafting quality ropes and sustainable products — Blending tradition with innovation" data-ta="தரமான கயிறுகள் மற்றும் நிலையான பொருட்களை உருவாக்குதல் — பாரம்பரியத்தை புதுமையுடன் இணைத்தல்">Crafting quality ropes and sustainable products — blending tradition with innovation</h2>
         <p data-en="We are also involved in Rope materials for packaging, House keeping items (Mats, brushes, brooms etc), Biodegradable products, Essential things for domestic animals, Twine/Ropes for Construction and Electricals" data-ta="நாங்கள் பேக்கேஜிங்கிற்கான கயிறு பொருட்கள், வீட்டு பராமரிப்பு பொருட்கள் (பாய்கள், தூரிகைகள், விளக்குமாறுகள் போன்றவை), மக்கும் பொருட்கள், வீட்டு விலங்குகளுக்கான அத்தியாவசிய பொருட்கள், கட்டுமானம் மற்றும் மின்சார பொருட்களுக்கான கயிறுகள்/நூல்களிலும் ஈடுபட்டுள்ளோம்">We are also involved in Rope materials for packaging, House keeping items (Mats, brushes, brooms etc), Biodegradable products, Essential things for domestic animals, Twine/Ropes for Construction and Electricals</p>
         
         <div class="quality-vision">
@@ -208,6 +211,7 @@
                 <a href="#" onclick="showProductInfo('decorative-craft'); return false;" style="color: #e83e8c; text-decoration: none; font-weight: bold; font-size: 12px;">🎨 More Info</a>
               </li>
             </ul>
+            <button class="more-info-btn" onclick="showProductInfo('ropes')" style="background: #007bff; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; margin-top: 10px;" data-en="More Info" data-ta="மேலும் தகவல்">More Info</button>
           </div>
         </div>
 
@@ -273,8 +277,6 @@
           
           <p data-en="Senniah Gowder & Co was founded before 1950s on Rangai Gowder Street (Big Bazaar/Townhall), which is a historic business market place in Coimbatore. The shop was opened offering rope and essential products for cows from around the city for customers to take home." data-ta="சென்னையா கவுடர் & கோ 1950 களுக்கு முன்பு ரங்கை கவுடர் தெருவில் (பிக் பஜார்/டவுன்ஹால்) நிறுவப்பட்டது, இது கோயம்புத்தூரில் ஒரு வரலாற்று வணிக சந்தை இடமாகும். இந்த கடை நகரத்தைச் சுற்றியுள்ள மாடுகளுக்கான கயிறு மற்றும் அத்தியாவசிய பொருட்களை வாடிக்கையாளர்கள் வீட்டிற்கு எடுத்துச் செல்ல திறக்கப்பட்டது.">Senniah Gowder & Co was founded before 1950s on Rangai Gowder Street (Big Bazaar/Townhall), which is a historic business market place in Coimbatore. The shop was opened offering rope and essential products for cows from around the city for customers to take home.</p>
           
-          <p data-en="With decades of experience in manufacturing and supplying quality products, we have established ourselves as a trusted name in Coimbatore and across Tamil Nadu. Our commitment to quality, reliability, and customer satisfaction has made us a preferred choice for businesses and individuals alike." data-ta="தரமான பொருட்களை உற்பத்தி செய்வதிலும் வழங்குவதிலும் பல தசாப்த கால அனுபவத்துடன், கோயம்புத்தூர் மற்றும் தமிழ்நாடு முழுவதும் நம்பகமான பெயராக நம்மை நிலைநிறுத்திக் கொண்டுள்ளோம். தரம், நம்பகத்தன்மை மற்றும் வாடிக்கையாளர் திருப்திக்கான எங்கள் அர்ப்பணிப்பு வணிகங்கள் மற்றும் தனிநபர்களுக்கு விருப்பமான தேர்வாக மாற்றியுள்ளது.">With decades of experience in manufacturing and supplying quality products, we have established ourselves as a trusted name in Coimbatore and across Tamil Nadu. Our commitment to quality, reliability, and customer satisfaction has made us a preferred choice for businesses and individuals alike.</p>
-          
       
         </div>
         
@@ -305,7 +307,7 @@
             <div>
               <h3 data-en="📞 Call Us" data-ta="📞 எங்களை அழைக்கவும்">📞 Call Us</h3>
               <p data-en="For inquiries and orders" data-ta="விசாரணைகள் மற்றும் ஆர்டர்களுக்கு">For inquiries and orders</p>
-              <p><strong>+91 9843425424</strong></p>
+              <p><strong>+91 7449027832</strong></p>
             </div>
           </div>
           
@@ -314,7 +316,7 @@
             <div>
               <h3 data-en="📱 WhatsApp" data-ta="📱 வாட்ஸ்அப்">📱 WhatsApp</h3>
               <p data-en="Quick messaging and support" data-ta="வேகமான செய்தி மற்றும் ஆதரவு">Quick messaging and support</p>
-              <p><strong><a href="https://wa.me/919843425424" target="_blank" style="color: #25D366; text-decoration: none;">+91 9843425424</a></strong></p>
+              <p><strong><a href="https://wa.me/917449027832" target="_blank" style="color: #25D366; text-decoration: none;">+91 7449027832</a></strong></p>
             </div>
           </div>
           
@@ -392,18 +394,34 @@
           </form>
         </div>
       </div>
+      
+      <!-- IT Support Section -->
+      <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: var(--light); border-radius: 15px;">
+        <h3 style="color: var(--primary); font-size: 1.5rem; margin-bottom: 1rem;" data-en="💻 Business IT Alignment" data-ta="💻 வணிக IT ஒருங்கிணைப்பு">💻 Business IT Alignment</h3>
+        <p style="font-size: 1.1rem; color: var(--text); line-height: 1.6; margin-bottom: 1.5rem;" data-en="We love to help and collaborate with small businesses, helping them build websites and bridging business IT gap." data-ta="சிறு வணிகங்களுக்கு உதவுவதிலும் ஒத்தழைப்பிலும் நாங்கள் விரும்புகிறோம், அவர்களுக்கு வலைத்தளங்களை உருவாக்க உதவுகிறோம் மற்றும் வணிக IT இடைவெளியைக் குறைக்கிறோம்.">We love to help and collaborate with small businesses, helping them build websites and bridging business IT gap.</p>
+        <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;">
+          <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <span style="font-size: 1.2rem;">📞</span>
+            <strong><a href="tel:+919843425424" style="color: var(--primary); text-decoration: none;">+91 9843425424</a></strong>
+          </div>
+          <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <span style="font-size: 1.2rem;">✉️</span>
+            <strong><a href="mailto:abinayapradha22@gmail.com" style="color: var(--primary); text-decoration: none;">abinayapradha22@gmail.com</a></strong>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- Gratitude Section -->
-  <section class="gratitude" style="background: linear-gradient(135deg, #fffff0, #e6f3ff); padding: 60px 0; text-align: center; border-top: 1px solid #dee2e6;">
+  <section class="gratitude" style="background: var(--white); padding: 60px 0; text-align: center; border-top: 1px solid #dee2e6;">
     <div class="container">
       <div style="max-width: 800px; margin: 0 auto;">
         <div style="font-size: 48px; margin-bottom: 20px;">🙏</div>
         <h2 style="color: #495057; margin-bottom: 30px; font-size: 2rem;" data-en="Gratitude" data-ta="நன்றியுணர்வு">Gratitude</h2>
         <div style="background: white; padding: 40px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-left: 5px solid #007bff;">
           <p style="font-size: 1.1rem; line-height: 1.8; color: #495057; margin-bottom: 20px;" data-en="Thank you for visiting the website. We value your time" data-ta="வலைத்தளத்தைப் பார்வையிட்டதற்கு நன்றி. உங்கள் நேரத்தை நாங்கள் மதிக்கிறோம்">Thank you for visiting the website. We value your time</p>
-          <p style="font-size: 1.1rem; line-height: 1.8; color: #495057; font-style: italic; margin: 0;" data-en="In memory of my grandfather, Shanmugam Senniah, whose expertise in ropes is enshrined here as a tribute to his enduring legacy." data-ta="கயிறுகளில் நிபுணத்துவம் பெற்ற என் தாத்தா சண்முகம் சென்னையாவின் நினைவாக, அவரது நிலையான மரபுக்கு அஞ்சலியாக இங்கே பொறிக்கப்பட்டுள்ளது.">In memory of my grandfather, Shanmugam Senniah, whose expertise in ropes is enshrined here as a tribute to his enduring legacy.</p>
+          <p style="font-size: 1.1rem; line-height: 1.8; color: #495057; font-style: italic; margin: 0;" data-en="In memory of my grandfather, Shanmugam Senniah, whose expertise in ropes is enshrined here." data-ta="கயிறுகளில் நிபுணத்துவம் பெற்ற என் தாத்தா சண்முகம் சென்னையாவின் நினைவாக, இங்கே பொறிக்கப்பட்டுள்ளது.">In memory of my grandfather, Shanmugam Senniah, whose expertise in ropes is enshrined here.</p>
         </div>
       </div>
     </div>
@@ -632,20 +650,45 @@
         },
         ropes: {
           icon: '🪢',
-          title: { en: 'Ropes & Twines - Detailed Information', ta: 'கயிறுகள் & நூல்கள் - விரிவான தகவல்' },
+          title: { en: 'Ropes & Twines - Professional Solutions', ta: 'கயிறுகள் & நூல்கள் - தொழில்முறை தீர்வுகள்' },
           content: {
             en: `
-              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); gap: 15px; padding: 20px;">
-                <div style="text-align: center; cursor: pointer;" onclick="enlargeImage('Images/Ropes/Black Ropes.jpeg')"><img src="Images/Ropes/Black Ropes.jpeg" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 3px solid #007bff; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><p style="font-size: 12px; margin: 8px 0; font-weight: bold;">Black Ropes</p></div>
-                <div style="text-align: center; cursor: pointer;" onclick="enlargeImage('Images/Ropes/Brown Rope.jpeg')"><img src="Images/Ropes/Brown Rope.jpeg" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 3px solid #8B4513; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><p style="font-size: 12px; margin: 8px 0; font-weight: bold;">Brown Rope</p></div>
-                <div style="text-align: center; cursor: pointer;" onclick="enlargeImage('Images/Ropes/Coir Ropes.png')"><img src="Images/Ropes/Coir Ropes.png" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 3px solid #28a745; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><p style="font-size: 12px; margin: 8px 0; font-weight: bold;">Coir Ropes</p></div>
-                <div style="text-align: center; cursor: pointer;" onclick="enlargeImage('Images/Ropes/Nylon Ropes.jpeg')"><img src="Images/Ropes/Nylon Ropes.jpeg" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 3px solid #dc3545; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><p style="font-size: 12px; margin: 8px 0; font-weight: bold;">Nylon Ropes</p></div>
-                <div style="text-align: center; cursor: pointer;" onclick="enlargeImage('Images/Ropes/PP Rope.jpeg')"><img src="Images/Ropes/PP Rope.jpeg" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 3px solid #ffc107; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><p style="font-size: 12px; margin: 8px 0; font-weight: bold;">PP Rope</p></div>
-                <div style="text-align: center; cursor: pointer;" onclick="enlargeImage('Images/Ropes/Sanal.png')"><img src="Images/Ropes/Sanal.png" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 3px solid #6f42c1; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><p style="font-size: 12px; margin: 8px 0; font-weight: bold;">Jute Rope</p></div>
-                <div style="text-align: center; cursor: pointer;" onclick="enlargeImage('Images/Ropes/Sanal1.png')"><img src="Images/Ropes/Sanal1.png" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 3px solid #20c997; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><p style="font-size: 12px; margin: 8px 0; font-weight: bold;">Natural Fiber</p></div>
+              <div style="text-align: center; margin-bottom: 20px;">
+                <div style="font-size: 60px; margin-bottom: 10px;">🪢</div>
               </div>
+              <h4 style="color: #007bff; border-bottom: 2px solid #007bff; padding-bottom: 5px;">High-Quality Multi-Purpose Rope Solutions</h4>
+              <div style="display: grid; gap: 15px; margin: 20px 0;">
+                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #28a745;">
+                  <strong style="color: #28a745;">Natural Fiber Ropes:</strong> Jute, coir, and cotton ropes for eco-friendly applications
+                </div>
+                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #ffc107;">
+                  <strong style="color: #ffc107;">Synthetic Ropes:</strong> PP and nylon ropes for industrial and marine use
+                </div>
+                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #6f42c1;">
+                  <strong style="color: #6f42c1;">Specialty Ropes:</strong> Custom solutions for animals, climbing, and decorative purposes
+                </div>
+              </div>
+              <p><strong>Applications:</strong> Construction, Marine, Agriculture, Packaging, Household</p>
+              <p><strong>Quality:</strong> BIS approved, High tensile strength, Weather resistant</p>
             `,
             ta: `
+              <div style="text-align: center; margin-bottom: 20px;">
+                <div style="font-size: 60px; margin-bottom: 10px;">🪢</div>
+              </div>
+              <h4 style="color: #007bff; border-bottom: 2px solid #007bff; padding-bottom: 5px;">உயர்தர பல்நோக்கு கயிறு தீர்வுகள்</h4>
+              <div style="display: grid; gap: 15px; margin: 20px 0;">
+                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #28a745;">
+                  <strong style="color: #28a745;">இயற்கை நார் கயிறுகள்:</strong> சுற்றுச்சூழல் நட்பு பயன்பாடுகளுக்கான சணல், தென்னை நார் மற்றும் பருத்தி கயிறுகள்
+                </div>
+                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #ffc107;">
+                  <strong style="color: #ffc107;">செயற்கை கயிறுகள்:</strong> தொழில்துறை மற்றும் கடல் பயன்பாட்டிற்கான PP மற்றும் நைலான் கயிறுகள்
+                </div>
+                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #6f42c1;">
+                  <strong style="color: #6f42c1;">சிறப்பு கயிறுகள்:</strong> விலங்குகள், ஏறுதல் மற்றும் அலங்கார நோக்கங்களுக்கான தனிப்பயன் தீர்வுகள்
+                </div>
+              </div>
+              <p><strong>பயன்பாடுகள்:</strong> கட்டுமானம், கடல், விவசாயம், பேக்கேஜிங், வீட்டு</p>
+              <p><strong>தரம்:</strong> BIS அங்கீகரிக்கப்பட்ட, அதிக இழுவிசை வலிமை, வானிலை எதிர்ப்பு</p>
               <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); gap: 15px; padding: 20px;">
                 <div style="text-align: center; cursor: pointer;" onclick="enlargeImage('Images/Ropes/Black Ropes.jpeg')"><img src="Images/Ropes/Black Ropes.jpeg" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 3px solid #007bff; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><p style="font-size: 12px; margin: 8px 0; font-weight: bold;">கருப்பு கயிறுகள்</p></div>
                 <div style="text-align: center; cursor: pointer;" onclick="enlargeImage('Images/Ropes/Brown Rope.jpeg')"><img src="Images/Ropes/Brown Rope.jpeg" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 3px solid #8B4513; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><p style="font-size: 12px; margin: 8px 0; font-weight: bold;">பழுப்பு கயிறு</p></div>

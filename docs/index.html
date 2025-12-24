@@ -18,8 +18,8 @@
       .hero-content h2 { font-size: clamp(1.5rem, 5vw, 2.5rem); }
       .hero-content p { font-size: clamp(0.9rem, 3vw, 1rem); }
       .products-grid { grid-template-columns: 1fr; gap: 20px; }
-      .contact-content { flex-direction: column; }
-      .contact-info { grid-template-columns: 1fr; }
+      .contact-content { grid-template-columns: 1fr !important; gap: 2rem !important; }
+      .contact-info { display: flex; flex-direction: column; gap: 1rem; }
       .footer-content { flex-direction: column; text-align: center; gap: 20px; }
     }
     @media (max-width: 480px) {
@@ -28,11 +28,36 @@
       .brand-text h1 { font-size: clamp(1rem, 4vw, 1.4rem) !important; }
       .brand-text p { font-size: clamp(0.7rem, 2vw, 12px) !important; }
     }
+    /* Override for rope buttons */
+    .product-details li button.more-info-btn {
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+      position: relative !important;
+      z-index: 999 !important;
+      margin: 8px 0 !important;
+      padding: 8px 16px !important;
+      border: none !important;
+      border-radius: 4px !important;
+      cursor: pointer !important;
+      font-size: 12px !important;
+      font-weight: bold !important;
+      width: auto !important;
+      min-width: 100px !important;
+    }
   </style>
 </head>
 <body>
   <!-- Scroll to Top Button -->
   <button id="scrollToTop" class="scroll-to-top" onclick="scrollToTop()" style="display: none; position: fixed; bottom: 20px; right: 20px; background: #007bff; color: white; border: none; border-radius: 50%; width: 50px; height: 50px; font-size: 18px; cursor: pointer; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.3); transition: all 0.3s ease;">↑</button>
+  
+  <!-- Image Enlargement Popup -->
+  <div id="imagePopup" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 3000; justify-content: center; align-items: center;">
+    <div style="position: relative; max-width: 90%; max-height: 90%;">
+      <button onclick="closeImagePopup()" style="position: absolute; top: -40px; right: 0; background: rgba(255,255,255,0.2); border: none; color: white; font-size: 30px; cursor: pointer; border-radius: 50%; width: 40px; height: 40px;">&times;</button>
+      <img id="enlargedImage" style="max-width: 100%; max-height: 100%; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+    </div>
+  </div>
   
   <!-- Product Info Popup -->
   <div id="productPopup" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 2000; justify-content: center; align-items: center;">
@@ -162,11 +187,27 @@
           </div>
           <div class="product-details">
             <ul>
-              <li data-en="Jute, Coir & Natural Fiber Ropes" data-ta="சணல்,தென்னை நார் மற்றும் இயற்கை நார் கயிறுகள்">Jute & Natural Fiber Ropes</li>
-              <li data-en="Cotton & Synthetic Ropes" data-ta="பருத்தி மற்றும் செயற்கை கயிறுகள்">Cotton & Synthetic Ropes</li>
-              <li data-en="Marine & Industrial Ropes" data-ta="கடல் மற்றும் தொழில்துறை கயிறுகள்">Marine & Industrial Ropes</li>
+              <li style="margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center;">
+                <span data-en="Jute, Coir & Fiber Ropes" data-ta="சணல்,தென்னை நார் மற்றும் இயற்கை நார் கயிறுகள்">Jute, Coir & Fiber Ropes</span>
+                <a href="#" onclick="showProductInfo('jute-coir'); return false;" style="color: #28a745; text-decoration: none; font-weight: bold; font-size: 12px;">🌾 More Info</a>
+              </li>
+              <li style="margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center;">
+                <span data-en="Cotton & Synthetic Ropes" data-ta="பருத்தி மற்றும் செயற்கை கயிறுகள்">Cotton & Synthetic Ropes</span>
+                <a href="#" onclick="showProductInfo('cotton-synthetic'); return false;" style="color: #ffc107; text-decoration: none; font-weight: bold; font-size: 12px;">🌸 More Info</a>
+              </li>
+              <li style="margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center;">
+                <span data-en="Marine & Industrial Ropes" data-ta="கடல் மற்றும் தொழில்துறை கயிறுகள்">Marine & Industrial Ropes</span>
+                <a href="#" onclick="showProductInfo('marine-industrial'); return false;" style="color: #dc3545; text-decoration: none; font-weight: bold; font-size: 12px;">⚙️ More Info</a>
+              </li>
+              <li style="margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center;">
+                <span data-en="Specialty & Animal Ropes" data-ta="சிறப்பு மற்றும் விலங்கு கயிறுகள்">Specialty & Animal Ropes</span>
+                <a href="#" onclick="showProductInfo('specialty-animal'); return false;" style="color: #6f42c1; text-decoration: none; font-weight: bold; font-size: 12px;">🐄 More Info</a>
+              </li>
+              <li style="margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center;">
+                <span data-en="Decorative & Craft Ropes" data-ta="அலங்கார மற்றும் கைவினை கயிறுகள்">Decorative & Craft Ropes</span>
+                <a href="#" onclick="showProductInfo('decorative-craft'); return false;" style="color: #e83e8c; text-decoration: none; font-weight: bold; font-size: 12px;">🎨 More Info</a>
+              </li>
             </ul>
-            <button class="more-info-btn" onclick="showProductInfo('ropes')" style="background: #007bff; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; margin-top: 10px;" data-en="More Info" data-ta="மேலும் தகவல்">More Info</button>
           </div>
         </div>
 
@@ -181,9 +222,18 @@
           </div>
           <div class="product-details">
             <ul>
-              <li data-en="Biodegradable Bags" data-ta="மக்கும் பைகள்">Biodegradable Bags</li>
-              <li data-en="Compostable Packaging" data-ta="உரமாக்கக்கூடிய பேக்கேஜிங்">Compostable Packaging</li>
-              <li data-en="Natural Fiber Products" data-ta="இயற்கை நார் பொருட்கள்">Natural Fiber Products</li>
+              <li style="margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center;">
+                <span data-en="Eco-Friendly Bags" data-ta="சுற்றுச்சூழல் நட்பு பைகள்">Eco-Friendly Bags</span>
+                <a href="#" onclick="showProductInfo('eco-bags'); return false;" style="color: #28a745; text-decoration: none; font-weight: bold; font-size: 12px;">🛍️ More Info</a>
+              </li>
+              <li style="margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center;">
+                <span data-en="Natural Fiber Mats" data-ta="இயற்கை நார் பாய்கள்">Natural Fiber Mats</span>
+                <a href="#" onclick="showProductInfo('natural-mats'); return false;" style="color: #6f42c1; text-decoration: none; font-weight: bold; font-size: 12px;">🏠 More Info</a>
+              </li>
+              <li style="margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center;">
+                <span data-en="Brushes & Brooms" data-ta="தூரிகைகள் & விளக்குமாறுகள்">Brushes & Brooms</span>
+                <a href="#" onclick="showProductInfo('eco-brushes'); return false;" style="color: #fd7e14; text-decoration: none; font-weight: bold; font-size: 12px;">🧹 More Info</a>
+              </li>
             </ul>
             <button class="more-info-btn" onclick="showProductInfo('biodegradable')" style="background: #007bff; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; margin-top: 10px;" data-en="More Info" data-ta="மேலும் தகவல்">More Info</button>
           </div>
@@ -283,6 +333,15 @@
               <h3 data-en="📧 Email Us" data-ta="📧 எமைல் அனுப்பவும்">📧 Email Us</h3>
               <p data-en="Send us your requirements" data-ta="உங்கள் தேவைகளை அனுப்பவும்">Send us your requirements</p>
               <p><strong><a href="mailto:senniahgowderandco@gmail.com" style="color: var(--primary); text-decoration: none;">senniahgowderandco@gmail.com</a></strong></p>
+            </div>
+          </div>
+          
+          <div class="contact-card">
+            <div class="contact-icon">📘</div>
+            <div>
+              <h3 data-en="📘 Facebook" data-ta="📘 பேஸ்புக்">📘 Facebook</h3>
+              <p data-en="Follow us on Facebook" data-ta="பேஸ்புக்கில் எங்களைப் பின்தொடரவும்">Follow us on Facebook</p>
+              <p><strong><a href="https://www.facebook.com/Senniah-Gowder-CO-101339278593805" target="_blank" style="color: #1877F2; text-decoration: none;">Senniah Gowder & Co</a></strong></p>
             </div>
           </div>
           
@@ -515,61 +574,87 @@
       const lang = localStorage.getItem('selectedLanguage') || 'en';
       
       const productData = {
+        'jute-coir': {
+          icon: '🌾',
+          title: { en: 'Jute, Coir & Fiber Ropes', ta: 'சணல், தென்னை நார் & இயற்கை நார் கயிறுகள்' },
+          content: {
+            en: `
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); gap: 15px; padding: 20px;">
+                <div style="text-align: center; cursor: pointer;" onclick="enlargeImage('Images/Ropes/Coir Ropes.png')"><img src="Images/Ropes/Coir Ropes.png" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 3px solid #28a745; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><p style="font-size: 12px; margin: 8px 0; font-weight: bold;">Coir Ropes</p></div>
+                <div style="text-align: center; cursor: pointer;" onclick="enlargeImage('Images/Ropes/Sanal.png')"><img src="Images/Ropes/Sanal.png" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 3px solid #6f42c1; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><p style="font-size: 12px; margin: 8px 0; font-weight: bold;">Jute Rope</p></div>
+                <div style="text-align: center; cursor: pointer;" onclick="enlargeImage('Images/Ropes/Sanal1.png')"><img src="Images/Ropes/Sanal1.png" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 3px solid #20c997; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><p style="font-size: 12px; margin: 8px 0; font-weight: bold;">Natural Fiber</p></div>
+              </div>
+            `,
+            ta: `
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); gap: 15px; padding: 20px;">
+                <div style="text-align: center; cursor: pointer;" onclick="enlargeImage('Images/Ropes/Coir Ropes.png')"><img src="Images/Ropes/Coir Ropes.png" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 3px solid #28a745; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><p style="font-size: 12px; margin: 8px 0; font-weight: bold;">தென்னை நார் கயிறுகள்</p></div>
+                <div style="text-align: center; cursor: pointer;" onclick="enlargeImage('Images/Ropes/Sanal.png')"><img src="Images/Ropes/Sanal.png" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 3px solid #6f42c1; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><p style="font-size: 12px; margin: 8px 0; font-weight: bold;">சணல் கயிறு</p></div>
+                <div style="text-align: center; cursor: pointer;" onclick="enlargeImage('Images/Ropes/Sanal1.png')"><img src="Images/Ropes/Sanal1.png" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 3px solid #20c997; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><p style="font-size: 12px; margin: 8px 0; font-weight: bold;">இயற்கை நார்</p></div>
+              </div>
+            `
+          }
+        },
+        'cotton-synthetic': {
+          icon: '🌸',
+          title: { en: 'Cotton & Synthetic Ropes', ta: 'பருத்தி & செயற்கை கயிறுகள்' },
+          content: {
+            en: `
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); gap: 15px; padding: 20px;">
+                <div style="text-align: center; cursor: pointer;" onclick="enlargeImage('Images/Ropes/Brown Rope.jpeg')"><img src="Images/Ropes/Brown Rope.jpeg" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 3px solid #8B4513; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><p style="font-size: 12px; margin: 8px 0; font-weight: bold;">Cotton Rope</p></div>
+                <div style="text-align: center; cursor: pointer;" onclick="enlargeImage('Images/Ropes/PP Rope.jpeg')"><img src="Images/Ropes/PP Rope.jpeg" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 3px solid #ffc107; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><p style="font-size: 12px; margin: 8px 0; font-weight: bold;">PP Rope</p></div>
+              </div>
+            `,
+            ta: `
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); gap: 15px; padding: 20px;">
+                <div style="text-align: center; cursor: pointer;" onclick="enlargeImage('Images/Ropes/Brown Rope.jpeg')"><img src="Images/Ropes/Brown Rope.jpeg" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 3px solid #8B4513; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><p style="font-size: 12px; margin: 8px 0; font-weight: bold;">பருத்தி கயிறு</p></div>
+                <div style="text-align: center; cursor: pointer;" onclick="enlargeImage('Images/Ropes/PP Rope.jpeg')"><img src="Images/Ropes/PP Rope.jpeg" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 3px solid #ffc107; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><p style="font-size: 12px; margin: 8px 0; font-weight: bold;">PP கயிறு</p></div>
+              </div>
+            `
+          }
+        },
+        'marine-industrial': {
+          icon: '⚙️',
+          title: { en: 'Marine & Industrial Ropes', ta: 'கடல் & தொழில்துறை கயிறுகள்' },
+          content: {
+            en: `
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); gap: 15px; padding: 20px;">
+                <div style="text-align: center; cursor: pointer;" onclick="enlargeImage('Images/Ropes/Black Ropes.jpeg')"><img src="Images/Ropes/Black Ropes.jpeg" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 3px solid #007bff; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><p style="font-size: 12px; margin: 8px 0; font-weight: bold;">Marine Ropes</p></div>
+                <div style="text-align: center; cursor: pointer;" onclick="enlargeImage('Images/Ropes/Nylon Ropes.jpeg')"><img src="Images/Ropes/Nylon Ropes.jpeg" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 3px solid #dc3545; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><p style="font-size: 12px; margin: 8px 0; font-weight: bold;">Industrial Nylon</p></div>
+              </div>
+            `,
+            ta: `
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); gap: 15px; padding: 20px;">
+                <div style="text-align: center; cursor: pointer;" onclick="enlargeImage('Images/Ropes/Black Ropes.jpeg')"><img src="Images/Ropes/Black Ropes.jpeg" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 3px solid #007bff; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><p style="font-size: 12px; margin: 8px 0; font-weight: bold;">கடல் கயிறுகள்</p></div>
+                <div style="text-align: center; cursor: pointer;" onclick="enlargeImage('Images/Ropes/Nylon Ropes.jpeg')"><img src="Images/Ropes/Nylon Ropes.jpeg" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 3px solid #dc3545; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><p style="font-size: 12px; margin: 8px 0; font-weight: bold;">தொழில்துறை நைலான்</p></div>
+              </div>
+            `
+          }
+        },
         ropes: {
           icon: '🪢',
           title: { en: 'Ropes & Twines - Detailed Information', ta: 'கயிறுகள் & நூல்கள் - விரிவான தகவல்' },
           content: {
             en: `
-              <div style="text-align: center; margin-bottom: 20px;">
-                <div style="font-size: 60px; margin-bottom: 10px;">🪢</div>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); gap: 15px; padding: 20px;">
+                <div style="text-align: center; cursor: pointer;" onclick="enlargeImage('Images/Ropes/Black Ropes.jpeg')"><img src="Images/Ropes/Black Ropes.jpeg" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 3px solid #007bff; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><p style="font-size: 12px; margin: 8px 0; font-weight: bold;">Black Ropes</p></div>
+                <div style="text-align: center; cursor: pointer;" onclick="enlargeImage('Images/Ropes/Brown Rope.jpeg')"><img src="Images/Ropes/Brown Rope.jpeg" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 3px solid #8B4513; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><p style="font-size: 12px; margin: 8px 0; font-weight: bold;">Brown Rope</p></div>
+                <div style="text-align: center; cursor: pointer;" onclick="enlargeImage('Images/Ropes/Coir Ropes.png')"><img src="Images/Ropes/Coir Ropes.png" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 3px solid #28a745; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><p style="font-size: 12px; margin: 8px 0; font-weight: bold;">Coir Ropes</p></div>
+                <div style="text-align: center; cursor: pointer;" onclick="enlargeImage('Images/Ropes/Nylon Ropes.jpeg')"><img src="Images/Ropes/Nylon Ropes.jpeg" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 3px solid #dc3545; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><p style="font-size: 12px; margin: 8px 0; font-weight: bold;">Nylon Ropes</p></div>
+                <div style="text-align: center; cursor: pointer;" onclick="enlargeImage('Images/Ropes/PP Rope.jpeg')"><img src="Images/Ropes/PP Rope.jpeg" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 3px solid #ffc107; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><p style="font-size: 12px; margin: 8px 0; font-weight: bold;">PP Rope</p></div>
+                <div style="text-align: center; cursor: pointer;" onclick="enlargeImage('Images/Ropes/Sanal.png')"><img src="Images/Ropes/Sanal.png" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 3px solid #6f42c1; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><p style="font-size: 12px; margin: 8px 0; font-weight: bold;">Jute Rope</p></div>
+                <div style="text-align: center; cursor: pointer;" onclick="enlargeImage('Images/Ropes/Sanal1.png')"><img src="Images/Ropes/Sanal1.png" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 3px solid #20c997; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><p style="font-size: 12px; margin: 8px 0; font-weight: bold;">Natural Fiber</p></div>
               </div>
-              <h4 style="color: #007bff; border-bottom: 2px solid #007bff; padding-bottom: 5px;">Premium Quality Ropes for All Applications</h4>
-              <div style="display: grid; gap: 15px; margin: 20px 0;">
-                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #007bff; display: flex; align-items: center; gap: 12px;">
-                  <div style="font-size: 24px;">🌾</div>
-                  <div><strong style="color: #007bff;">Jute Ropes:</strong> Natural, biodegradable, perfect for packaging and decoration</div>
-                </div>
-                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #28a745; display: flex; align-items: center; gap: 12px;">
-                  <div style="font-size: 24px;">🥥</div>
-                  <div><strong style="color: #28a745;">Coir Ropes:</strong> Coconut fiber ropes, excellent for marine and outdoor use</div>
-                </div>
-                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #ffc107; display: flex; align-items: center; gap: 12px;">
-                  <div style="font-size: 24px;">🌸</div>
-                  <div><strong style="color: #ffc107;">Cotton Ropes:</strong> Soft, strong, ideal for crafts and general purpose</div>
-                </div>
-                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #dc3545; display: flex; align-items: center; gap: 12px;">
-                  <div style="font-size: 24px;">⚙️</div>
-                  <div><strong style="color: #dc3545;">Synthetic Ropes:</strong> Weather-resistant, high strength for industrial use</div>
-                </div>
-              </div>
-              <p><strong>Applications:</strong> Packaging, Construction, Marine, Agriculture, Crafts</p>
-              <p><strong>Available Sizes:</strong> 3mm to 50mm diameter</p>
             `,
             ta: `
-              <div style="text-align: center; margin-bottom: 20px;">
-                <div style="font-size: 60px; margin-bottom: 10px;">🪢</div>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); gap: 15px; padding: 20px;">
+                <div style="text-align: center; cursor: pointer;" onclick="enlargeImage('Images/Ropes/Black Ropes.jpeg')"><img src="Images/Ropes/Black Ropes.jpeg" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 3px solid #007bff; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><p style="font-size: 12px; margin: 8px 0; font-weight: bold;">கருப்பு கயிறுகள்</p></div>
+                <div style="text-align: center; cursor: pointer;" onclick="enlargeImage('Images/Ropes/Brown Rope.jpeg')"><img src="Images/Ropes/Brown Rope.jpeg" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 3px solid #8B4513; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><p style="font-size: 12px; margin: 8px 0; font-weight: bold;">பழுப்பு கயிறு</p></div>
+                <div style="text-align: center; cursor: pointer;" onclick="enlargeImage('Images/Ropes/Coir Ropes.png')"><img src="Images/Ropes/Coir Ropes.png" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 3px solid #28a745; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><p style="font-size: 12px; margin: 8px 0; font-weight: bold;">தென்னை நார் கயிறுகள்</p></div>
+                <div style="text-align: center; cursor: pointer;" onclick="enlargeImage('Images/Ropes/Nylon Ropes.jpeg')"><img src="Images/Ropes/Nylon Ropes.jpeg" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 3px solid #dc3545; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><p style="font-size: 12px; margin: 8px 0; font-weight: bold;">நைலான் கயிறுகள்</p></div>
+                <div style="text-align: center; cursor: pointer;" onclick="enlargeImage('Images/Ropes/PP Rope.jpeg')"><img src="Images/Ropes/PP Rope.jpeg" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 3px solid #ffc107; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><p style="font-size: 12px; margin: 8px 0; font-weight: bold;">PP கயிறு</p></div>
+                <div style="text-align: center; cursor: pointer;" onclick="enlargeImage('Images/Ropes/Sanal.png')"><img src="Images/Ropes/Sanal.png" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 3px solid #6f42c1; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><p style="font-size: 12px; margin: 8px 0; font-weight: bold;">சணல் கயிறு</p></div>
+                <div style="text-align: center; cursor: pointer;" onclick="enlargeImage('Images/Ropes/Sanal1.png')"><img src="Images/Ropes/Sanal1.png" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 3px solid #20c997; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><p style="font-size: 12px; margin: 8px 0; font-weight: bold;">இயற்கை நார்</p></div>
               </div>
-              <h4 style="color: #007bff; border-bottom: 2px solid #007bff; padding-bottom: 5px;">அனைத்து பயன்பாடுகளுக்கும் உயர்தர கயிறுகள்</h4>
-              <div style="display: grid; gap: 15px; margin: 20px 0;">
-                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #007bff; display: flex; align-items: center; gap: 12px;">
-                  <div style="font-size: 24px;">🌾</div>
-                  <div><strong style="color: #007bff;">சணல் கயிறுகள்:</strong> இயற்கை, மக்கும், பேக்கேஜிங் மற்றும் அலங்காரத்திற்கு சிறந்தது</div>
-                </div>
-                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #28a745; display: flex; align-items: center; gap: 12px;">
-                  <div style="font-size: 24px;">🥥</div>
-                  <div><strong style="color: #28a745;">தென்னை நார் கயிறுகள்:</strong> தென்னை நார் கயிறுகள், கடல் மற்றும் வெளிப்புற பயன்பாட்டிற்கு சிறந்தது</div>
-                </div>
-                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #ffc107; display: flex; align-items: center; gap: 12px;">
-                  <div style="font-size: 24px;">🌸</div>
-                  <div><strong style="color: #ffc107;">பருத்தி கயிறுகள்:</strong> மென்மையான, வலுவான, கைவினைப்பொருட்கள் மற்றும் பொது நோக்கத்திற்கு ஏற்றது</div>
-                </div>
-                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #dc3545; display: flex; align-items: center; gap: 12px;">
-                  <div style="font-size: 24px;">⚙️</div>
-                  <div><strong style="color: #dc3545;">செயற்கை கயிறுகள்:</strong> வானிலை எதிர்ப்பு, தொழில்துறை பயன்பாட்டிற்கு அதிக வலிமை</div>
-                </div>
-              </div>
-              <p><strong>பயன்பாடுகள்:</strong> பேக்கேஜிங், கட்டுமானம், கடல், விவசாயம், கைவினைப்பொருட்கள்</p>
-              <p><strong>கிடைக்கும் அளவுகள்:</strong> 3mm முதல் 50mm விட்டம்</p>
             `
           }
         },
@@ -660,6 +745,120 @@
               <p><strong>வலிமை:</strong> அதிக இழுவிசை வலிமை, கிழிப்பு எதிர்ப்பு</p>
             `
           }
+        },
+        'eco-bags': {
+          icon: '🛍️',
+          title: { en: 'Eco-Friendly Bags', ta: 'சுற்றுச்சூழல் நட்பு பைகள்' },
+          content: {
+            en: `
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); gap: 15px; padding: 20px;">
+                <div style="text-align: center; cursor: pointer;" onclick="enlargeImage('Images/HouseHold/BioBag.png')"><img src="Images/HouseHold/BioBag.png" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 3px solid #28a745; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><p style="font-size: 12px; margin: 8px 0; font-weight: bold;">Bio Bag</p></div>
+                <div style="text-align: center; cursor: pointer;" onclick="enlargeImage('Images/HouseHold/JuteBag.png')"><img src="Images/HouseHold/JuteBag.png" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 3px solid #6f42c1; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><p style="font-size: 12px; margin: 8px 0; font-weight: bold;">Jute Bag</p></div>
+                <div style="text-align: center; cursor: pointer;" onclick="enlargeImage('Images/HouseHold/CottonBag1.png')"><img src="Images/HouseHold/CottonBag1.png" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 3px solid #20c997; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><p style="font-size: 12px; margin: 8px 0; font-weight: bold;">Cotton Bag</p></div>
+                <div style="text-align: center; cursor: pointer;" onclick="enlargeImage('Images/HouseHold/ShoppingBag.png')"><img src="Images/HouseHold/ShoppingBag.png" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 3px solid #fd7e14; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><p style="font-size: 12px; margin: 8px 0; font-weight: bold;">Shopping Bag</p></div>
+              </div>
+            `,
+            ta: `
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); gap: 15px; padding: 20px;">
+                <div style="text-align: center; cursor: pointer;" onclick="enlargeImage('Images/HouseHold/BioBag.png')"><img src="Images/HouseHold/BioBag.png" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 3px solid #28a745; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><p style="font-size: 12px; margin: 8px 0; font-weight: bold;">பையோ பை</p></div>
+                <div style="text-align: center; cursor: pointer;" onclick="enlargeImage('Images/HouseHold/JuteBag.png')"><img src="Images/HouseHold/JuteBag.png" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 3px solid #6f42c1; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><p style="font-size: 12px; margin: 8px 0; font-weight: bold;">சணல் பை</p></div>
+                <div style="text-align: center; cursor: pointer;" onclick="enlargeImage('Images/HouseHold/CottonBag1.png')"><img src="Images/HouseHold/CottonBag1.png" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 3px solid #20c997; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><p style="font-size: 12px; margin: 8px 0; font-weight: bold;">பருத்தி பை</p></div>
+                <div style="text-align: center; cursor: pointer;" onclick="enlargeImage('Images/HouseHold/ShoppingBag.png')"><img src="Images/HouseHold/ShoppingBag.png" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 3px solid #fd7e14; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><p style="font-size: 12px; margin: 8px 0; font-weight: bold;">கடை பை</p></div>
+              </div>
+            `
+          }
+        },
+        'natural-mats': {
+          icon: '🏠',
+          title: { en: 'Natural Fiber Mats', ta: 'இயற்கை நார் பாய்கள்' },
+          content: {
+            en: `
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); gap: 15px; padding: 20px;">
+                <div style="text-align: center; cursor: pointer;" onclick="enlargeImage('Images/HouseHold/WelcomeMat.png')"><img src="Images/HouseHold/WelcomeMat.png" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 3px solid #28a745; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><p style="font-size: 12px; margin: 8px 0; font-weight: bold;">Welcome Mat</p></div>
+                <div style="text-align: center; cursor: pointer;" onclick="enlargeImage('Images/HouseHold/KitchenMat1.png')"><img src="Images/HouseHold/KitchenMat1.png" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 3px solid #ffc107; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><p style="font-size: 12px; margin: 8px 0; font-weight: bold;">Kitchen Mat</p></div>
+                <div style="text-align: center; cursor: pointer;" onclick="enlargeImage('Images/HouseHold/BathroomMat.png')"><img src="Images/HouseHold/BathroomMat.png" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 3px solid #007bff; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><p style="font-size: 12px; margin: 8px 0; font-weight: bold;">Bathroom Mat</p></div>
+                <div style="text-align: center; cursor: pointer;" onclick="enlargeImage('Images/HouseHold/CarMat.png')"><img src="Images/HouseHold/CarMat.png" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 3px solid #6f42c1; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><p style="font-size: 12px; margin: 8px 0; font-weight: bold;">Car Mat</p></div>
+              </div>
+            `,
+            ta: `
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); gap: 15px; padding: 20px;">
+                <div style="text-align: center; cursor: pointer;" onclick="enlargeImage('Images/HouseHold/WelcomeMat.png')"><img src="Images/HouseHold/WelcomeMat.png" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 3px solid #28a745; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><p style="font-size: 12px; margin: 8px 0; font-weight: bold;">வரவேற்பு பாய்</p></div>
+                <div style="text-align: center; cursor: pointer;" onclick="enlargeImage('Images/HouseHold/KitchenMat1.png')"><img src="Images/HouseHold/KitchenMat1.png" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 3px solid #ffc107; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><p style="font-size: 12px; margin: 8px 0; font-weight: bold;">அடுப்பங்கறை பாய்</p></div>
+                <div style="text-align: center; cursor: pointer;" onclick="enlargeImage('Images/HouseHold/BathroomMat.png')"><img src="Images/HouseHold/BathroomMat.png" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 3px solid #007bff; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><p style="font-size: 12px; margin: 8px 0; font-weight: bold;">குளியலறை பாய்</p></div>
+                <div style="text-align: center; cursor: pointer;" onclick="enlargeImage('Images/HouseHold/CarMat.png')"><img src="Images/HouseHold/CarMat.png" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 3px solid #6f42c1; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><p style="font-size: 12px; margin: 8px 0; font-weight: bold;">கார் பாய்</p></div>
+              </div>
+            `
+          }
+        },
+        'eco-brushes': {
+          icon: '🧹',
+          title: { en: 'Brushes & Brooms', ta: 'தூரிகைகள் & விளக்குமாறுகள்' },
+          content: {
+            en: `
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); gap: 15px; padding: 20px;">
+                <div style="text-align: center; cursor: pointer;" onclick="enlargeImage('Images/HouseHold/HandCraftedBroom.png')"><img src="Images/HouseHold/HandCraftedBroom.png" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 3px solid #28a745; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><p style="font-size: 12px; margin: 8px 0; font-weight: bold;">Handcrafted Broom</p></div>
+                <div style="text-align: center; cursor: pointer;" onclick="enlargeImage('Images/HouseHold/MultiPropseBroom.png')"><img src="Images/HouseHold/MultiPropseBroom.png" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 3px solid #fd7e14; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><p style="font-size: 12px; margin: 8px 0; font-weight: bold;">Multipurpose Broom</p></div>
+                <div style="text-align: center; cursor: pointer;" onclick="enlargeImage('Images/HouseHold/RoundBrush.png')"><img src="Images/HouseHold/RoundBrush.png" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 3px solid #6f42c1; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><p style="font-size: 12px; margin: 8px 0; font-weight: bold;">Round Brush</p></div>
+                <div style="text-align: center; cursor: pointer;" onclick="enlargeImage('Images/HouseHold/SSMob.png')"><img src="Images/HouseHold/SSMob.png" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 3px solid #dc3545; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><p style="font-size: 12px; margin: 8px 0; font-weight: bold;">SS Mop</p></div>
+              </div>
+            `,
+            ta: `
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); gap: 15px; padding: 20px;">
+                <div style="text-align: center; cursor: pointer;" onclick="enlargeImage('Images/HouseHold/HandCraftedBroom.png')"><img src="Images/HouseHold/HandCraftedBroom.png" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 3px solid #28a745; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><p style="font-size: 12px; margin: 8px 0; font-weight: bold;">கைவினை விளக்குமாறு</p></div>
+                <div style="text-align: center; cursor: pointer;" onclick="enlargeImage('Images/HouseHold/MultiPropseBroom.png')"><img src="Images/HouseHold/MultiPropseBroom.png" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 3px solid #fd7e14; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><p style="font-size: 12px; margin: 8px 0; font-weight: bold;">பல்நோக்கு விளக்குமாறு</p></div>
+                <div style="text-align: center; cursor: pointer;" onclick="enlargeImage('Images/HouseHold/RoundBrush.png')"><img src="Images/HouseHold/RoundBrush.png" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 3px solid #6f42c1; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><p style="font-size: 12px; margin: 8px 0; font-weight: bold;">வட்ட தூரிகை</p></div>
+                <div style="text-align: center; cursor: pointer;" onclick="enlargeImage('Images/HouseHold/SSMob.png')"><img src="Images/HouseHold/SSMob.png" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 3px solid #dc3545; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><p style="font-size: 12px; margin: 8px 0; font-weight: bold;">SS மாப்</p></div>
+              </div>
+            `
+          }
+        },
+        'specialty-animal': {
+          icon: '🐄',
+          title: { en: 'Specialty & Animal Ropes', ta: 'சிறப்பு & விலங்கு கயிறுகள்' },
+          content: {
+            en: `
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); gap: 15px; padding: 20px;">
+                <div style="text-align: center; cursor: pointer;" onclick="enlargeImage('Images/Ropes/CowRopes.png')"><img src="Images/Ropes/CowRopes.png" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 3px solid #8B4513; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><p style="font-size: 12px; margin: 8px 0; font-weight: bold;">Cow Ropes</p></div>
+                <div style="text-align: center; cursor: pointer;" onclick="enlargeImage('Images/Ropes/DogRope.png')"><img src="Images/Ropes/DogRope.png" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 3px solid #dc3545; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><p style="font-size: 12px; margin: 8px 0; font-weight: bold;">Dog Rope</p></div>
+                <div style="text-align: center; cursor: pointer;" onclick="enlargeImage('Images/Ropes/ClimbingRope.png')"><img src="Images/Ropes/ClimbingRope.png" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 3px solid #28a745; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><p style="font-size: 12px; margin: 8px 0; font-weight: bold;">Climbing Rope</p></div>
+                <div style="text-align: center; cursor: pointer;" onclick="enlargeImage('Images/Ropes/SkippingRope.png')"><img src="Images/Ropes/SkippingRope.png" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 3px solid #ffc107; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><p style="font-size: 12px; margin: 8px 0; font-weight: bold;">Skipping Rope</p></div>
+                <div style="text-align: center; cursor: pointer;" onclick="enlargeImage('Images/Ropes/TowingRope.png')"><img src="Images/Ropes/TowingRope.png" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 3px solid #007bff; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><p style="font-size: 12px; margin: 8px 0; font-weight: bold;">Towing Rope</p></div>
+              </div>
+            `,
+            ta: `
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); gap: 15px; padding: 20px;">
+                <div style="text-align: center; cursor: pointer;" onclick="enlargeImage('Images/Ropes/CowRopes.png')"><img src="Images/Ropes/CowRopes.png" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 3px solid #8B4513; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><p style="font-size: 12px; margin: 8px 0; font-weight: bold;">மாடு கயிறுகள்</p></div>
+                <div style="text-align: center; cursor: pointer;" onclick="enlargeImage('Images/Ropes/DogRope.png')"><img src="Images/Ropes/DogRope.png" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 3px solid #dc3545; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><p style="font-size: 12px; margin: 8px 0; font-weight: bold;">நாய் கயிறு</p></div>
+                <div style="text-align: center; cursor: pointer;" onclick="enlargeImage('Images/Ropes/ClimbingRope.png')"><img src="Images/Ropes/ClimbingRope.png" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 3px solid #28a745; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><p style="font-size: 12px; margin: 8px 0; font-weight: bold;">ஏறும் கயிறு</p></div>
+                <div style="text-align: center; cursor: pointer;" onclick="enlargeImage('Images/Ropes/SkippingRope.png')"><img src="Images/Ropes/SkippingRope.png" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 3px solid #ffc107; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><p style="font-size: 12px; margin: 8px 0; font-weight: bold;">தாவல் கயிறு</p></div>
+                <div style="text-align: center; cursor: pointer;" onclick="enlargeImage('Images/Ropes/TowingRope.png')"><img src="Images/Ropes/TowingRope.png" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 3px solid #007bff; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><p style="font-size: 12px; margin: 8px 0; font-weight: bold;">இழுக்கும் கயிறு</p></div>
+              </div>
+            `
+          }
+        },
+        'decorative-craft': {
+          icon: '🎨',
+          title: { en: 'Decorative & Craft Ropes', ta: 'அலங்கார & கைவினை கயிறுகள்' },
+          content: {
+            en: `
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); gap: 15px; padding: 20px;">
+                <div style="text-align: center; cursor: pointer;" onclick="enlargeImage('Images/Ropes/DecRope1.png')"><img src="Images/Ropes/DecRope1.png" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 3px solid #e83e8c; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><p style="font-size: 12px; margin: 8px 0; font-weight: bold;">Decorative Rope 1</p></div>
+                <div style="text-align: center; cursor: pointer;" onclick="enlargeImage('Images/Ropes/DecRope2.png')"><img src="Images/Ropes/DecRope2.png" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 3px solid #6f42c1; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><p style="font-size: 12px; margin: 8px 0; font-weight: bold;">Decorative Rope 2</p></div>
+                <div style="text-align: center; cursor: pointer;" onclick="enlargeImage('Images/Ropes/MaccrameThread.png')"><img src="Images/Ropes/MaccrameThread.png" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 3px solid #20c997; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><p style="font-size: 12px; margin: 8px 0; font-weight: bold;">Macrame Thread</p></div>
+                <div style="text-align: center; cursor: pointer;" onclick="enlargeImage('Images/Ropes/SwingRope.png')"><img src="Images/Ropes/SwingRope.png" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 3px solid #fd7e14; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><p style="font-size: 12px; margin: 8px 0; font-weight: bold;">Swing Rope</p></div>
+                <div style="text-align: center; cursor: pointer;" onclick="enlargeImage('Images/Ropes/CottonRopeMat.png')"><img src="Images/Ropes/CottonRopeMat.png" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 3px solid #28a745; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><p style="font-size: 12px; margin: 8px 0; font-weight: bold;">Cotton Rope Mat</p></div>
+              </div>
+            `,
+            ta: `
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); gap: 15px; padding: 20px;">
+                <div style="text-align: center; cursor: pointer;" onclick="enlargeImage('Images/Ropes/DecRope1.png')"><img src="Images/Ropes/DecRope1.png" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 3px solid #e83e8c; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><p style="font-size: 12px; margin: 8px 0; font-weight: bold;">அலங்கார கயிறு 1</p></div>
+                <div style="text-align: center; cursor: pointer;" onclick="enlargeImage('Images/Ropes/DecRope2.png')"><img src="Images/Ropes/DecRope2.png" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 3px solid #6f42c1; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><p style="font-size: 12px; margin: 8px 0; font-weight: bold;">அலங்கார கயிறு 2</p></div>
+                <div style="text-align: center; cursor: pointer;" onclick="enlargeImage('Images/Ropes/MaccrameThread.png')"><img src="Images/Ropes/MaccrameThread.png" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 3px solid #20c997; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><p style="font-size: 12px; margin: 8px 0; font-weight: bold;">மேக்ராமே நூல்</p></div>
+                <div style="text-align: center; cursor: pointer;" onclick="enlargeImage('Images/Ropes/SwingRope.png')"><img src="Images/Ropes/SwingRope.png" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 3px solid #fd7e14; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><p style="font-size: 12px; margin: 8px 0; font-weight: bold;">ஆட்டும் கயிறு</p></div>
+                <div style="text-align: center; cursor: pointer;" onclick="enlargeImage('Images/Ropes/CottonRopeMat.png')"><img src="Images/Ropes/CottonRopeMat.png" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 3px solid #28a745; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><p style="font-size: 12px; margin: 8px 0; font-weight: bold;">பருத்தி கயிறு பாய்</p></div>
+              </div>
+            `
+          }
         }
       };
       
@@ -668,6 +867,15 @@
       title.textContent = data.title[lang];
       content.innerHTML = data.content[lang];
       popup.style.display = 'flex';
+    }
+    
+    function enlargeImage(imageSrc) {
+      document.getElementById('enlargedImage').src = imageSrc;
+      document.getElementById('imagePopup').style.display = 'flex';
+    }
+    
+    function closeImagePopup() {
+      document.getElementById('imagePopup').style.display = 'none';
     }
     
     function closeProductPopup() {

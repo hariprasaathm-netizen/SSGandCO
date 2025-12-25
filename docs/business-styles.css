@@ -44,12 +44,12 @@ body {
 
 .welcome-content {
   background: var(--white);
-  padding: 2rem;
-  border-radius: 20px;
+  padding: 1.5rem;
+  border-radius: 15px;
   text-align: center;
   box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
-  max-width: 500px;
-  width: 90%;
+  max-width: 400px;
+  width: 85%;
   position: relative;
   animation: popupSlide 0.5s ease-out;
 }

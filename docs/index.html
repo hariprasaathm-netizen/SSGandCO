@@ -124,7 +124,7 @@
   
   <!-- Product Info Popup -->
   <div id="productPopup" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 2000; justify-content: center; align-items: center;">
-    <div style="background: white; padding: 0; border-radius: 15px; max-width: 600px; width: 90%; max-height: 85%; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+    <div style="background: #FFFFF0; padding: 0; border-radius: 15px; max-width: 600px; width: 90%; max-height: 85%; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
       <div id="popupHeader" style="background: linear-gradient(135deg, #007bff, #0056b3); color: white; padding: 20px; position: relative;">
         <button onclick="closeProductPopup()" style="position: absolute; top: 15px; right: 20px; background: rgba(255,255,255,0.2); border: none; color: white; font-size: 24px; cursor: pointer; border-radius: 50%; width: 35px; height: 35px;">&times;</button>
         <div style="display: flex; align-items: center; gap: 15px;">
@@ -132,7 +132,7 @@
           <h3 id="popupTitle" style="margin: 0; font-size: 24px;">Product Details</h3>
         </div>
       </div>
-      <div style="padding: 25px; overflow-y: auto; max-height: 400px;">
+      <div style="padding: 25px; overflow-y: auto; max-height: 400px; color: #1B2951;">
         <div id="popupContent"></div>
       </div>
     </div>
@@ -144,9 +144,9 @@
         <span id="timer">30</span>
       </div>
       <button class="close-btn" onclick="closeWelcomePopup()">&times;</button>
-      <h2 data-en="Welcome!" data-ta="வரவேற்கிறோம்!">Welcome!</h2>
+      <h2 data-en="Welcome!" data-ta="வரவேற்கிறோம்!" style="color: #800020;">Welcome!</h2>
       <div style="margin: 15px 0; text-align: center;">
-        <p style="margin-bottom: 10px; font-size: 14px; color: #666;" data-en="Choose your language:" data-ta="உங்கள் மொழியைத் தேர்ந்தெடுக்கவும்:">Choose your language:</p>
+        <p style="margin-bottom: 10px; font-size: 14px; color: #003366;" data-en="Choose your language:" data-ta="உங்கள் மொழியைத் தேர்ந்தெடுக்கவும்:">Choose your language:</p>
         <div style="display: flex; gap: 10px; justify-content: center;">
           <button onclick="setLanguage('en')" style="background: #007bff; color: white; border: none; padding: 8px 15px; border-radius: 20px; cursor: pointer; font-size: 12px;">
             🔤 English
@@ -156,7 +156,7 @@
           </button>
         </div>
       </div>
-      <p data-en="Our business is dedicated to offering only quality products that meet society's needs, honoring commitments, adhering to regulations, striving for zero waste, and ensuring environmental sustainability" data-ta="எங்கள் வணிகம் சமுதாயத்தின் தேவைகளை பூர்த்தி செய்யும் தரமான பொருட்களை மட்டுமே வழங்குவதில் அர்ப்பணிப்புடன் உள்ளது, உறுதிமொழிகளை மதித்து, விதிமுறைகளை கடைபிடித்து, பூஜ்ய கழிவுக்கு பாடுபட்டு, சுற்றுச்சூழல் நிலைத்தன்மையை உறுதி செய்கிறது">Our business is dedicated to offering only quality products that meet society's needs, honoring commitments, adhering to regulations, striving for zero waste, and ensuring environmental sustainability</p>
+      <p data-en="Business is dedicated to offering only quality products that meet society's needs, honoring commitments, adhering to regulations, striving for zero waste, and ensuring environmental sustainability" data-ta="எங்கள் வணிகம் சமுதாயத்தின் தேவைகளை பூர்த்தி செய்யும் தரமான பொருட்களை மட்டுமே வழங்குவதில் அர்ப்பணிப்புடன் உள்ளது, உறுதிமொழிகளை மதித்து, விதிமுறைகளை கடைபிடித்து, பூஜ்ய கழிவுக்கு பாடுபட்டு, சுற்றுச்சூழல் நிலைத்தன்மையை உறுதி செய்கிறது">Business is dedicated to offering only quality products that meet society's needs, honoring commitments, adhering to regulations, striving for zero waste, and ensuring environmental sustainability</p>
       <h3 data-en="Our Vision" data-ta="எங்கள் பார்வை">Our Vision</h3>
       <ul class="vision-list">
         <li><strong>A</strong> – <span data-en="Assured Quality" data-ta="உறுதியான தரம்">Assured Quality</span></li>

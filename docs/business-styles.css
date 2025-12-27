@@ -43,7 +43,7 @@ body {
 }
 
 .welcome-content {
-  background: var(--white);
+  background: #FFFFF0;
   padding: 1.5rem;
   border-radius: 15px;
   text-align: center;
@@ -95,19 +95,19 @@ body {
 }
 
 .welcome-content h2 {
-  color: var(--primary);
+  color: #000075;
   margin: 0 0 1rem;
   font-size: 1.8rem;
 }
 
 .welcome-content p {
-  color: var(--text);
+  color: #000075;
   margin-bottom: 1.5rem;
   line-height: 1.6;
 }
 
 .welcome-content h3 {
-  color: var(--primary);
+  color: #000075;
   margin: 1.5rem 0 1rem;
   font-size: 1.3rem;
 }
@@ -122,12 +122,12 @@ body {
 
 .vision-list li {
   margin: 0.8rem 0;
-  color: var(--text);
+  color: #000075;
   font-size: 1rem;
 }
 
 .vision-list strong {
-  color: var(--primary);
+  color: #000075;
   font-size: 1.2rem;
   margin-right: 0.5rem;
 }

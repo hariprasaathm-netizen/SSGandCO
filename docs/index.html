@@ -167,23 +167,7 @@
     </div>
   </div>
 
-  <!-- Language Selection Popup -->
-  <div id="languagePopup" class="language-popup">
-    <div class="popup-content">
-      <h2 data-en="Select Language" data-ta="மொழியைத் தேர்ந்தெடுக்கவும்">Select Language</h2>
-      <div class="language-buttons">
-        <button onclick="setLanguage('en')" class="lang-btn">
-          <span class="flag">🔤</span>
-          English
-        </button>
-        <button onclick="setLanguage('ta')" class="lang-btn">
-          <span class="flag">ஸ்ரீ</span>
-          தமிழ்
-        </button>
-      </div>
-    </div>
-  </div>
-  
+
   <!-- Language Toggle -->
   <div class="language-toggle" style="position: fixed !important; top: 10px !important; left: 10px !important; background: rgba(255,255,255,0.95) !important; padding: 4px !important; border-radius: 12px !important; box-shadow: 0 2px 10px rgba(0,0,0,0.1) !important; z-index: 1001 !important; font-size: 11px !important; transform: scale(0.9) !important;">
     <div class="radio-group">
@@ -566,7 +550,6 @@
         }
       });
       
-      document.getElementById('languagePopup').style.display = 'none';
       document.getElementById('lang-' + lang).checked = true;
       
       if (lang === 'ta') {
@@ -605,13 +588,6 @@
       const savedLang = localStorage.getItem('selectedLanguage');
       if (savedLang) {
         setLanguage(savedLang);
-      } else {
-        // Show language popup after welcome popup closes
-        setTimeout(() => {
-          if (document.getElementById('welcomePopup').style.display === 'none') {
-            document.getElementById('languagePopup').style.display = 'flex';
-          }
-        }, 30500);
       }
     });
     

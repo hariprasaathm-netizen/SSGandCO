@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://senniahgowderandco.com/sitemap.xml
+Sitemap: https://ropesandtwists.in/sitemap.xml

@@ -64,53 +64,529 @@
       <div class="container">
         <h2 class="section-title" data-en="Our Product Categories" data-ta="எங்கள் தயாரிப்பு வகைகள்">Our Product Categories</h2>
         
-        <div class="category-grid">
-          <!-- Coir Products -->
-          <div class="category-card">
-            <div class="category-icon">🥥</div>
-            <h3 data-en="Coir Products" data-ta="தென்னை நார் பொருட்கள்">Coir Products</h3>
-            <p data-en="Natural coir fiber products, mats, and eco-friendly solutions" data-ta="இயற்கை தென்னை நார் பொருட்கள், பாய்கள் மற்றும் சுற்றுச்சூழல் நட்பு தீர்வுகள்">Natural coir fiber products, mats, and eco-friendly solutions</p>
-            <ul>
-              <li data-en="Coir Mats" data-ta="தென்னை நார் பாய்கள்">Coir Mats</li>
-              <li data-en="Coir Fiber" data-ta="தென்னை நார்">Coir Fiber</li>
-              <li data-en="Coir Pith" data-ta="தென்னை நார் கழிவு">Coir Pith</li>
-            </ul>
+        <!-- Category Navigation -->
+        <div class="category-nav">
+          <button class="nav-btn active" onclick="showCategory('ropes')" data-en="Ropes & Twines" data-ta="கயிறுகள் மற்றும் நூல்கள்">🪢 Ropes & Twines</button>
+          <button class="nav-btn" onclick="showCategory('household')" data-en="Household Items" data-ta="வீட்டு பொருட்கள்">🏠 Household Items</button>
+          <button class="nav-btn" onclick="showCategory('niwar')" data-en="Niwar & Tapes" data-ta="நிவார் மற்றும் டேப்கள்">📦 Niwar & Tapes</button>
+          <button class="nav-btn" onclick="showCategory('youngminds')" data-en="Young Minds" data-ta="இளம் மனங்கள்">🎯 Young Minds</button>
+        </div>
+
+        <!-- Ropes & Twines Category -->
+        <div id="ropes" class="category-section active">
+          <h3 class="category-title" data-en="Ropes & Twines Collection" data-ta="கயிறுகள் மற்றும் நூல்கள் தொகுப்பு">🪢 Ropes & Twines Collection</h3>
+          
+          <!-- Cotton Ropes Subcategory -->
+          <div class="subcategory">
+            <h4 data-en="Cotton Ropes" data-ta="பருத்தி கயிறுகள்">Cotton Ropes</h4>
+            <div class="product-grid">
+              <div class="product-item">
+                <img src="Images/Ropes/CottonRopes1.jpeg" alt="Cotton Rope 1">
+                <p data-en="Premium Cotton Rope" data-ta="உயர்தர பருத்தி கயிறு">Premium Cotton Rope</p>
+              </div>
+              <div class="product-item">
+                <img src="Images/Ropes/CottonRopes2.jpeg" alt="Cotton Rope 2">
+                <p data-en="Natural Cotton Rope" data-ta="இயற்கை பருத்தி கயிறு">Natural Cotton Rope</p>
+              </div>
+              <div class="product-item">
+                <img src="Images/Ropes/CottonRopes3.jpeg" alt="Cotton Rope 3">
+                <p data-en="Heavy Duty Cotton Rope" data-ta="கனமான பருத்தி கயிறு">Heavy Duty Cotton Rope</p>
+              </div>
+              <div class="product-item">
+                <img src="Images/Ropes/CottonRopes4.jpeg" alt="Cotton Rope 4">
+                <p data-en="Multi-Purpose Cotton Rope" data-ta="பல்நோக்கு பருத்தி கயிறு">Multi-Purpose Cotton Rope</p>
+              </div>
+              <div class="product-item">
+                <img src="Images/Ropes/CottonRopeMat.png" alt="Cotton Rope Mat">
+                <p data-en="Cotton Rope Mat" data-ta="பருத்தி கயிறு பாய்">Cotton Rope Mat</p>
+              </div>
+              <div class="product-item">
+                <img src="Images/Ropes/NaturalCottonMat.png" alt="Natural Cotton Mat">
+                <p data-en="Natural Cotton Mat" data-ta="இயற்கை பருத்தி பாய்">Natural Cotton Mat</p>
+              </div>
+            </div>
           </div>
 
-          <!-- Construction Materials -->
-          <div class="category-card">
-            <div class="category-icon">🏗️</div>
-            <h3 data-en="Construction Materials" data-ta="கட்டுமான பொருட்கள்">Construction Materials</h3>
-            <p data-en="Durable construction supplies and building materials" data-ta="நீடித்த கட்டுமான பொருட்கள் மற்றும் கட்டிட பொருட்கள்">Durable construction supplies and building materials</p>
-            <ul>
-              <li data-en="Building Supplies" data-ta="கட்டிட பொருட்கள்">Building Supplies</li>
-              <li data-en="Hardware Items" data-ta="வன்பொருள் பொருட்கள்">Hardware Items</li>
-              <li data-en="Tools & Equipment" data-ta="கருவிகள் மற்றும் உபகரணங்கள்">Tools & Equipment</li>
-            </ul>
+          <!-- Coir Ropes Subcategory -->
+          <div class="subcategory">
+            <h4 data-en="Coir Ropes" data-ta="தென்னை நார் கயிறுகள்">Coir Ropes</h4>
+            <div class="product-grid">
+              <div class="product-item">
+                <img src="Images/Ropes/Coir Ropes.png" alt="Coir Ropes">
+                <p data-en="Traditional Coir Ropes" data-ta="பாரம்பரிய தென்னை நார் கயிறுகள்">Traditional Coir Ropes</p>
+              </div>
+              <div class="product-item">
+                <img src="Images/Ropes/CoirBuddle.jpeg" alt="Coir Bundle">
+                <p data-en="Coir Rope Bundle" data-ta="தென்னை நார் கயிறு கட்டு">Coir Rope Bundle</p>
+              </div>
+              <div class="product-item">
+                <img src="Images/Ropes/CoirMeterRopes.jpeg" alt="Coir Meter Ropes">
+                <p data-en="Coir Meter Ropes" data-ta="தென்னை நார் மீட்டர் கயிறுகள்">Coir Meter Ropes</p>
+              </div>
+              <div class="product-item">
+                <img src="Images/Ropes/CoirMeterMeasurementRopes.jpeg" alt="Coir Measurement Ropes">
+                <p data-en="Coir Measurement Ropes" data-ta="தென்னை நார் அளவீட்டு கயிறுகள்">Coir Measurement Ropes</p>
+              </div>
+            </div>
           </div>
 
-          <!-- Household Items -->
-          <div class="category-card">
-            <div class="category-icon">🏠</div>
-            <h3 data-en="Household Items" data-ta="வீட்டு பொருட்கள்">Household Items</h3>
-            <p data-en="Essential household products for daily use" data-ta="தினசரி பயன்பாட்டிற்கான அத்தியாவசிய வீட்டு பொருட்கள்">Essential household products for daily use</p>
-            <ul>
-              <li data-en="Kitchen Items" data-ta="சமையலறை பொருட்கள்">Kitchen Items</li>
-              <li data-en="Cleaning Supplies" data-ta="சுத்தம் செய்யும் பொருட்கள்">Cleaning Supplies</li>
-              <li data-en="Storage Solutions" data-ta="சேமிப்பு தீர்வுகள்">Storage Solutions</li>
-            </ul>
+          <!-- Synthetic Ropes Subcategory -->
+          <div class="subcategory">
+            <h4 data-en="Synthetic Ropes" data-ta="செயற்கை கயிறுகள்">Synthetic Ropes</h4>
+            <div class="product-grid">
+              <div class="product-item">
+                <img src="Images/Ropes/Nylon Ropes.jpeg" alt="Nylon Ropes">
+                <p data-en="Nylon Ropes" data-ta="நைலான் கயிறுகள்">Nylon Ropes</p>
+              </div>
+              <div class="product-item">
+                <img src="Images/Ropes/NylonRope.jpeg" alt="Nylon Rope">
+                <p data-en="Heavy Duty Nylon Rope" data-ta="கனமான நைலான் கயிறு">Heavy Duty Nylon Rope</p>
+              </div>
+              <div class="product-item">
+                <img src="Images/Ropes/NylonHangs.jpeg" alt="Nylon Hanging Ropes">
+                <p data-en="Nylon Hanging Ropes" data-ta="நைலான் தொங்கும் கயிறுகள்">Nylon Hanging Ropes</p>
+              </div>
+              <div class="product-item">
+                <img src="Images/Ropes/PP Rope.jpeg" alt="PP Rope">
+                <p data-en="Polypropylene Rope" data-ta="பாலிப்ரோபிலீன் கயிறு">Polypropylene Rope</p>
+              </div>
+            </div>
           </div>
 
-          <!-- Ropes -->
-          <div class="category-card">
-            <div class="category-icon">🪢</div>
-            <h3 data-en="Ropes & Twines" data-ta="கயிறுகள் மற்றும் நூல்கள்">Ropes & Twines</h3>
-            <p data-en="High-quality ropes and twines for various applications" data-ta="பல்வேறு பயன்பாடுகளுக்கான உயர்தர கயிறுகள் மற்றும் நூல்கள்">High-quality ropes and twines for various applications</p>
-            <ul>
-              <li data-en="Jute Ropes" data-ta="சணல் கயிறுகள்">Jute Ropes</li>
-              <li data-en="Cotton Ropes" data-ta="பருத்தி கயிறுகள்">Cotton Ropes</li>
-              <li data-en="Synthetic Ropes" data-ta="செயற்கை கயிறுகள்">Synthetic Ropes</li>
-            </ul>
+          <!-- Specialty Ropes Subcategory -->
+          <div class="subcategory">
+            <h4 data-en="Specialty Ropes" data-ta="சிறப்பு கயிறுகள்">Specialty Ropes</h4>
+            <div class="product-grid">
+              <div class="product-item">
+                <img src="Images/Ropes/ClimbingRope.png" alt="Climbing Rope">
+                <p data-en="Climbing Rope" data-ta="ஏறும் கயிறு">Climbing Rope</p>
+              </div>
+              <div class="product-item">
+                <img src="Images/Ropes/SkippingRope.png" alt="Skipping Rope">
+                <p data-en="Skipping Rope" data-ta="தாவல் கயிறு">Skipping Rope</p>
+              </div>
+              <div class="product-item">
+                <img src="Images/Ropes/SwingRope.png" alt="Swing Rope">
+                <p data-en="Swing Rope" data-ta="ஊஞ்சல் கயிறு">Swing Rope</p>
+              </div>
+              <div class="product-item">
+                <img src="Images/Ropes/TowingRope.png" alt="Towing Rope">
+                <p data-en="Towing Rope" data-ta="இழுக்கும் கயிறு">Towing Rope</p>
+              </div>
+              <div class="product-item">
+                <img src="Images/Ropes/LoadRope.png" alt="Load Rope">
+                <p data-en="Load Bearing Rope" data-ta="சுமை தாங்கும் கயிறு">Load Bearing Rope</p>
+              </div>
+              <div class="product-item">
+                <img src="Images/Ropes/TowerRope.png" alt="Tower Rope">
+                <p data-en="Tower Rope" data-ta="கோபுர கயிறு">Tower Rope</p>
+              </div>
+              <div class="product-item">
+                <img src="Images/Ropes/TowerRope2.png" alt="Tower Rope 2">
+                <p data-en="Heavy Tower Rope" data-ta="கனமான கோபுர கயிறு">Heavy Tower Rope</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Animal & Agricultural Ropes -->
+          <div class="subcategory">
+            <h4 data-en="Animal & Agricultural Ropes" data-ta="விலங்கு மற்றும் விவசாய கயிறுகள்">Animal & Agricultural Ropes</h4>
+            <div class="product-grid">
+              <div class="product-item">
+                <img src="Images/Ropes/CowRopes.png" alt="Cow Ropes">
+                <p data-en="Cow Ropes" data-ta="மாட்டு கயிறுகள்">Cow Ropes</p>
+              </div>
+              <div class="product-item">
+                <img src="Images/Ropes/SplCowRope.png" alt="Special Cow Rope">
+                <p data-en="Special Cow Rope" data-ta="சிறப்பு மாட்டு கயிறு">Special Cow Rope</p>
+              </div>
+              <div class="product-item">
+                <img src="Images/Ropes/SplCow1.png" alt="Special Cow Rope 1">
+                <p data-en="Premium Cow Rope" data-ta="உயர்தர மாட்டு கயிறு">Premium Cow Rope</p>
+              </div>
+              <div class="product-item">
+                <img src="Images/Ropes/SplCowRope1.png" alt="Special Cow Rope 1">
+                <p data-en="Durable Cow Rope" data-ta="நீடித்த மாட்டு கயிறு">Durable Cow Rope</p>
+              </div>
+              <div class="product-item">
+                <img src="Images/Ropes/SplCowRope2.png" alt="Special Cow Rope 2">
+                <p data-en="Strong Cow Rope" data-ta="வலுவான மாட்டு கயிறு">Strong Cow Rope</p>
+              </div>
+              <div class="product-item">
+                <img src="Images/Ropes/SplCowRope3.png" alt="Special Cow Rope 3">
+                <p data-en="Heavy Duty Cow Rope" data-ta="கனமான மாட்டு கயிறு">Heavy Duty Cow Rope</p>
+              </div>
+              <div class="product-item">
+                <img src="Images/Ropes/DogRope.png" alt="Dog Rope">
+                <p data-en="Dog Leash Rope" data-ta="நாய் கயிறு">Dog Leash Rope</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Miscellaneous Ropes -->
+          <div class="subcategory">
+            <h4 data-en="Miscellaneous Ropes" data-ta="பல்வேறு கயிறுகள்">Miscellaneous Ropes</h4>
+            <div class="product-grid">
+              <div class="product-item">
+                <img src="Images/Ropes/Ball.png" alt="Rope Ball">
+                <p data-en="Rope Ball" data-ta="கயிறு பந்து">Rope Ball</p>
+              </div>
+              <div class="product-item">
+                <img src="Images/Ropes/Black Ropes.jpeg" alt="Black Ropes">
+                <p data-en="Black Ropes" data-ta="கருப்பு கயிறுகள்">Black Ropes</p>
+              </div>
+              <div class="product-item">
+                <img src="Images/Ropes/Brown Rope.jpeg" alt="Brown Rope">
+                <p data-en="Brown Rope" data-ta="பழுப்பு கயிறு">Brown Rope</p>
+              </div>
+              <div class="product-item">
+                <img src="Images/Ropes/Brown Rope1.jpeg" alt="Brown Rope 1">
+                <p data-en="Natural Brown Rope" data-ta="இயற்கை பழுப்பு கயிறு">Natural Brown Rope</p>
+              </div>
+              <div class="product-item">
+                <img src="Images/Ropes/CradleRope.png" alt="Cradle Rope">
+                <p data-en="Cradle Rope" data-ta="தொட்டில் கயிறு">Cradle Rope</p>
+              </div>
+              <div class="product-item">
+                <img src="Images/Ropes/CycleRope.png" alt="Cycle Rope">
+                <p data-en="Cycle Rope" data-ta="சைக்கிள் கயிறு">Cycle Rope</p>
+              </div>
+              <div class="product-item">
+                <img src="Images/Ropes/JuteSock.png" alt="Jute Sock">
+                <p data-en="Jute Sock" data-ta="சணல் காலுறை">Jute Sock</p>
+              </div>
+              <div class="product-item">
+                <img src="Images/Ropes/NaturalColourRopes.png" alt="Natural Color Ropes">
+                <p data-en="Natural Color Ropes" data-ta="இயற்கை நிற கயிறுகள்">Natural Color Ropes</p>
+              </div>
+              <div class="product-item">
+                <img src="Images/Ropes/Sanal.png" alt="Sanal Rope">
+                <p data-en="Sanal Rope" data-ta="சனல் கயிறு">Sanal Rope</p>
+              </div>
+              <div class="product-item">
+                <img src="Images/Ropes/Sanal1.png" alt="Sanal Rope 1">
+                <p data-en="Premium Sanal Rope" data-ta="உயர்தர சனல் கயிறு">Premium Sanal Rope</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Household Items Category -->
+        <div id="household" class="category-section">
+          <h3 class="category-title" data-en="Household Items Collection" data-ta="வீட்டு பொருட்கள் தொகுப்பு">🏠 Household Items Collection</h3>
+          
+          <!-- Mats & Floor Coverings -->
+          <div class="subcategory">
+            <h4 data-en="Mats & Floor Coverings" data-ta="பாய்கள் மற்றும் தரை மூடுதல்கள்">Mats & Floor Coverings</h4>
+            <div class="product-grid">
+              <div class="product-item">
+                <img src="Images/HouseHold/WelcomeMat.png" alt="Welcome Mat">
+                <p data-en="Welcome Mat" data-ta="வரவேற்பு பாய்">Welcome Mat</p>
+              </div>
+              <div class="product-item">
+                <img src="Images/HouseHold/WelcomeMat1.png" alt="Welcome Mat 1">
+                <p data-en="Designer Welcome Mat" data-ta="வடிவமைப்பு வரவேற்பு பாய்">Designer Welcome Mat</p>
+              </div>
+              <div class="product-item">
+                <img src="Images/HouseHold/CoirWelcomeMat.jpeg" alt="Coir Welcome Mat">
+                <p data-en="Coir Welcome Mat" data-ta="தென்னை நார் வரவேற்பு பாய்">Coir Welcome Mat</p>
+              </div>
+              <div class="product-item">
+                <img src="Images/HouseHold/CoirDesignMat.jpeg" alt="Coir Design Mat">
+                <p data-en="Coir Design Mat" data-ta="தென்னை நார் வடிவமைப்பு பாய்">Coir Design Mat</p>
+              </div>
+              <div class="product-item">
+                <img src="Images/HouseHold/KitchenMat1.png" alt="Kitchen Mat">
+                <p data-en="Kitchen Mat" data-ta="சமையலறை பாய்">Kitchen Mat</p>
+              </div>
+              <div class="product-item">
+                <img src="Images/HouseHold/MedKitchenMat.png" alt="Medium Kitchen Mat">
+                <p data-en="Medium Kitchen Mat" data-ta="நடுத்தர சமையலறை பாய்">Medium Kitchen Mat</p>
+              </div>
+              <div class="product-item">
+                <img src="Images/HouseHold/BathroomMat.png" alt="Bathroom Mat">
+                <p data-en="Bathroom Mat" data-ta="குளியலறை பாய்">Bathroom Mat</p>
+              </div>
+              <div class="product-item">
+                <img src="Images/HouseHold/CarMat.png" alt="Car Mat">
+                <p data-en="Car Mat" data-ta="கார் பாய்">Car Mat</p>
+              </div>
+              <div class="product-item">
+                <img src="Images/HouseHold/FootrestMat.png" alt="Footrest Mat">
+                <p data-en="Footrest Mat" data-ta="கால் ஓய்வு பாய்">Footrest Mat</p>
+              </div>
+              <div class="product-item">
+                <img src="Images/HouseHold/RubberMat.png" alt="Rubber Mat">
+                <p data-en="Rubber Mat" data-ta="ரப்பர் பாய்">Rubber Mat</p>
+              </div>
+              <div class="product-item">
+                <img src="Images/HouseHold/PlainRubberMat.jpeg" alt="Plain Rubber Mat">
+                <p data-en="Plain Rubber Mat" data-ta="வெற்று ரப்பர் பாய்">Plain Rubber Mat</p>
+              </div>
+              <div class="product-item">
+                <img src="Images/HouseHold/RuberMat.jpeg" alt="Rubber Mat">
+                <p data-en="Anti-Slip Rubber Mat" data-ta="நழுவா ரப்பர் பாய்">Anti-Slip Rubber Mat</p>
+              </div>
+              <div class="product-item">
+                <img src="Images/HouseHold/CottonMats.webp" alt="Cotton Mats">
+                <p data-en="Cotton Mats" data-ta="பருத்தி பாய்கள்">Cotton Mats</p>
+              </div>
+              <div class="product-item">
+                <img src="Images/HouseHold/DesignerClotMat.jpeg" alt="Designer Cloth Mat">
+                <p data-en="Designer Cloth Mat" data-ta="வடிவமைப்பு துணி பாய்">Designer Cloth Mat</p>
+              </div>
+              <div class="product-item">
+                <img src="Images/HouseHold/MiniDispMat1.png" alt="Mini Display Mat">
+                <p data-en="Mini Display Mat" data-ta="சிறிய காட்சி பாய்">Mini Display Mat</p>
+              </div>
+              <div class="product-item">
+                <img src="Images/HouseHold/ZeroDustMat.png" alt="Zero Dust Mat">
+                <p data-en="Zero Dust Mat" data-ta="தூசி இல்லா பாய்">Zero Dust Mat</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cleaning Equipment -->
+          <div class="subcategory">
+            <h4 data-en="Cleaning Equipment" data-ta="சுத்தம் செய்யும் உபகரணங்கள்">Cleaning Equipment</h4>
+            <div class="product-grid">
+              <div class="product-item">
+                <img src="Images/HouseHold/SSMob.png" alt="SS Mop">
+                <p data-en="Stainless Steel Mop" data-ta="துருப்பிடிக்காத எஃகு துடைப்பான்">Stainless Steel Mop</p>
+              </div>
+              <div class="product-item">
+                <img src="Images/HouseHold/SSGripMob.png" alt="SS Grip Mop">
+                <p data-en="SS Grip Mop" data-ta="எஸ்எஸ் பிடி துடைப்பான்">SS Grip Mop</p>
+              </div>
+              <div class="product-item">
+                <img src="Images/HouseHold/AdjustableMob.png" alt="Adjustable Mop">
+                <p data-en="Adjustable Mop" data-ta="சரிசெய்யக்கூடிய துடைப்பான்">Adjustable Mop</p>
+              </div>
+              <div class="product-item">
+                <img src="Images/HouseHold/StdGalaBroom.png" alt="Standard Gala Broom">
+                <p data-en="Standard Gala Broom" data-ta="நிலையான கலா விளக்குமாறு">Standard Gala Broom</p>
+              </div>
+              <div class="product-item">
+                <img src="Images/HouseHold/StdHandMadeGroom.png" alt="Standard Hand Made Broom">
+                <p data-en="Hand Made Broom" data-ta="கையால் செய்யப்பட்ட விளக்குமாறு">Hand Made Broom</p>
+              </div>
+              <div class="product-item">
+                <img src="Images/HouseHold/HandCraftedBroom.png" alt="Hand Crafted Broom">
+                <p data-en="Hand Crafted Broom" data-ta="கைவினை விளக்குமாறு">Hand Crafted Broom</p>
+              </div>
+              <div class="product-item">
+                <img src="Images/HouseHold/MultiPropseBroom.png" alt="Multi Purpose Broom">
+                <p data-en="Multi Purpose Broom" data-ta="பல்நோக்கு விளக்குமாறு">Multi Purpose Broom</p>
+              </div>
+              <div class="product-item">
+                <img src="Images/HouseHold/CelleingCleanAdjustableBroom.png" alt="Ceiling Clean Adjustable Broom">
+                <p data-en="Ceiling Clean Adjustable Broom" data-ta="கூரை சுத்தம் சரிசெய்யக்கூடிய விளக்குமாறு">Ceiling Clean Adjustable Broom</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Brushes -->
+          <div class="subcategory">
+            <h4 data-en="Brushes" data-ta="தூரிகைகள்">Brushes</h4>
+            <div class="product-grid">
+              <div class="product-item">
+                <img src="Images/HouseHold/DoubleHockeyBrush.png" alt="Double Hockey Brush">
+                <p data-en="Double Hockey Brush" data-ta="இரட்டை ஹாக்கி தூரிகை">Double Hockey Brush</p>
+              </div>
+              <div class="product-item">
+                <img src="Images/HouseHold/SingleHockeyBrushes.png" alt="Single Hockey Brushes">
+                <p data-en="Single Hockey Brushes" data-ta="ஒற்றை ஹாக்கி தூரிகைகள்">Single Hockey Brushes</p>
+              </div>
+              <div class="product-item">
+                <img src="Images/HouseHold/RoundBrush.png" alt="Round Brush">
+                <p data-en="Round Brush" data-ta="வட்ட தூரிகை">Round Brush</p>
+              </div>
+              <div class="product-item">
+                <img src="Images/HouseHold/WoodBrush.png" alt="Wood Brush">
+                <p data-en="Wood Brush" data-ta="மர தூரிகை">Wood Brush</p>
+              </div>
+              <div class="product-item">
+                <img src="Images/HouseHold/SkinBrushes.png" alt="Skin Brushes">
+                <p data-en="Skin Brushes" data-ta="தோல் தூரிகைகள்">Skin Brushes</p>
+              </div>
+              <div class="product-item">
+                <img src="Images/HouseHold/SonaBrushes.png" alt="Sona Brushes">
+                <p data-en="Sona Brushes" data-ta="சோனா தூரிகைகள்">Sona Brushes</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bags & Storage -->
+          <div class="subcategory">
+            <h4 data-en="Bags & Storage" data-ta="பைகள் மற்றும் சேமிப்பு">Bags & Storage</h4>
+            <div class="product-grid">
+              <div class="product-item">
+                <img src="Images/HouseHold/JuteBag.png" alt="Jute Bag">
+                <p data-en="Jute Bag" data-ta="சணல் பை">Jute Bag</p>
+              </div>
+              <div class="product-item">
+                <img src="Images/HouseHold/CottonBag1.png" alt="Cotton Bag">
+                <p data-en="Cotton Bag" data-ta="பருத்தி பை">Cotton Bag</p>
+              </div>
+              <div class="product-item">
+                <img src="Images/HouseHold/ShoppingBag.png" alt="Shopping Bag">
+                <p data-en="Shopping Bag" data-ta="கடைசல் பை">Shopping Bag</p>
+              </div>
+              <div class="product-item">
+                <img src="Images/HouseHold/ShoppingClothBag.png" alt="Shopping Cloth Bag">
+                <p data-en="Shopping Cloth Bag" data-ta="கடைசல் துணி பை">Shopping Cloth Bag</p>
+              </div>
+              <div class="product-item">
+                <img src="Images/HouseHold/MultipurBag.png" alt="Multipurpose Bag">
+                <p data-en="Multipurpose Bag" data-ta="பல்நோக்கு பை">Multipurpose Bag</p>
+              </div>
+              <div class="product-item">
+                <img src="Images/HouseHold/BioBag.png" alt="Bio Bag">
+                <p data-en="Bio Degradable Bag" data-ta="உயிர் சிதைவு பை">Bio Degradable Bag</p>
+              </div>
+              <div class="product-item">
+                <img src="Images/HouseHold/ReturnBags.png" alt="Return Bags">
+                <p data-en="Return Bags" data-ta="திரும்பும் பைகள்">Return Bags</p>
+              </div>
+              <div class="product-item">
+                <img src="Images/HouseHold/SackaBag.png" alt="Sack Bag">
+                <p data-en="Sack Bag" data-ta="சாக்கு பை">Sack Bag</p>
+              </div>
+              <div class="product-item">
+                <img src="Images/HouseHold/KadBag.png" alt="Kad Bag">
+                <p data-en="Kad Bag" data-ta="காட் பை">Kad Bag</p>
+              </div>
+              <div class="product-item">
+                <img src="Images/HouseHold/yellowBag.png" alt="Yellow Bag">
+                <p data-en="Yellow Bag" data-ta="மஞ்சள் பை">Yellow Bag</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Animal Care -->
+          <div class="subcategory">
+            <h4 data-en="Animal Care" data-ta="விலங்கு பராமரிப்பு">Animal Care</h4>
+            <div class="product-grid">
+              <div class="product-item">
+                <img src="Images/HouseHold/AnimalUse.jpeg" alt="Animal Use Product">
+                <p data-en="Animal Care Product" data-ta="விலங்கு பராமரிப்பு பொருள்">Animal Care Product</p>
+              </div>
+              <div class="product-item">
+                <img src="Images/HouseHold/AnimalUse1.jpeg" alt="Animal Use Product 1">
+                <p data-en="Animal Feed Mat" data-ta="விலங்கு உணவு பாய்">Animal Feed Mat</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Niwar & Tapes Category -->
+        <div id="niwar" class="category-section">
+          <h3 class="category-title" data-en="Niwar & Tapes Collection" data-ta="நிவார் மற்றும் டேப்கள் தொகுப்பு">📦 Niwar & Tapes Collection</h3>
+          
+          <div class="subcategory">
+            <h4 data-en="Packaging Materials" data-ta="பேக்கேஜிங் பொருட்கள்">Packaging Materials</h4>
+            <div class="product-grid">
+              <div class="product-item">
+                <img src="Images/NiwarandTapes/NiwarTapes.jpeg" alt="Niwar Tapes">
+                <p data-en="Niwar Tapes" data-ta="நிவார் டேப்கள்">Niwar Tapes</p>
+              </div>
+              <div class="product-item">
+                <img src="Images/NiwarandTapes/NiwarColourTapes.jpeg" alt="Niwar Color Tapes">
+                <p data-en="Niwar Color Tapes" data-ta="நிவார் வண்ண டேப்கள்">Niwar Color Tapes</p>
+              </div>
+              <div class="product-item">
+                <img src="Images/NiwarandTapes/NiwarCotton.png" alt="Niwar Cotton">
+                <p data-en="Niwar Cotton" data-ta="நிவார் பருத்தி">Niwar Cotton</p>
+              </div>
+              <div class="product-item">
+                <img src="Images/NiwarandTapes/TwineTape.png" alt="Twine Tape">
+                <p data-en="Twine Tape" data-ta="ட்வைன் டேப்">Twine Tape</p>
+              </div>
+              <div class="product-item">
+                <img src="Images/NiwarandTapes/PlainStrap.jpeg" alt="Plain Strap">
+                <p data-en="Plain Strap" data-ta="வெற்று பட்டை">Plain Strap</p>
+              </div>
+              <div class="product-item">
+                <img src="Images/NiwarandTapes/Needle.png" alt="Needle">
+                <p data-en="Packaging Needle" data-ta="பேக்கேஜிங் ஊசி">Packaging Needle</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="subcategory">
+            <h4 data-en="Sutli & Threads" data-ta="சுட்லி மற்றும் நூல்கள்">Sutli & Threads</h4>
+            <div class="product-grid">
+              <div class="product-item">
+                <img src="Images/NiwarandTapes/Packaging Items.jpeg" alt="Packaging Items">
+                <p data-en="Standard Packaging Items" data-ta="நிலையான பேக்கேஜிங் பொருட்கள்">Standard Packaging Items</p>
+              </div>
+              <div class="product-item">
+                <img src="Images/NiwarandTapes/Packaging Items -Sutli.jpeg" alt="Packaging Sutli">
+                <p data-en="Packaging Sutli" data-ta="பேக்கேஜிங் சுட்லி">Packaging Sutli</p>
+              </div>
+              <div class="product-item">
+                <img src="Images/NiwarandTapes/Packaging Items -Sutli_1.jpeg" alt="Packaging Sutli 1">
+                <p data-en="Premium Packaging Sutli" data-ta="உயர்தர பேக்கேஜிங் சுட்லி">Premium Packaging Sutli</p>
+              </div>
+              <div class="product-item">
+                <img src="Images/NiwarandTapes/Packaging Items Max.jpeg" alt="Packaging Items Max">
+                <p data-en="Max Packaging Items" data-ta="அதிகபட்ச பேக்கேஜிங் பொருட்கள்">Max Packaging Items</p>
+              </div>
+              <div class="product-item">
+                <img src="Images/NiwarandTapes/Packaging Items Multi.jpeg" alt="Packaging Items Multi">
+                <p data-en="Multi Packaging Items" data-ta="பல பேக்கேஜிங் பொருட்கள்">Multi Packaging Items</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Young Minds Category -->
+        <div id="youngminds" class="category-section">
+          <h3 class="category-title" data-en="Young Minds Collection" data-ta="இளம் மனங்கள் தொகுப்பு">🎯 Young Minds Collection</h3>
+          
+          <!-- Decorative & Craft Ropes -->
+          <div class="subcategory">
+            <h4 data-en="Decorative & Craft Ropes" data-ta="அலங்கார மற்றும் கைவினை கயிறுகள்">Decorative & Craft Ropes</h4>
+            <div class="product-grid">
+              <div class="product-item">
+                <img src="Images/Ropes/Decorative Rope3.png" alt="Decorative Rope">
+                <p data-en="Decorative Rope" data-ta="அலங்கார கயிறு">Decorative Rope</p>
+              </div>
+              <div class="product-item">
+                <img src="Images/Ropes/DecRope1.png" alt="Decorative Rope 1">
+                <p data-en="Craft Rope" data-ta="கைவினை கயிறு">Craft Rope</p>
+              </div>
+              <div class="product-item">
+                <img src="Images/Ropes/DecRope2.png" alt="Decorative Rope 2">
+                <p data-en="Designer Rope" data-ta="வடிவமைப்பு கயிறு">Designer Rope</p>
+              </div>
+              <div class="product-item">
+                <img src="Images/Ropes/DecRope4.png" alt="Decorative Rope 4">
+                <p data-en="Artistic Rope" data-ta="கலை கயிறு">Artistic Rope</p>
+              </div>
+              <div class="product-item">
+                <img src="Images/Ropes/MaccrameThread.png" alt="Macrame Thread">
+                <p data-en="Macrame Thread" data-ta="மக்ரமே நூல்">Macrame Thread</p>
+              </div>
+              <div class="product-item">
+                <img src="Images/Ropes/DoorHangRope.png" alt="Door Hanging Rope">
+                <p data-en="Door Hanging Rope" data-ta="கதவு தொங்கும் கயிறு">Door Hanging Rope</p>
+              </div>
+              <div class="product-item">
+                <img src="Images/Ropes/HangigingRope.png" alt="Hanging Rope">
+                <p data-en="Hanging Rope" data-ta="தொங்கும் கயிறு">Hanging Rope</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="subcategory">
+            <h4 data-en="Accessories" data-ta="துணைப்பொருட்கள்">Accessories</h4>
+            <div class="product-grid">
+              <div class="product-item">
+                <img src="Images/Young Minds/KeyChain-1.jpeg" alt="Key Chain">
+                <p data-en="Designer Key Chain" data-ta="வடிவமைப்பு சாவி சங்கிலி">Designer Key Chain</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -165,16 +641,7 @@
       localStorage.setItem('selectedLanguage', lang);
       document.documentElement.lang = lang;
       
-      const elements = document.querySelectorAll('[data-en][data-ta]');
-      elements.forEach(el => {
-        if (el.tagName === 'OPTION') {
-          el.textContent = el.getAttribute('data-' + lang);
-        } else if (el.placeholder !== undefined) {
-          el.placeholder = el.getAttribute('data-' + lang);
-        } else {
-          el.textContent = el.getAttribute('data-' + lang);
-        }
-      });
+      updateLanguageContent(lang);
       
       document.getElementById('languagePopup').style.display = 'none';
       document.getElementById('lang-' + lang).checked = true;
@@ -206,6 +673,50 @@
       e.preventDefault();
       alert(document.documentElement.lang === 'ta' ? 'விசாரணை அனுப்பப்பட்டது!' : 'Inquiry sent successfully!');
     });
+    
+    // Category Navigation
+    function showCategory(categoryId) {
+      // Hide all category sections
+      const sections = document.querySelectorAll('.category-section');
+      sections.forEach(section => section.classList.remove('active'));
+      
+      // Show selected category
+      document.getElementById(categoryId).classList.add('active');
+      
+      // Update navigation buttons
+      const buttons = document.querySelectorAll('.nav-btn');
+      buttons.forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+      
+      // Apply current language to new content
+      const currentLang = localStorage.getItem('selectedLanguage') || 'en';
+      updateLanguageContent(currentLang);
+    }
+    
+    // Enhanced language function
+    function updateLanguageContent(lang) {
+      const elements = document.querySelectorAll('[data-en][data-ta]');
+      elements.forEach(el => {
+        const text = el.getAttribute('data-' + lang);
+        if (text) {
+          if (el.tagName === 'OPTION') {
+            el.textContent = text;
+          } else if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+            if (el.placeholder !== undefined) {
+              el.placeholder = text;
+            }
+          } else if (el.tagName === 'LABEL') {
+            el.textContent = text;
+          } else {
+            el.textContent = text;
+          }
+        }
+      });
+    }
+    
+    // Make functions global
+    window.showCategory = showCategory;
+    window.updateLanguageContent = updateLanguageContent;
   </script>
 </body>
 </html>

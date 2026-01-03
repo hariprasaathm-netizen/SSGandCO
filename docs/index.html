@@ -144,6 +144,17 @@
     </div>
   </div>
   
+  <!-- Search Results Popup -->
+  <div id="searchResults" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 2500; overflow-y: auto;" onclick="closeSearchResults(event)">
+    <div style="background: white; margin: 50px auto; padding: 30px; border-radius: 15px; max-width: 800px; position: relative;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <h3 id="searchTitle">Search Results</h3>
+        <button onclick="closeSearchResults()" style="background: #ff6b6b; color: white; border: none; border-radius: 50%; width: 30px; height: 30px; cursor: pointer;">✕</button>
+      </div>
+      <div id="searchResultsList"></div>
+    </div>
+  </div>
+  
   <!-- Product Info Popup -->
   <div id="productPopup" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 2000; justify-content: center; align-items: center;">
     <div style="background: #FFFFF0; padding: 0; border-radius: 15px; max-width: 600px; width: 90%; max-height: 85%; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
@@ -179,7 +190,7 @@
         </div>
       </div>
       <p data-en="Our Business is dedicated in offering quality products that meet society's needs, honoring commitments, adhering to regulations, striving for zero waste, and ensuring environmental sustainability" data-ta="எங்கள் வணிகம் சமுதாயத்தின் தேவைகளை பூர்த்தி செய்யும் தரமான பொருட்களை மட்டுமே வழங்குவதில் அர்ப்பணிப்புடன் உள்ளது, உறுதிமொழிகளை மதித்து, விதிமுறைகளை கடைபிடித்து, பூஜ்ய கழிவுக்கு பாடுபட்டு, சுற்றுச்சூழல் நிலைத்தன்மையை உறுதி செய்கிறது">Business is dedicated to offering only quality products that meet society's needs, honoring commitments, adhering to regulations, striving for zero waste, and ensuring environmental sustainability</p>
-      <h3 data-en="Our Vision" data-ta="எங்கள் பார்வை">Our Vision</h3>
+      <h3 data-en="We stand by Ethics and Humanity" data-ta="நாங்கள் நெறிமுறைகள் மற்றும் மனிதநேயத்தை ஆதரிக்கிறோம்">We stand by Ethics and Humanity</h3>
       <ul class="vision-list">
         <li><strong>A</strong> – <span data-en="Assured Quality" data-ta="உறுதியான தரம்">Assured Quality</span></li>
         <li><strong>B</strong> – <span data-en="Best Service" data-ta="சிறந்த சேவை">Best Service</span></li>
@@ -216,6 +227,11 @@
         <a href="#about" data-en="About" data-ta="எங்களைப் பற்றி">About</a>
         <a href="#contact" data-en="Contact" data-ta="தொடர்பு">Contact</a>
       </nav>
+    </div>
+    <!-- Search Bar -->
+    <div class="search-container" style="display: flex; justify-content: center; padding: 10px 0; background: rgba(255,255,255,0.9);">
+      <input type="text" id="searchInput" placeholder="Search products..." onkeyup="searchProducts()" style="padding: 8px 15px; border: 2px solid #ddd; border-radius: 25px; width: 300px; font-size: 14px; outline: none; transition: border-color 0.3s;">
+      <button onclick="clearSearch()" id="clearSearch" style="display: none; background: #ff6b6b; color: white; border: none; border-radius: 50%; width: 25px; height: 25px; cursor: pointer; font-size: 12px; margin-left: 10px;">✕</button>
     </div>
   </header>
 
@@ -608,6 +624,7 @@
     
     function switchLanguage(lang) {
       setLanguage(lang);
+      updateSearchPlaceholder();
     }
     
     // Smooth scrolling
@@ -658,7 +675,16 @@
       if (savedLang) {
         setLanguage(savedLang);
       }
+      
+      // Update search placeholder based on language
+      updateSearchPlaceholder();
     });
+    
+    function updateSearchPlaceholder() {
+      const lang = localStorage.getItem('selectedLanguage') || 'en';
+      const searchInput = document.getElementById('searchInput');
+      searchInput.placeholder = lang === 'ta' ? 'தயாரிப்புகளைத் தேடுங்கள்...' : 'Search products...';
+    }
     
     // Smooth scroll for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1466,6 +1492,133 @@
       const whatsappUrl = `https://wa.me/917449027832?text=${encodeURIComponent(message)}`;
       window.open(whatsappUrl, '_blank');
       toggleHelpChat();
+    }
+    
+    function searchProducts() {
+      const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+      const clearBtn = document.getElementById('clearSearch');
+      
+      if (searchTerm.length > 0) {
+        clearBtn.style.display = 'block';
+        if (searchTerm.length > 2) {
+          performSearch(searchTerm);
+        }
+      } else {
+        clearBtn.style.display = 'none';
+        closeSearchResults();
+      }
+    }
+    
+    function clearSearch() {
+      document.getElementById('searchInput').value = '';
+      document.getElementById('clearSearch').style.display = 'none';
+      closeSearchResults();
+    }
+    
+    function performSearch(searchTerm) {
+      const lang = localStorage.getItem('selectedLanguage') || 'en';
+      const results = [];
+      
+      // Search through all products
+      const searchableProducts = [
+        { id: 'ropes-twines', name: { en: 'Ropes & Twines', ta: 'கயிறுகள் & நூல்கள்' }, category: { en: 'Ropes', ta: 'கயிறுகள்' } },
+        { id: 'jute-coir', name: { en: 'Jute, Coir & Fiber Ropes', ta: 'சணல், தென்னை நார் & இயற்கை நார் கயிறுகள்' }, category: { en: 'Natural Ropes', ta: 'இயற்கை கயிறுகள்' } },
+        { id: 'cotton-synthetic', name: { en: 'Cotton & Synthetic Ropes', ta: 'பருத்தி & செயற்கை கயிறுகள்' }, category: { en: 'Synthetic Ropes', ta: 'செயற்கை கயிறுகள்' } },
+        { id: 'marine-industrial', name: { en: 'Marine & Industrial Ropes', ta: 'கடல் & தொழில்துறை கயிறுகள்' }, category: { en: 'Industrial', ta: 'தொழில்துறை' } },
+        { id: 'specialty-animal', name: { en: 'Specialty & Animal Ropes', ta: 'சிறப்பு & விலங்கு கயிறுகள்' }, category: { en: 'Specialty', ta: 'சிறப்பு' } },
+        { id: 'biodegradable', name: { en: 'Biodegradable Products', ta: 'மக்கும் பொருட்கள்' }, category: { en: 'Eco-Friendly', ta: 'சுற்றுச்சூழல் நட்பு' } },
+        { id: 'eco-bags', name: { en: 'Eco-Friendly Bags', ta: 'சுற்றுச்சூழல் நட்பு பைகள்' }, category: { en: 'Bags', ta: 'பைகள்' } },
+        { id: 'natural-mats', name: { en: 'Natural Fiber Mats', ta: 'இயற்கை நார் பாய்கள்' }, category: { en: 'Mats', ta: 'பாய்கள்' } },
+        { id: 'eco-brushes', name: { en: 'Brushes & Brooms', ta: 'தூரிகைகள் & விளக்குமாறுகள்' }, category: { en: 'Cleaning', ta: 'சுத்தம்' } },
+        { id: 'niwar-packaging', name: { en: 'Niwar & Packaging', ta: 'நிவார் & பேக்கேஜிங்' }, category: { en: 'Packaging', ta: 'பேக்கேஜிங்' } },
+        { id: 'niwar-tapes', name: { en: 'Niwar Tapes', ta: 'நிவார் டேப்கள்' }, category: { en: 'Tapes', ta: 'டேப்கள்' } },
+        { id: 'packaging-materials', name: { en: 'Packaging Materials', ta: 'பேக்கேஜிங் பொருட்கள்' }, category: { en: 'Materials', ta: 'பொருட்கள்' } },
+        { id: 'binding-solutions', name: { en: 'Binding Solutions', ta: 'கட்டுதல் தீர்வுகள்' }, category: { en: 'Binding', ta: 'கட்டுதல்' } },
+        { id: 'youngminds', name: { en: 'Young Minds', ta: 'இளம் மனங்கள்' }, category: { en: 'Creative', ta: 'படைப்பு' } },
+        { id: 'decorative-craft', name: { en: 'Decorative & Craft Ropes', ta: 'அலங்கார & கைவினை கயிறுகள்' }, category: { en: 'Crafts', ta: 'கைவினை' } },
+        { id: 'creative-accessories', name: { en: 'Creative Accessories', ta: 'படைப்பு துணைப்பொருட்கள்' }, category: { en: 'Accessories', ta: 'துணைப்பொருட்கள்' } },
+        { id: 'books-4-kids', name: { en: 'Leisure 4 Pleasure', ta: 'விনோதத்திற்கான இன்பம்' }, category: { en: 'Books & Reading', ta: 'புத்தகங்கள்' } },
+        { id: 'it-services', name: { en: 'Digital Transformation Solution', ta: 'டிஜிட்டல் மாற்றம் தீர்வு' }, category: { en: 'Technology', ta: 'தொழில்நுட்பம்' } }
+      ];
+      
+      const searchableItems = [
+        'coir rope', 'jute rope', 'cotton rope', 'nylon rope', 'pp rope', 'marine rope', 'industrial rope', 'cow rope', 'dog rope', 'climbing rope', 'skipping rope', 'cycle rope',
+        'bio bag', 'jute bag', 'cotton bag', 'shopping bag', 'eco bag', 'welcome mat', 'kitchen mat', 'bathroom mat', 'car mat', 'rubber mat', 'coir mat',
+        'broom', 'brush', 'mop', 'cleaning brush', 'handcrafted broom', 'multipurpose broom', 'ceiling broom', 'hockey brush', 'skin brush', 'wood brush',
+        'niwar tape', 'packaging material', 'binding needle', 'twine tape', 'plain strap', 'colour tape', 'sutli packaging',
+        'keychain', 'designer bag', 'coaster', 'bookmark', 'book', 'educational book', 'story book', 'creative book'
+      ];
+      
+      searchableProducts.forEach(product => {
+        const name = product.name[lang].toLowerCase();
+        const category = product.category[lang].toLowerCase();
+        
+        if (name.includes(searchTerm) || category.includes(searchTerm)) {
+          results.push(product);
+        }
+      });
+      
+      // Search individual items
+      searchableItems.forEach(item => {
+        if (item.toLowerCase().includes(searchTerm)) {
+          let parentCategory = 'ropes-twines';
+          if (item.includes('bag')) parentCategory = 'eco-bags';
+          else if (item.includes('mat')) parentCategory = 'natural-mats';
+          else if (item.includes('broom') || item.includes('brush') || item.includes('mop')) parentCategory = 'eco-brushes';
+          else if (item.includes('tape') || item.includes('packaging') || item.includes('needle') || item.includes('strap')) parentCategory = 'niwar-tapes';
+          else if (item.includes('keychain') || item.includes('coaster') || item.includes('designer')) parentCategory = 'creative-accessories';
+          else if (item.includes('book') || item.includes('bookmark')) parentCategory = 'books-4-kids';
+          
+          const existingResult = results.find(r => r.id === parentCategory);
+          if (!existingResult) {
+            const parentProduct = searchableProducts.find(p => p.id === parentCategory);
+            if (parentProduct) {
+              results.push({...parentProduct, matchedItem: item});
+            }
+          }
+        }
+      });
+      
+      displaySearchResults(results, searchTerm);
+    }
+    
+    function displaySearchResults(results, searchTerm) {
+      const lang = localStorage.getItem('selectedLanguage') || 'en';
+      const resultsContainer = document.getElementById('searchResultsList');
+      const searchTitle = document.getElementById('searchTitle');
+      
+      searchTitle.textContent = lang === 'ta' ? 
+        `"${searchTerm}" க்கான தேடல் முடிவுகள் (${results.length})` :
+        `Search Results for "${searchTerm}" (${results.length})`;
+      
+      if (results.length === 0) {
+        resultsContainer.innerHTML = lang === 'ta' ?
+          '<p style="text-align: center; color: #666; padding: 20px;">தேடல் முடிவுகள் எதுவும் கிடைக்கவில்லை</p>' :
+          '<p style="text-align: center; color: #666; padding: 20px;">No search results found</p>';
+      } else {
+        resultsContainer.innerHTML = results.map(product => `
+          <div style="padding: 15px; border: 1px solid #eee; border-radius: 10px; margin-bottom: 10px; cursor: pointer; transition: background 0.3s; display: flex; justify-content: space-between; align-items: center;" onclick="openSearchResult('${product.id}')" onmouseover="this.style.background='#f8f9fa'" onmouseout="this.style.background='white'">
+            <div>
+              <h4 style="margin: 0 0 5px 0; color: #007bff;">${product.name[lang]}</h4>
+              <p style="margin: 0; color: #666; font-size: 14px;">${lang === 'ta' ? 'வகை' : 'Category'}: ${product.category[lang]}</p>
+            </div>
+            <div style="color: #007bff; font-size: 18px;">→</div>
+          </div>
+        `).join('');
+      }
+      
+      document.getElementById('searchResults').style.display = 'block';
+    }
+    
+    function openSearchResult(productId) {
+      closeSearchResults();
+      showProductInfo(productId);
+    }
+    
+    function closeSearchResults(event) {
+      if (!event || event.target.id === 'searchResults') {
+        document.getElementById('searchResults').style.display = 'none';
+      }
     }
     
     function getQuote(productName) {

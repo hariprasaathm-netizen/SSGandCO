@@ -625,6 +625,11 @@
     function switchLanguage(lang) {
       setLanguage(lang);
       updateSearchPlaceholder();
+      // Re-run search if there are existing results
+      const searchInput = document.getElementById('searchInput');
+      if (searchInput.value.length > 2) {
+        performSearch(searchInput.value.toLowerCase());
+      }
     }
     
     // Smooth scrolling

@@ -177,21 +177,21 @@
         <span id="timer">30</span>
       </div>
       <button class="close-btn" onclick="closeWelcomePopup()">&times;</button>
-      <h2 data-en="Welcome!" data-ta="வரவேற்கிறோம்!" style="color: #800020;">Welcome!</h2>
-      <div style="margin: 15px 0; text-align: center;">
-        <p style="margin-bottom: 10px; font-size: 14px; color: #003366;" data-en="Choose your language:" data-ta="உங்கள் மொழியைத் தேர்ந்தெடுக்கவும்:">Choose your language:</p>
-        <div style="display: flex; gap: 10px; justify-content: center;">
-          <button onclick="setLanguage('en')" style="background: #007bff; color: white; border: none; padding: 8px 15px; border-radius: 20px; cursor: pointer; font-size: 12px;">
+      <h2 data-en="Welcome!" data-ta="வரவேற்கிறோம்!" style="color: #800020; font-size: 1.2rem; margin: 8px 0;">Welcome!</h2>
+      <div style="margin: 8px 0; text-align: center;">
+        <p style="margin-bottom: 6px; font-size: 12px; color: #003366;" data-en="Choose your language:" data-ta="உங்கள் மொழியைத் தேர்ந்தெடுக்கவும்:">Choose your language:</p>
+        <div style="display: flex; gap: 8px; justify-content: center;">
+          <button onclick="setLanguage('en')" style="background: #007bff; color: white; border: none; padding: 6px 12px; border-radius: 15px; cursor: pointer; font-size: 11px;">
             🔤 English
           </button>
-          <button onclick="setLanguage('ta')" style="background: #28a745; color: white; border: none; padding: 8px 15px; border-radius: 20px; cursor: pointer; font-size: 12px;">
+          <button onclick="setLanguage('ta')" style="background: #28a745; color: white; border: none; padding: 6px 12px; border-radius: 15px; cursor: pointer; font-size: 11px;">
             ஸ்ரீ தமிழ்
           </button>
         </div>
       </div>
-      <p data-en="Our Business is dedicated in offering quality products that meet society's needs, honoring commitments, adhering to regulations, striving for zero waste, and ensuring environmental sustainability" data-ta="எங்கள் வணிகம் சமுதாயத்தின் தேவைகளை பூர்த்தி செய்யும் தரமான பொருட்களை மட்டுமே வழங்குவதில் அர்ப்பணிப்புடன் உள்ளது, உறுதிமொழிகளை மதித்து, விதிமுறைகளை கடைபிடித்து, பூஜ்ய கழிவுக்கு பாடுபட்டு, சுற்றுச்சூழல் நிலைத்தன்மையை உறுதி செய்கிறது">Business is dedicated to offering only quality products that meet society's needs, honoring commitments, adhering to regulations, striving for zero waste, and ensuring environmental sustainability</p>
-      <h3 data-en="We stand by Ethics and Humanity" data-ta="நாங்கள் நெறிமுறைகள் மற்றும் மனிதநேயத்தை ஆதரிக்கிறோம்">We stand by Ethics and Humanity</h3>
-      <ul class="vision-list">
+      <p style="font-size: 10px; line-height: 1.3; margin: 8px 0;" data-en="Our Business is dedicated in offering quality products that meet society's needs, honoring commitments, adhering to regulations, striving for zero waste, and ensuring environmental sustainability" data-ta="எங்கள் வணிகம் சமுதாயத்தின் தேவைகளை பூர்த்தி செய்யும் தரமான பொருட்களை மட்டுமே வழங்குவதில் அர்ப்பணிப்புடன் உள்ளது, உறுதிமொழிகளை மதித்து, விதிமுறைகளை கடைபிடித்து, பூஜ்ய கழிவுக்கு பாடுபட்டு, சுற்றுச்சூழல் நிலைத்தன்மையை உறுதி செய்கிறது">Business is dedicated to offering only quality products that meet society's needs, honoring commitments, adhering to regulations, striving for zero waste, and ensuring environmental sustainability</p>
+      <h3 style="font-size: 13px; margin: 6px 0;" data-en="We stand by Ethics and Humanity" data-ta="நாங்கள் நெறிமுறைகள் மற்றும் மனிதநேயத்தை ஆதரிக்கிறோம்">We stand by Ethics and Humanity</h3>
+      <ul class="vision-list" style="font-size: 10px; margin: 6px 0; padding-left: 15px;">
         <li><strong>A</strong> – <span data-en="Assured Quality" data-ta="உறுதியான தரம்">Assured Quality</span></li>
         <li><strong>B</strong> – <span data-en="Best Service" data-ta="சிறந்த சேவை">Best Service</span></li>
         <li><strong>I</strong> – <span data-en="Iconic Ropes" data-ta="சின்னமான கயிறுகள்">Iconic Ropes</span></li>
@@ -1597,7 +1597,7 @@
           '<p style="text-align: center; color: #666; padding: 20px;">No search results found</p>';
       } else {
         resultsContainer.innerHTML = results.map(product => `
-          <div style="padding: 15px; border: 1px solid #eee; border-radius: 10px; margin-bottom: 10px; cursor: pointer; transition: background 0.3s; display: flex; justify-content: space-between; align-items: center;" onclick="openSearchResult('${product.id}')" onmouseover="this.style.background='#f8f9fa'" onmouseout="this.style.background='white'">
+          <div style="padding: 15px; border: 1px solid #eee; border-radius: 10px; margin-bottom: 10px; cursor: pointer; transition: background 0.3s; display: flex; justify-content: space-between; align-items: center;" onclick="event.stopPropagation(); openSearchResult('${product.id}')" onmouseover="this.style.background='#f8f9fa'" onmouseout="this.style.background='white'">
             <div>
               <h4 style="margin: 0 0 5px 0; color: #007bff;">${product.name[lang]}</h4>
               <p style="margin: 0; color: #666; font-size: 14px;">${lang === 'ta' ? 'வகை' : 'Category'}: ${product.category[lang]}</p>

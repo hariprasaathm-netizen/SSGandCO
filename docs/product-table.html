@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Categories Table - Senniah Gowder & Co</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .table-container {
+            overflow-x: auto;
+            padding: 20px;
+        }
+        
+        .products-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 14px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            table-layout: fixed;
+        }
+        
+        .products-table th:nth-child(1),
+        .products-table td:nth-child(1) {
+            width: 25%;
+        }
+        
+        .products-table th:nth-child(2),
+        .products-table td:nth-child(2) {
+            width: 30%;
+        }
+        
+        .products-table th:nth-child(3),
+        .products-table td:nth-child(3) {
+            width: 20%;
+        }
+        
+        .products-table th:nth-child(4),
+        .products-table td:nth-child(4) {
+            width: 25%;
+        }
+        
+        .products-table thead {
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+        }
+        
+        .products-table th {
+            padding: 15px 12px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .products-table tbody tr {
+            border-bottom: 1px solid #eee;
+            transition: all 0.3s ease;
+        }
+        
+        .products-table tbody tr:hover {
+            background: #f8f9fa;
+            transform: scale(1.01);
+        }
+        
+        .products-table td {
+            padding: 15px 12px;
+            vertical-align: top;
+            line-height: 1.5;
+        }
+        
+        .category-cell {
+            font-weight: 600;
+            color: #007bff;
+            border-left: 4px solid #007bff;
+            background: #f8f9fa;
+        }
+        
+        .type-cell {
+            color: #495057;
+            font-weight: 500;
+        }
+        
+        .characteristics-cell {
+            color: #6c757d;
+            font-size: 13px;
+        }
+        
+        .use-cell {
+            color: #28a745;
+            font-weight: 500;
+        }
+        
+        .more-info-cell {
+            text-align: center;
+        }
+        
+        .image-gallery {
+            display: flex;
+            gap: 5px;
+            overflow-x: auto;
+            padding: 5px 0;
+            margin-bottom: 8px;
+            scrollbar-width: thin;
+        }
+        
+        .image-gallery::-webkit-scrollbar {
+            height: 4px;
+        }
+        
+        .image-gallery::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 2px;
+        }
+        
+        .image-gallery::-webkit-scrollbar-thumb {
+            background: #007bff;
+            border-radius: 2px;
+        }
+        
+        .gallery-image {
+            width: 40px;
+            height: 40px;
+            object-fit: cover;
+            border-radius: 6px;
+            border: 1px solid #dee2e6;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+        
+        .gallery-image:hover {
+            transform: scale(1.1);
+            border-color: #007bff;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+        }
+        
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 90%;
+            max-height: 90%;
+        }
+        
+        .modal-image {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        
+        .close {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            margin-top: -200px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .close:hover {
+            opacity: 0.7;
+        }
+        
+        .info-btn {
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .info-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,123,255,0.3);
+        }
+        
+        .quote-btn {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 11px;
+            font-weight: 600;
+            margin-left: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .quote-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 3px 10px rgba(37,211,102,0.3);
+        }
+        
+        .category-icon {
+            font-size: 20px;
+            margin-right: 8px;
+        }
+        
+        .strength-indicator {
+            display: inline-block;
+            width: 60px;
+            height: 6px;
+            background: #e9ecef;
+            border-radius: 3px;
+            margin: 2px 0;
+            position: relative;
+        }
+        
+        .strength-fill {
+            height: 100%;
+            border-radius: 3px;
+            transition: width 0.3s ease;
+        }
+        
+        .strength-high { background: #28a745; width: 90%; }
+        .strength-medium { background: #ffc107; width: 70%; }
+        .strength-low { background: #dc3545; width: 40%; }
+        
+        @media (max-width: 768px) {
+            .products-table {
+                font-size: 12px;
+            }
+            
+            .products-table th,
+            .products-table td {
+                padding: 10px 8px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .info-btn {
+                padding: 6px 12px;
+                font-size: 11px;
+            }
+        }
+        
+        .back-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(220,53,69,0.8);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        .product-image {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 2px solid #dee2e6;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .product-image:hover {
+            transform: scale(1.1);
+            border-color: #007bff;
+        }
+        
+        .image-cell {
+            text-align: center;
+            padding: 10px;
+        }
+        
+        .product-image {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 2px solid #dee2e6;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .product-image:hover {
+            transform: scale(1.1);
+            border-color: #007bff;
+        }
+        
+        .image-cell {
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <button class="back-btn" onclick="window.close()">✕ Close</button>
+    
+    <div class="container">
+        <div class="header">
+            <h1>🪢 Product Categories Overview</h1>
+            <p>Comprehensive guide to our rope and sustainable product categories</p>
+        </div>
+        
+        <div class="table-container">
+            <table class="products-table">
+                <thead>
+                    <tr>
+                        <th>Type of Products</th>
+                        <th>Characteristics</th>
+                        <th>Their Use</th>
+                        <th>More Info</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Jute, Coir & Fiber Ropes -->
+                    <tr>
+                        <td class="category-cell"><span class="category-icon">🌾</span><strong>Jute Ropes</strong><button class="quote-btn" onclick="getQuote('Jute Ropes')">💬 Quote</button></td>
+                        <td class="characteristics-cell">100% Natural & Biodegradable<br>High tensile strength<br>Weather resistant<br><div class="strength-indicator"><div class="strength-fill strength-high"></div></div><small>Strength: High</small></td>
+                        <td class="use-cell">Agriculture & Farming<br>Construction binding<br>Packaging materials</td>
+                        <td class="more-info-cell">
+                            <div class="image-gallery">
+                                <img src="Images - Table View/Ropes/JuteRope-1.png" alt="Jute Rope 1" class="gallery-image">
+                                <img src="Images - Table View/Ropes/JuteRope-2.png" alt="Jute Rope 2" class="gallery-image">
+                                <img src="Images - Table View/Ropes/JuteSock.png" alt="Jute Sock" class="gallery-image">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="category-cell"><span class="category-icon">🌾</span><strong>Coir Ropes</strong><button class="quote-btn" onclick="getQuote('Coir Ropes')">💬 Quote</button></td>
+                        <td class="characteristics-cell">100% Natural & Biodegradable<br>Water resistant<br>Eco-friendly<br><div class="strength-indicator"><div class="strength-fill strength-high"></div></div><small>Strength: High</small></td>
+                        <td class="use-cell">Marine applications<br>Garden use<br>Decorative purposes</td>
+                        <td class="more-info-cell">
+                            <div class="image-gallery">
+                                <img src="Images - Table View/Ropes/CoirRopes-1.jpeg" alt="Coir Rope 1" class="gallery-image">
+                                <img src="Images - Table View/Ropes/CoirRopes-2.jpeg" alt="Coir Rope 2" class="gallery-image">
+                                <img src="Images - Table View/Ropes/CoirRope-3.jpeg" alt="Coir Rope 3" class="gallery-image">
+                                <img src="Images - Table View/Ropes/CoirRopes-4.png" alt="Coir Rope 4" class="gallery-image">
+                            </div>
+                        </td>
+                    </tr>
+
+                    
+                    <!-- Cotton & Synthetic Ropes -->
+                    <tr>
+                        <td class="category-cell"><span class="category-icon">🌸</span><strong>Cotton Ropes</strong><button class="quote-btn" onclick="getQuote('Cotton Ropes')">💬 Quote</button></td>
+                        <td class="characteristics-cell">Soft & comfortable grip<br>Chemical resistant<br>Easy to handle<br><div class="strength-indicator"><div class="strength-fill strength-medium"></div></div><small>Strength: Medium</small></td>
+                        <td class="use-cell">Household applications<br>Exercise & fitness<br>Decorative crafts</td>
+                        <td class="more-info-cell">
+                            <div class="image-gallery">
+                                <img src="Images - Table View/Ropes/CottonRopes1.jpeg" alt="Cotton Rope 1" class="gallery-image">
+                                <img src="Images - Table View/Ropes/CottonRopes2.jpeg" alt="Cotton Rope 2" class="gallery-image">
+                                <img src="Images - Table View/Ropes/CottonRopes3.jpeg" alt="Cotton Rope 3" class="gallery-image">
+                                <img src="Images - Table View/Ropes/CottonRopes4.jpeg" alt="Cotton Rope 4" class="gallery-image">
+                                <img src="Images - Table View/Ropes/CottonRope5.png" alt="Cotton Rope 5" class="gallery-image">
+                                <img src="Images - Table View/Ropes/CottonRope6.png" alt="Cotton Rope 6" class="gallery-image">
+                                <img src="Images - Table View/Ropes/CottonRope-6.png" alt="Cotton Rope 7" class="gallery-image">
+                                <img src="Images - Table View/Ropes/CottonRope-7.png" alt="Cotton Rope 8" class="gallery-image">
+                                <img src="Images - Table View/Ropes/CottonRope-8.png" alt="Cotton Rope 9" class="gallery-image">
+                                <img src="Images - Table View/Ropes/CottonRope-9.png" alt="Cotton Rope 10" class="gallery-image">
+                                <img src="Images - Table View/Ropes/CottonRope-10.png" alt="Cotton Rope 11" class="gallery-image">
+                                <img src="Images - Table View/Ropes/CottonRope-11.png" alt="Cotton Rope 12" class="gallery-image">
+                                <img src="Images - Table View/Ropes/COttonRope-12.png" alt="Cotton Rope 13" class="gallery-image">
+                                <img src="Images - Table View/Ropes/CottonRope-13.png" alt="Cotton Rope 14" class="gallery-image">
+                                <img src="Images - Table View/Ropes/CottonRope-14.png" alt="Cotton Rope 15" class="gallery-image">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="category-cell"><span class="category-icon">🌸</span><strong>PP Ropes</strong><button class="quote-btn" onclick="getQuote('PP Ropes')">💬 Quote</button></td>
+                        <td class="characteristics-cell">Lightweight yet strong<br>Water resistant<br>Chemical resistant<br><div class="strength-indicator"><div class="strength-fill strength-high"></div></div><small>Strength: High</small></td>
+                        <td class="use-cell">Marine applications<br>Industrial use<br>Outdoor activities</td>
+                        <td class="more-info-cell">
+                            <div class="image-gallery">
+                                <img src="Images - Table View/Ropes/PP Rope.jpeg" alt="PP Rope" class="gallery-image">
+                                <img src="Images - Table View/Ropes/PP Rope-1.jpeg" alt="PP Rope 1" class="gallery-image">
+                                <img src="Images - Table View/Ropes/PP Rope-2.jpeg" alt="PP Rope 2" class="gallery-image">
+                                <img src="Images - Table View/Ropes/PP Rope-3.jpeg" alt="PP Rope 3" class="gallery-image">
+                            </div>
+                        </td>
+                    </tr>
+
+                    
+                    <!-- Marine & Industrial Ropes -->
+
+                    <tr>
+                        <td class="category-cell"><span class="category-icon">⚙️</span><strong>Nylon Ropes</strong><button class="quote-btn" onclick="getQuote('Nylon Ropes')">💬 Quote</button></td>
+                        <td class="characteristics-cell">Extreme durability<br>High load capacity<br>Shock absorption<br><div class="strength-indicator"><div class="strength-fill strength-high"></div></div><small>Strength: Very High</small></td>
+                        <td class="use-cell">Heavy lifting<br>Construction sites<br>Industrial machinery</td>
+                        <td class="more-info-cell">
+                            <div class="image-gallery">
+                                <img src="Images - Table View/Ropes/Nylon Ropes.jpeg" alt="Nylon Ropes" class="gallery-image">
+                                <img src="Images - Table View/Ropes/NylonRope.jpeg" alt="Nylon Rope" class="gallery-image">
+                                <img src="Images - Table View/Ropes/NylonRope-1.jpeg" alt="Nylon Rope 1" class="gallery-image">
+                                <img src="Images - Table View/Ropes/NylonRope-2.jpeg" alt="Nylon Rope 2" class="gallery-image">
+                                <img src="Images - Table View/Ropes/NylonRope-3.jpeg" alt="Nylon Rope 3" class="gallery-image">
+                                <img src="Images - Table View/Ropes/NylonRope-4.png" alt="Nylon Rope 4" class="gallery-image">
+                                <img src="Images - Table View/Ropes/NylonRope-5.png" alt="Nylon Rope 5" class="gallery-image">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="category-cell"><span class="category-icon">🔗</span><strong>Other Ropes</strong><button class="quote-btn" onclick="getQuote('Other Ropes')">💬 Quote</button></td>
+                        <td class="characteristics-cell">Various materials<br>Custom specifications<br>Specialized applications<br><div class="strength-indicator"><div class="strength-fill strength-medium"></div></div><small>Strength: Variable</small></td>
+                        <td class="use-cell">Custom applications<br>Specialized industries<br>Unique requirements</td>
+                        <td class="more-info-cell">
+                            <div class="image-gallery">
+                                <img src="Images - Table View/Ropes/OtherRope.png" alt="Other Rope" class="gallery-image">
+                                <img src="Images - Table View/Ropes/OtherRopes-1.png" alt="Other Rope 1" class="gallery-image">
+                                <img src="Images - Table View/Ropes/OtherRope-2.png" alt="Other Rope 2" class="gallery-image">
+                                <img src="Images - Table View/Ropes/OtherRope-3.png" alt="Other Rope 3" class="gallery-image">
+                                <img src="Images - Table View/Ropes/OtherRope-4.png" alt="Other Rope 4" class="gallery-image">
+                                <img src="Images - Table View/Ropes/OtherRope-5.png" alt="Other Rope 5" class="gallery-image">
+                                <img src="Images - Table View/Ropes/OtherRope-6.png" alt="Other Rope 6" class="gallery-image">
+                                <img src="Images - Table View/Ropes/OtherRope-7.png" alt="Other Rope 7" class="gallery-image">
+                                <img src="Images - Table View/Ropes/OtherRope-8.png" alt="Other Rope 8" class="gallery-image">
+                                <img src="Images - Table View/Ropes/OtherRope-9.png" alt="Other Rope 9" class="gallery-image">
+                                <img src="Images - Table View/Ropes/OtherRope-10.png" alt="Other Rope 10" class="gallery-image">
+                                <img src="Images - Table View/Ropes/OtherRope-11.png" alt="Other Rope 11" class="gallery-image">
+                                <img src="Images - Table View/Ropes/OtherRope-12.png" alt="Other Rope 12" class="gallery-image">
+                                <img src="Images - Table View/Ropes/OtherRope-13.png" alt="Other Rope 13" class="gallery-image">
+                            </div>
+                        </td>
+                    </tr>
+
+
+                    
+                    <!-- Specialty & Animal Ropes -->
+
+
+
+
+                    
+                    <!-- Eco-Friendly Bags -->
+                    <tr>
+                        <td class="category-cell"><span class="category-icon">🛍️</span><strong>Bio Bags</strong><button class="quote-btn" onclick="getQuote('Bio Bags')">💬 Quote</button></td>
+                        <td class="characteristics-cell">100% Biodegradable<br>Eco-friendly materials<br>Compostable<br><div class="strength-indicator"><div class="strength-fill strength-medium"></div></div><small>Durability: Medium</small></td>
+                        <td class="use-cell">Shopping & retail<br>Environmental initiatives<br>Eco-conscious consumers</td>
+                        <td class="more-info-cell"></td>
+                    </tr>
+                    <tr>
+                        <td class="category-cell"><span class="category-icon">🛍️</span><strong>Jute Bags</strong><button class="quote-btn" onclick="getQuote('Jute Bags')">💬 Quote</button></td>
+                        <td class="characteristics-cell">100% Natural jute<br>Reusable & durable<br>Strong handles<br><div class="strength-indicator"><div class="strength-fill strength-high"></div></div><small>Durability: High</small></td>
+                        <td class="use-cell">Shopping & retail<br>Gift packaging<br>Daily use bags</td>
+                        <td class="more-info-cell"></td>
+                    </tr>
+                    <tr>
+                        <td class="category-cell"><span class="category-icon">🛍️</span><strong>Cotton Bags</strong><button class="quote-btn" onclick="getQuote('Cotton Bags')">💬 Quote</button></td>
+                        <td class="characteristics-cell">100% Cotton<br>Soft & comfortable<br>Machine washable<br><div class="strength-indicator"><div class="strength-fill strength-medium"></div></div><small>Durability: Medium</small></td>
+                        <td class="use-cell">Shopping & retail<br>Promotional items<br>Daily use bags</td>
+                        <td class="more-info-cell"></td>
+                    </tr>
+                    
+                    <!-- Natural Fiber Mats -->
+                    <tr>
+                        <td class="category-cell"><span class="category-icon">🏠</span><strong>Welcome Mats</strong><button class="quote-btn" onclick="getQuote('Welcome Mats')">💬 Quote</button></td>
+                        <td class="characteristics-cell">Natural fiber construction<br>Anti-slip properties<br>Weather resistant<br><div class="strength-indicator"><div class="strength-fill strength-high"></div></div><small>Durability: High</small></td>
+                        <td class="use-cell">Home entrances<br>Office entrances<br>Decorative purposes</td>
+                        <td class="more-info-cell"></td>
+                    </tr>
+                    <tr>
+                        <td class="category-cell"><span class="category-icon">🏠</span><strong>Kitchen Mats</strong><button class="quote-btn" onclick="getQuote('Kitchen Mats')">💬 Quote</button></td>
+                        <td class="characteristics-cell">Water absorbent<br>Anti-slip properties<br>Easy to clean<br><div class="strength-indicator"><div class="strength-fill strength-high"></div></div><small>Durability: High</small></td>
+                        <td class="use-cell">Kitchen areas<br>Cooking spaces<br>Food preparation areas</td>
+                        <td class="more-info-cell"></td>
+                    </tr>
+                    <tr>
+                        <td class="category-cell"><span class="category-icon">🏠</span><strong>Bathroom Mats</strong><button class="quote-btn" onclick="getQuote('Bathroom Mats')">💬 Quote</button></td>
+                        <td class="characteristics-cell">High water absorption<br>Anti-slip base<br>Quick drying<br><div class="strength-indicator"><div class="strength-fill strength-high"></div></div><small>Durability: High</small></td>
+                        <td class="use-cell">Bathroom floors<br>Shower areas<br>Wet areas</td>
+                        <td class="more-info-cell"></td>
+                    </tr>
+                    
+                    <!-- Brushes & Brooms -->
+                    <tr>
+                        <td class="category-cell"><span class="category-icon">🧹</span><strong>Handcrafted Brooms</strong><button class="quote-btn" onclick="getQuote('Handcrafted Brooms')">💬 Quote</button></td>
+                        <td class="characteristics-cell">Natural bristles<br>Handcrafted quality<br>Traditional design<br><div class="strength-indicator"><div class="strength-fill strength-high"></div></div><small>Quality: Premium</small></td>
+                        <td class="use-cell">Household cleaning<br>Traditional use<br>Eco-friendly cleaning</td>
+                        <td class="more-info-cell"></td>
+                    </tr>
+                    <tr>
+                        <td class="category-cell"><span class="category-icon">🧹</span><strong>Multipurpose Brooms</strong><button class="quote-btn" onclick="getQuote('Multipurpose Brooms')">💬 Quote</button></td>
+                        <td class="characteristics-cell">Versatile bristles<br>Ergonomic handle<br>Multi-surface cleaning<br><div class="strength-indicator"><div class="strength-fill strength-high"></div></div><small>Quality: Premium</small></td>
+                        <td class="use-cell">Household cleaning<br>Industrial cleaning<br>Multi-surface use</td>
+                        <td class="more-info-cell"></td>
+                    </tr>
+                    <tr>
+                        <td class="category-cell"><span class="category-icon">🧹</span><strong>Hockey Brushes</strong><button class="quote-btn" onclick="getQuote('Hockey Brushes')">💬 Quote</button></td>
+                        <td class="characteristics-cell">Specialized bristles<br>Durable construction<br>Sports-grade quality<br><div class="strength-indicator"><div class="strength-fill strength-medium"></div></div><small>Quality: High</small></td>
+                        <td class="use-cell">Sports equipment<br>Hockey maintenance<br>Equipment cleaning</td>
+                        <td class="more-info-cell"></td>
+                    </tr>
+                    
+                    <!-- Niwar Tapes -->
+                    <tr>
+                        <td class="category-cell"><span class="category-icon">📦</span><strong>Niwar Cotton</strong><button class="quote-btn" onclick="getQuote('Niwar Cotton')">💬 Quote</button></td>
+                        <td class="characteristics-cell">Heavy-duty cotton<br>Industrial grade<br>High tensile strength<br><div class="strength-indicator"><div class="strength-fill strength-high"></div></div><small>Strength: Very High</small></td>
+                        <td class="use-cell">Industrial packaging<br>Heavy-duty strapping<br>Construction binding</td>
+                        <td class="more-info-cell"></td>
+                    </tr>
+                    <tr>
+                        <td class="category-cell"><span class="category-icon">📦</span><strong>Colour Niwar Tapes</strong><button class="quote-btn" onclick="getQuote('Colour Niwar Tapes')">💬 Quote</button></td>
+                        <td class="characteristics-cell">Colored options<br>Tear-resistant<br>Weather-resistant<br><div class="strength-indicator"><div class="strength-fill strength-high"></div></div><small>Strength: High</small></td>
+                        <td class="use-cell">Textile binding<br>Decorative strapping<br>Color-coded packaging</td>
+                        <td class="more-info-cell"></td>
+                    </tr>
+                    <tr>
+                        <td class="category-cell"><span class="category-icon">📦</span><strong>Plain Straps</strong><button class="quote-btn" onclick="getQuote('Plain Straps')">💬 Quote</button></td>
+                        <td class="characteristics-cell">Simple design<br>Cost-effective<br>Reliable strength<br><div class="strength-indicator"><div class="strength-fill strength-medium"></div></div><small>Strength: Medium</small></td>
+                        <td class="use-cell">Basic packaging<br>General strapping<br>Light industrial use</td>
+                        <td class="more-info-cell"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <div class="modal-content">
+            <img class="modal-image" id="modalImage">
+        </div>
+    </div>
+
+    <script>
+        function showProductInfo(productId) {
+            // This would integrate with your existing product popup system
+            alert(`Showing details for: ${productId}`);
+            // You can integrate this with your existing showProductInfo function
+        }
+        
+        function getQuote(productName) {
+            const phoneNumber = '917449027832';
+            const message = `Hi! I'm interested in getting a quote for: ${productName}\n\nPlease provide details about:\n- Price\n- Availability\n- Specifications\n\nThank you!`;
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+        
+        // Image modal functionality
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+        const closeBtn = document.getElementsByClassName('close')[0];
+        
+        // Add click event to all gallery images
+        document.addEventListener('DOMContentLoaded', function() {
+            const galleryImages = document.querySelectorAll('.gallery-image');
+            galleryImages.forEach(img => {
+                img.addEventListener('click', function() {
+                    modal.style.display = 'block';
+                    modalImg.src = this.src;
+                });
+            });
+            
+            // Close modal when clicking the close button
+            closeBtn.addEventListener('click', function() {
+                modal.style.display = 'none';
+            });
+            
+            // Close modal when clicking outside the image
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+            
+            // Add smooth scrolling and animations
+            const rows = document.querySelectorAll('.products-table tbody tr');
+            rows.forEach((row, index) => {
+                row.style.opacity = '0';
+                row.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    row.style.transition = 'all 0.5s ease';
+                    row.style.opacity = '1';
+                    row.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        });
+    </script>
+</body>
+</html>

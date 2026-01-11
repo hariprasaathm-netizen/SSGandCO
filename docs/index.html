@@ -105,6 +105,140 @@
       width: auto !important;
       min-width: 100px !important;
     }
+    
+    /* Toggle buttons */
+    .toggle-btn {
+      background: #f8f9fa;
+      color: #495057;
+      border: 2px solid #dee2e6;
+      padding: 10px 20px;
+      margin: 0 5px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    
+    .toggle-btn.active {
+      background: #007bff;
+      color: white;
+      border-color: #007bff;
+    }
+    
+    .toggle-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,123,255,0.3);
+    }
+    
+    /* Table styles */
+    .table-container {
+      overflow-x: auto;
+      margin: 20px 0;
+    }
+    
+    .products-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    
+    .products-table thead {
+      background: linear-gradient(135deg, #28a745, #20c997);
+      color: white;
+    }
+    
+    .products-table th {
+      padding: 15px 12px;
+      text-align: left;
+      font-weight: 600;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .products-table tbody tr {
+      border-bottom: 1px solid #eee;
+      transition: all 0.3s ease;
+    }
+    
+    .products-table tbody tr:hover {
+      background: #f8f9fa;
+    }
+    
+    .products-table td {
+      padding: 15px 12px;
+      vertical-align: top;
+      line-height: 1.5;
+    }
+    
+    .category-cell {
+      font-weight: 600;
+      color: #007bff;
+      border-left: 4px solid #007bff;
+      background: #f8f9fa;
+    }
+    
+    .category-icon {
+      font-size: 20px;
+      margin-right: 8px;
+    }
+    
+    .type-cell {
+      color: #495057;
+      font-weight: 500;
+    }
+    
+    .characteristics-cell {
+      color: #6c757d;
+      font-size: 13px;
+    }
+    
+    .use-cell {
+      color: #28a745;
+      font-weight: 500;
+    }
+    
+    .more-info-cell {
+      text-align: center;
+    }
+    
+    .info-btn {
+      background: linear-gradient(135deg, #007bff, #0056b3);
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      margin-right: 5px;
+    }
+    
+    .info-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0,123,255,0.3);
+    }
+    
+    .quote-btn {
+      background: linear-gradient(135deg, #25D366, #128C7E);
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 15px;
+      cursor: pointer;
+      font-size: 11px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    
+    .quote-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 3px 10px rgba(37,211,102,0.3);
+    }
   </style>
 </head>
 <body>
@@ -260,7 +394,13 @@
     <div class="container">
       <h2 class="section-title" data-en="Our Product Categories" data-ta="எங்கள் தயாரிப்பு வகைகள்">Our Product Categories</h2>
       
-      <div class="products-grid">
+      <!-- View Toggle -->
+      <div class="view-toggle" style="text-align: center; margin: 20px 0;">
+        <button id="cardViewBtn" class="toggle-btn active" onclick="switchView('card')" data-en="📱 Card View" data-ta="📱 கார்டு காட்சி">📱 Card View</button>
+        <button id="tableViewBtn" class="toggle-btn" onclick="switchView('table')" data-en="📊 Table View" data-ta="📊 அட்டவணை காட்சி">📊 Table View</button>
+      </div>
+      
+      <div id="cardView" class="products-grid">
         <!-- Ropes -->
         <div class="product-card">
           <div class="product-image ropes-image">
@@ -383,7 +523,60 @@
               </li>
             </ul>
             <button class="more-info-btn" onclick="showProductInfo('youngminds')" style="background: #007bff; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; margin-top: 10px;" data-en="More Info" data-ta="மேலும் தகவல்">More Info</button>
-          </div>
+        </div>
+      </div>
+      
+      <!-- Table View -->
+      <div id="tableView" class="table-container" style="display: none;">
+        <div class="table-wrapper">
+          <table class="products-table">
+            <thead>
+              <tr>
+                <th data-en="Product Category" data-ta="தயாரிப்பு வகை">Product Category</th>
+                <th data-en="Type of Ropes" data-ta="கயிறு வகைகள்">Type of Ropes</th>
+                <th data-en="Characteristics" data-ta="பண்புகள்">Characteristics</th>
+                <th data-en="Their Use" data-ta="அவற்றின் பயன்பாடு">Their Use</th>
+                <th data-en="More Info" data-ta="மேலும் தகவல்">More Info</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="category-cell"><span class="category-icon">🌾</span><strong data-en="Jute, Coir & Fiber Ropes" data-ta="சணல், தென்னை நார் & இயற்கை நார் கயிறுகள்">Jute, Coir & Fiber Ropes</strong></td>
+                <td class="type-cell" data-en="• Jute Ropes<br>• Coir Ropes<br>• Natural Fiber Ropes<br>• Jute Socks<br>• Coir Bundles" data-ta="• சணல் கயிறுகள்<br>• தென்னை நார் கயிறுகள்<br>• இயற்கை நார் கயிறுகள்<br>• சணல் சாக்<br>• தென்னை நார் கட்டுகள்">• Jute Ropes<br>• Coir Ropes<br>• Natural Fiber Ropes<br>• Jute Socks<br>• Coir Bundles</td>
+                <td class="characteristics-cell" data-en="• 100% Natural & Biodegradable<br>• High tensile strength<br>• Weather resistant<br>• Eco-friendly" data-ta="• 100% இயற்கை & மக்கும்<br>• அதிக இழுவிசை வலிமை<br>• வானிலை எதிர்ப்பு<br>• சுற்றுச்சூழல் நட்பு">• 100% Natural & Biodegradable<br>• High tensile strength<br>• Weather resistant<br>• Eco-friendly</td>
+                <td class="use-cell" data-en="• Agriculture & Farming<br>• Construction binding<br>• Packaging materials<br>• Decorative purposes" data-ta="• விவசாயம் & பண்ணை<br>• கட்டுமான கட்டுதல்<br>• பேக்கேஜிங் பொருட்கள்<br>• அலங்கார நோக்கங்கள்">• Agriculture & Farming<br>• Construction binding<br>• Packaging materials<br>• Decorative purposes</td>
+                <td class="more-info-cell"><button class="info-btn" onclick="showProductInfo('jute-coir')" data-en="View Details" data-ta="விவரங்களைப் பார்க்கவும்">View Details</button><button class="quote-btn" onclick="getQuote('Jute, Coir & Fiber Ropes')">💬</button></td>
+              </tr>
+              <tr>
+                <td class="category-cell"><span class="category-icon">🌸</span><strong data-en="Cotton & Synthetic Ropes" data-ta="பருத்தி & செயற்கை கயிறுகள்">Cotton & Synthetic Ropes</strong></td>
+                <td class="type-cell" data-en="• Cotton Ropes<br>• PP Ropes<br>• Brown Cotton Ropes<br>• Cotton Rope Mats" data-ta="• பருத்தி கயிறுகள்<br>• PP கயிறுகள்<br>• பழுப்பு பருத்தி கயிறுகள்<br>• பருத்தி கயிறு பாய்கள்">• Cotton Ropes<br>• PP Ropes<br>• Brown Cotton Ropes<br>• Cotton Rope Mats</td>
+                <td class="characteristics-cell" data-en="• Soft & comfortable grip<br>• Chemical resistant<br>• Lightweight yet strong<br>• Easy to handle" data-ta="• மென்மையான & வசதியான பிடி<br>• இரசாயன எதிர்ப்பு<br>• இலகுவான ஆனால் வலுவான<br>• கையாள எளிதானது">• Soft & comfortable grip<br>• Chemical resistant<br>• Lightweight yet strong<br>• Easy to handle</td>
+                <td class="use-cell" data-en="• Household applications<br>• Exercise & fitness<br>• Decorative crafts<br>• Light industrial use" data-ta="• வீட்டு பயன்பாடுகள்<br>• உடற்பயிற்சி & உடற்தகுதி<br>• அலங்கார கைவினைகள்<br>• இலகு தொழில்துறை பயன்பாடு">• Household applications<br>• Exercise & fitness<br>• Decorative crafts<br>• Light industrial use</td>
+                <td class="more-info-cell"><button class="info-btn" onclick="showProductInfo('cotton-synthetic')" data-en="View Details" data-ta="விவரங்களைப் பார்க்கவும்">View Details</button><button class="quote-btn" onclick="getQuote('Cotton & Synthetic Ropes')">💬</button></td>
+              </tr>
+              <tr>
+                <td class="category-cell"><span class="category-icon">⚙️</span><strong data-en="Marine & Industrial Ropes" data-ta="கடல் & தொழில்துறை கயிறுகள்">Marine & Industrial Ropes</strong></td>
+                <td class="type-cell" data-en="• Marine Ropes<br>• Nylon Ropes<br>• Load Ropes<br>• Towing Ropes<br>• Tower Ropes" data-ta="• கடல் கயிறுகள்<br>• நைலான் கயிறுகள்<br>• சுமை கயிறுகள்<br>• இழுக்கும் கயிறுகள்<br>• கோபுர கயிறுகள்">• Marine Ropes<br>• Nylon Ropes<br>• Load Ropes<br>• Towing Ropes<br>• Tower Ropes</td>
+                <td class="characteristics-cell" data-en="• Extreme durability<br>• Water & UV resistant<br>• High load capacity<br>• Industrial grade quality" data-ta="• அதிக நீடித்த தன்மை<br>• நீர் & UV எதிர்ப்பு<br>• அதிக சுமை திறன்<br>• தொழில்துறை தர தரம்">• Extreme durability<br>• Water & UV resistant<br>• High load capacity<br>• Industrial grade quality</td>
+                <td class="use-cell" data-en="• Marine operations<br>• Heavy lifting<br>• Construction sites<br>• Vehicle towing" data-ta="• கடல் செயல்பாடுகள்<br>• கனமான தூக்குதல்<br>• கட்டுமான தளங்கள்<br>• வாகன இழுத்தல்">• Marine operations<br>• Heavy lifting<br>• Construction sites<br>• Vehicle towing</td>
+                <td class="more-info-cell"><button class="info-btn" onclick="showProductInfo('marine-industrial')" data-en="View Details" data-ta="விவரங்களைப் பார்க்கவும்">View Details</button><button class="quote-btn" onclick="getQuote('Marine & Industrial Ropes')">💬</button></td>
+              </tr>
+              <tr>
+                <td class="category-cell"><span class="category-icon">🐄</span><strong data-en="Specialty & Animal Ropes" data-ta="சிறப்பு & விலங்கு கயிறுகள்">Specialty & Animal Ropes</strong></td>
+                <td class="type-cell" data-en="• Cow Ropes<br>• Dog Ropes<br>• Climbing Ropes<br>• Skipping Ropes<br>• Cycle Ropes" data-ta="• மாடு கயிறுகள்<br>• நாய் கயிறுகள்<br>• ஏறும் கயிறுகள்<br>• தாவல் கயிறுகள்<br>• சைக்கிள் கயிறுகள்">• Cow Ropes<br>• Dog Ropes<br>• Climbing Ropes<br>• Skipping Ropes<br>• Cycle Ropes</td>
+                <td class="characteristics-cell" data-en="• Animal-safe materials<br>• Comfortable grip<br>• Non-toxic & safe<br>• Specialized designs" data-ta="• விலங்கு-பாதுகாப்பான பொருட்கள்<br>• வசதியான பிடி<br>• நச்சுத்தன்மையற்ற & பாதுகாப்பான<br>• சிறப்பு வடிவமைப்புகள்">• Animal-safe materials<br>• Comfortable grip<br>• Non-toxic & safe<br>• Specialized designs</td>
+                <td class="use-cell" data-en="• Animal husbandry<br>• Pet accessories<br>• Sports & fitness<br>• Recreational activities" data-ta="• விலங்கு வளர்ப்பு<br>• செல்லப்பிராணி துணைப்பொருட்கள்<br>• விளையாட்டு & உடற்தகுதி<br>• பொழுதுபோக்கு நடவடிக்கைகள்">• Animal husbandry<br>• Pet accessories<br>• Sports & fitness<br>• Recreational activities</td>
+                <td class="more-info-cell"><button class="info-btn" onclick="showProductInfo('specialty-animal')" data-en="View Details" data-ta="விவரங்களைப் பார்க்கவும்">View Details</button><button class="quote-btn" onclick="getQuote('Specialty & Animal Ropes')">💬</button></td>
+              </tr>
+              <tr>
+                <td class="category-cell"><span class="category-icon">🛍️</span><strong data-en="Eco-Friendly Bags" data-ta="சுற்றுச்சூழல் நட்பு பைகள்">Eco-Friendly Bags</strong></td>
+                <td class="type-cell" data-en="• Bio Bags<br>• Jute Bags<br>• Cotton Bags<br>• Shopping Bags<br>• Multipurpose Bags" data-ta="• பையோ பைகள்<br>• சணல் பைகள்<br>• பருத்தி பைகள்<br>• கடை பைகள்<br>• பல்நோக்கு பைகள்">• Bio Bags<br>• Jute Bags<br>• Cotton Bags<br>• Shopping Bags<br>• Multipurpose Bags</td>
+                <td class="characteristics-cell" data-en="• 100% Biodegradable<br>• Reusable & durable<br>• Eco-friendly materials<br>• Various sizes available" data-ta="• 100% மக்கும்<br>• மீண்டும் பயன்படுத்தக்கூடிய & நீடித்த<br>• சுற்றுச்சூழல் நட்பு பொருட்கள்<br>• பல்வேறு அளவுகள் கிடைக்கின்றன">• 100% Biodegradable<br>• Reusable & durable<br>• Eco-friendly materials<br>• Various sizes available</td>
+                <td class="use-cell" data-en="• Shopping & retail<br>• Gift packaging<br>• Promotional items<br>• Daily use bags" data-ta="• கடை & சில்லறை<br>• பரிசு பேக்கேஜிங்<br>• விளம்பர பொருட்கள்<br>• தினசரி பயன்பாட்டு பைகள்">• Shopping & retail<br>• Gift packaging<br>• Promotional items<br>• Daily use bags</td>
+                <td class="more-info-cell"><button class="info-btn" onclick="showProductInfo('eco-bags')" data-en="View Details" data-ta="விவரங்களைப் பார்க்கவும்">View Details</button><button class="quote-btn" onclick="getQuote('Eco-Friendly Bags')">💬</button></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
@@ -1648,6 +1841,29 @@
       
       const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
       window.open(whatsappUrl, '_blank');
+    }
+    
+    // View toggle functionality
+    function switchView(view) {
+      if (view === 'card') {
+        // Keep card view as is
+        const cardView = document.getElementById('cardView');
+        const tableView = document.getElementById('tableView');
+        const cardBtn = document.getElementById('cardViewBtn');
+        const tableBtn = document.getElementById('tableViewBtn');
+        
+        cardView.style.display = 'grid';
+        tableView.style.display = 'none';
+        cardBtn.classList.add('active');
+        tableBtn.classList.remove('active');
+      } else {
+        // Open product-table.html page
+        window.open('product-table.html', '_blank');
+      }
+    }
+    
+    function updateTableLanguage() {
+      // This function is no longer needed since we're opening a separate page
     }
   </script>
 </body>

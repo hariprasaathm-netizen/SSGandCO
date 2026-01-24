@@ -196,61 +196,57 @@
         }
         
         @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                border-radius: 10px;
+            }
+            
             .products-table {
-                display: block;
-                overflow-x: auto;
+                font-size: 12px;
             }
             
-            .products-table thead,
-            .products-table tbody,
             .products-table th,
-            .products-table td,
-            .products-table tr {
-                display: block;
-            }
-            
-            .products-table thead tr {
-                position: absolute;
-                top: -9999px;
-                left: -9999px;
-            }
-            
-            .products-table tr {
-                border: 1px solid #ccc;
-                margin-bottom: 10px;
-                padding: 10px;
-                border-radius: 8px;
-            }
-            
             .products-table td {
-                border: none;
-                position: relative;
-                padding: 10px 10px 10px 30%;
-                text-align: left;
+                padding: 8px 6px;
             }
             
-            .products-table td:before {
-                content: attr(data-label);
-                position: absolute;
-                left: 6px;
-                width: 25%;
-                padding-right: 10px;
-                white-space: nowrap;
-                font-weight: bold;
-                color: #007bff;
+            .header h1 {
+                font-size: 1.8rem;
             }
             
-            .image-gallery {
-                display: block;
-                text-align: center;
-                margin-top: 10px;
+            .header p {
+                font-size: 1rem;
+            }
+            
+            .category-icon {
+                font-size: 16px;
+                margin-right: 6px;
+            }
+            
+            .quote-btn {
+                padding: 4px 8px;
+                font-size: 10px;
+                margin-left: 6px;
             }
             
             .gallery-image {
-                width: 60px;
-                height: 60px;
-                margin: 5px;
-                display: inline-block;
+                width: 50px;
+                height: 50px;
+                margin: 3px;
+            }
+            
+            .image-gallery {
+                gap: 3px;
+                padding: 3px 0;
+            }
+            
+            .image-row td {
+                padding: 10px 6px !important;
+            }
+            
+            .section-header td {
+                padding: 15px 10px;
+                font-size: 14px;
             }
         }
         

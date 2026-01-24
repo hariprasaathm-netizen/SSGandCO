@@ -389,6 +389,41 @@
     </div>
   </section>
 
+  <!-- Featured Products Section -->
+  <section class="featured-products" style="background: linear-gradient(135deg, #1e3a8a, #3b82f6); padding: 40px 0; margin: 40px 0; position: relative; overflow: hidden;">
+    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.05); animation: float 6s ease-in-out infinite;"></div>
+    <div class="container" style="position: relative; z-index: 2;">
+      <div style="text-align: center; margin-bottom: 30px;">
+        <h2 style="color: white; font-size: 2rem; margin-bottom: 10px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);" data-en="🌟 Featured Product for the month" data-ta="🌟 மாதத்திற்கான சிறப்பு தயாரிப்பு">🌟 Featured Product for the month</h2>
+      </div>
+      
+      <div style="display: flex; justify-content: center; align-items: center; gap: 40px; max-width: 800px; margin: 0 auto; flex-wrap: wrap;">
+        <div style="text-align: center; cursor: pointer; flex: 1; min-width: 200px;" onclick="enlargeImage('Images-FP/Flag.jpeg')">
+          <img src="Images-FP/Flag.jpeg" style="width: 250px; height: 250px; object-fit: cover; border-radius: 15px; border: 3px solid white; box-shadow: 0 8px 25px rgba(0,0,0,0.3); transition: all 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'; this.style.boxShadow='0 12px 35px rgba(0,0,0,0.4)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 8px 25px rgba(0,0,0,0.3)'">
+          <p style="color: white; font-weight: bold; margin-top: 15px; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); font-size: 18px;" data-en="Premium Quality Flag" data-ta="பிரீமியம் தர கொடி">Premium Quality Flag</p>
+        </div>
+        
+        <div style="flex: 2; min-width: 300px; color: white; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">
+          <h3 style="margin-bottom: 15px; font-size: 1.5rem;" data-en="Flag Pole Rope" data-ta="கொடி கம்பம் கயிறு">Flag Pole Rope</h3>
+          <p style="line-height: 1.6; margin-bottom: 15px;" data-en="We provide the ropes specifically based on your requirement. Flagpole rope, is used to raise and lower your flag. Rope length should be at least twice the height of the flagpole." data-ta="உங்கள் தேவைக்கேற்ப நாங்கள் கயிறுகளை வழங்குகிறோம். கொடிக்கம்பம் கயிறு, உங்கள் கொடியை ஏற்றவும் இறக்கவும் பயன்படுகிறது. கயிறு நீளம் கொடிக்கம்பத்தின் உயரத்தை விட குறைந்தது இரு மடங்கு இருக்க வேண்டும்.">We provide the ropes specifically based on your requirement. Flagpole rope, is used to raise and lower your flag. Rope length should be at least twice the height of the flagpole.</p>
+          <ul style="list-style: none; padding: 0; margin: 15px 0;">
+            <li style="margin: 8px 0;">✓ <span data-en="Polypropylene yarn, Nylon and cotton material available" data-ta="பாலிப்ரோபிலீன் நூல், நைலான் மற்றும் பருத்தி பொருட்கள் கிடைக்கின்றன">Polypropylene yarn, Nylon and cotton material available</span></li>
+            <li style="margin: 8px 0;">✓ <span data-en="Replacing your flag pole rope every once in a year is recommended" data-ta="உங்கள் கொடிக்கம்பம் கயிறை வருடத்திற்கு ஒருமுறை மாற்றுவது பரிந்துரைக்கப்படுகிறது">Replacing your flag pole rope every once in a year is recommended</span></li>
+            <li style="margin: 8px 0;">✓ <span data-en="Custom lengths available based on flagpole height" data-ta="கொடிக்கம்பத்தின் உயரத்தின் அடிப்படையில் தனிப்பயன் நீளங்கள் கிடைக்கின்றன">Custom lengths available based on flagpole height</span></li>
+            <li style="margin: 8px 0;">✓ <span data-en="Weather resistant and UV protected" data-ta="வானிலை எதிர்ப்பு மற்றும் UV பாதுகாப்பு">Weather resistant and UV protected</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <style>
+      @keyframes float {
+        0%, 100% { transform: translateY(0px) rotate(0deg); }
+        50% { transform: translateY(-10px) rotate(180deg); }
+      }
+    </style>
+  </section>
+
   <!-- Products Section -->
   <section id="products" class="products">
     <div class="container">

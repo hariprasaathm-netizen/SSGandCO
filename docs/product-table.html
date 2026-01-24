@@ -62,17 +62,17 @@
         
         .products-table th:nth-child(1),
         .products-table td:nth-child(1) {
-            width: 30%;
+            width: 35%;
         }
         
         .products-table th:nth-child(2),
         .products-table td:nth-child(2) {
-            width: 40%;
+            width: 30%;
         }
         
         .products-table th:nth-child(3),
         .products-table td:nth-child(3) {
-            width: 30%;
+            width: 35%;
         }
         
         .products-table thead {
@@ -277,25 +277,7 @@
             margin-right: 8px;
         }
         
-        .strength-indicator {
-            display: inline-block;
-            width: 60px;
-            height: 6px;
-            background: #e9ecef;
-            border-radius: 3px;
-            margin: 2px 0;
-            position: relative;
-        }
-        
-        .strength-fill {
-            height: 100%;
-            border-radius: 3px;
-            transition: width 0.3s ease;
-        }
-        
-        .strength-high { background: #28a745; width: 90%; }
-        .strength-medium { background: #ffc107; width: 70%; }
-        .strength-low { background: #dc3545; width: 40%; }
+
         
         @media (max-width: 768px) {
             .products-table {
@@ -399,7 +381,7 @@
                     <!-- Jute, Coir & Fiber Ropes -->
                     <tr>
                         <td class="category-cell"><span class="category-icon">🌾</span><strong>Jute Ropes</strong><button class="quote-btn" onclick="getQuote('Jute Ropes')">💬</button></td>
-                        <td class="characteristics-cell">100% Natural & Biodegradable<br>High tensile strength<br>Weather resistant<br><div class="strength-indicator"><div class="strength-fill strength-high"></div></div><small>Strength: High</small></td>
+                        <td class="characteristics-cell">Strong natural fiber<br>Coarse texture<br>Eco-friendly<br>Resistant to abrasion</td>
                         <td class="more-info-cell">
                             <div class="image-gallery">
                                 <img src="Images - Table View/Ropes/JuteRope-1.png" alt="Jute Rope 1" class="gallery-image">
@@ -410,7 +392,7 @@
                     </tr>
                     <tr>
                         <td class="category-cell"><span class="category-icon">🌾</span><strong>Coir Ropes</strong><button class="quote-btn" onclick="getQuote('Coir Ropes')">💬</button></td>
-                        <td class="characteristics-cell">100% Natural & Biodegradable<br>Water resistant<br>Eco-friendly<br><div class="strength-indicator"><div class="strength-fill strength-high"></div></div><small>Strength: High</small></td>
+                        <td class="characteristics-cell">Made from coconut husk fibers<br>Rough<br>Water-resistant<br>Biodegradable</td>
                         <td class="more-info-cell">
                             <div class="image-gallery">
                                 <img src="Images - Table View/Ropes/CoirRopes-1.jpeg" alt="Coir Rope 1" class="gallery-image">
@@ -425,7 +407,7 @@
                     <!-- Cotton & Synthetic Ropes -->
                     <tr>
                         <td class="category-cell"><span class="category-icon">🌸</span><strong>Cotton Ropes</strong><button class="quote-btn" onclick="getQuote('Cotton Ropes')">💬</button></td>
-                        <td class="characteristics-cell">Soft & comfortable grip<br>Chemical resistant<br>Easy to handle<br><div class="strength-indicator"><div class="strength-fill strength-medium"></div></div><small>Strength: Medium</small></td>
+                        <td class="characteristics-cell">Soft & comfortable grip<br>Chemical resistant<br>Easy to handle</td>
                         <td class="more-info-cell">
                             <div class="image-gallery">
                                 <img src="Images - Table View/Ropes/CottonRopes1.jpeg" alt="Cotton Rope 1" class="gallery-image">
@@ -448,7 +430,7 @@
                     </tr>
                     <tr>
                         <td class="category-cell"><span class="category-icon">🌸</span><strong>PP Ropes</strong><button class="quote-btn" onclick="getQuote('PP Ropes')">💬</button></td>
-                        <td class="characteristics-cell">Lightweight yet strong<br>Water resistant<br>Chemical resistant<br><div class="strength-indicator"><div class="strength-fill strength-high"></div></div><small>Strength: High</small></td>
+                        <td class="characteristics-cell">Lightweight yet strong<br>Water resistant<br>Chemical resistant</td>
                         <td class="more-info-cell">
                             <div class="image-gallery">
                                 <img src="Images - Table View/Ropes/PP Rope.jpeg" alt="PP Rope" class="gallery-image">
@@ -464,7 +446,7 @@
 
                     <tr>
                         <td class="category-cell"><span class="category-icon">⚙️</span><strong>Nylon Ropes</strong><button class="quote-btn" onclick="getQuote('Nylon Ropes')">💬</button></td>
-                        <td class="characteristics-cell">Extreme durability<br>High load capacity<br>Shock absorption<br><div class="strength-indicator"><div class="strength-fill strength-high"></div></div><small>Strength: Very High</small></td>
+                        <td class="characteristics-cell">High tensile strength<br>Elastic<br>Resistant to abrasion, UV, and chemicals</td>
                         <td class="more-info-cell">
                             <div class="image-gallery">
                                 <img src="Images - Table View/Ropes/Nylon Ropes.jpeg" alt="Nylon Ropes" class="gallery-image">
@@ -479,7 +461,7 @@
                     </tr>
                     <tr>
                         <td class="category-cell"><span class="category-icon">🔗</span><strong>Other Ropes</strong><button class="quote-btn" onclick="getQuote('Other Ropes')">💬</button></td>
-                        <td class="characteristics-cell">Various materials<br>Custom specifications<br>Specialized applications<br><div class="strength-indicator"><div class="strength-fill strength-medium"></div></div><small>Strength: Variable</small></td>
+                        <td class="characteristics-cell">Various materials<br>Custom specifications<br>Specialized applications</td>
                         <td class="more-info-cell">
                             <div class="image-gallery">
                                 <img src="Images - Table View/Ropes/OtherRope.png" alt="Other Rope" class="gallery-image">
@@ -515,54 +497,110 @@
                     <!-- Eco-Friendly Bags -->
                     <tr>
                         <td class="category-cell"><span class="category-icon">🛍️</span><strong>Bio Bags</strong><button class="quote-btn" onclick="getQuote('Bio Bags')">💬</button></td>
-                        <td class="characteristics-cell">100% Biodegradable<br>Eco-friendly materials<br>Compostable<br><div class="strength-indicator"><div class="strength-fill strength-medium"></div></div><small>Durability: Medium</small></td>
-                        <td class="more-info-cell"></td>
+                        <td class="characteristics-cell">100% Biodegradable<br>Eco-friendly materials<br>Compostable</td>
+                        <td class="more-info-cell">
+                            <div class="image-gallery">
+                                <img src="Images - Table View/HouseHold/BioBag.png" alt="Bio Bag" class="gallery-image">
+                                <img src="Images - Table View/HouseHold/ReturnBags.png" alt="Return Bags" class="gallery-image">
+                                <img src="Images - Table View/HouseHold/SackaBag.png" alt="Sacka Bag" class="gallery-image">
+                            </div>
+                        </td>
                     </tr>
                     <tr>
                         <td class="category-cell"><span class="category-icon">🛍️</span><strong>Jute Bags</strong><button class="quote-btn" onclick="getQuote('Jute Bags')">💬</button></td>
-                        <td class="characteristics-cell">100% Natural jute<br>Reusable & durable<br>Strong handles<br><div class="strength-indicator"><div class="strength-fill strength-high"></div></div><small>Durability: High</small></td>
-                        <td class="more-info-cell"></td>
+                        <td class="characteristics-cell">100% Natural jute<br>Reusable & durable<br>Strong handles</td>
+                        <td class="more-info-cell">
+                            <div class="image-gallery">
+                                <img src="Images - Table View/HouseHold/JuteBag.png" alt="Jute Bag" class="gallery-image">
+                                <img src="Images - Table View/HouseHold/ShoppingBag.png" alt="Shopping Bag" class="gallery-image">
+                                <img src="Images - Table View/HouseHold/MultipurBag.png" alt="Multipurpose Bag" class="gallery-image">
+                                <img src="Images - Table View/HouseHold/KadBag.png" alt="Kad Bag" class="gallery-image">
+                            </div>
+                        </td>
                     </tr>
                     <tr>
                         <td class="category-cell"><span class="category-icon">🛍️</span><strong>Cotton Bags</strong><button class="quote-btn" onclick="getQuote('Cotton Bags')">💬</button></td>
-                        <td class="characteristics-cell">100% Cotton<br>Soft & comfortable<br>Machine washable<br><div class="strength-indicator"><div class="strength-fill strength-medium"></div></div><small>Durability: Medium</small></td>
-                        <td class="more-info-cell"></td>
+                        <td class="characteristics-cell">100% Cotton<br>Soft & comfortable<br>Machine washable</td>
+                        <td class="more-info-cell">
+                            <div class="image-gallery">
+                                <img src="Images - Table View/HouseHold/CottonBag1.png" alt="Cotton Bag 1" class="gallery-image">
+                                <img src="Images - Table View/HouseHold/ShoppingClothBag.png" alt="Shopping Cloth Bag" class="gallery-image">
+                                <img src="Images - Table View/HouseHold/yellowBag.png" alt="Yellow Bag" class="gallery-image">
+                            </div>
+                        </td>
                     </tr>
                     
                     <tr>
                         <td class="category-cell"><span class="category-icon">🏠</span><strong>Welcome Mats</strong><button class="quote-btn" onclick="getQuote('Welcome Mats')">💬</button></td>
-                        <td class="characteristics-cell">Natural fiber construction<br>Anti-slip properties<br>Weather resistant<br><div class="strength-indicator"><div class="strength-fill strength-high"></div></div><small>Durability: High</small></td>
-                        <td class="more-info-cell"></td>
+                        <td class="characteristics-cell">Natural fiber construction<br>Anti-slip properties<br>Weather resistant</td>
+                        <td class="more-info-cell">
+                            <div class="image-gallery">
+                                <img src="Images - Table View/HouseHold/WelcomeMat.png" alt="Welcome Mat" class="gallery-image">
+                                <img src="Images - Table View/HouseHold/WelcomeMat1.png" alt="Welcome Mat 1" class="gallery-image">
+                                <img src="Images - Table View/HouseHold/CoirWelcomeMat.jpeg" alt="Coir Welcome Mat" class="gallery-image">
+                                <img src="Images - Table View/HouseHold/CoirDesignMat.jpeg" alt="Coir Design Mat" class="gallery-image">
+                            </div>
+                        </td>
                     </tr>
                     <tr>
                         <td class="category-cell"><span class="category-icon">🏠</span><strong>Kitchen Mats</strong><button class="quote-btn" onclick="getQuote('Kitchen Mats')">💬</button></td>
-                        <td class="characteristics-cell">Water absorbent<br>Anti-slip properties<br>Easy to clean<br><div class="strength-indicator"><div class="strength-fill strength-high"></div></div><small>Durability: High</small></td>
-                        <td class="more-info-cell"></td>
+                        <td class="characteristics-cell">Water absorbent<br>Anti-slip properties<br>Easy to clean</td>
+                        <td class="more-info-cell">
+                            <div class="image-gallery">
+                                <img src="Images - Table View/HouseHold/KitchenMat1.png" alt="Kitchen Mat 1" class="gallery-image">
+                                <img src="Images - Table View/HouseHold/MedKitchenMat.png" alt="Medium Kitchen Mat" class="gallery-image">
+                                <img src="Images - Table View/HouseHold/ZeroDustMat.png" alt="Zero Dust Mat" class="gallery-image">
+                            </div>
+                        </td>
                     </tr>
                     <tr>
                         <td class="category-cell"><span class="category-icon">🏠</span><strong>Bathroom Mats</strong><button class="quote-btn" onclick="getQuote('Bathroom Mats')">💬</button></td>
-                        <td class="characteristics-cell">High water absorption<br>Anti-slip base<br>Quick drying<br><div class="strength-indicator"><div class="strength-fill strength-high"></div></div><small>Durability: High</small></td>
-                        <td class="more-info-cell"></td>
+                        <td class="characteristics-cell">High water absorption<br>Anti-slip base<br>Quick drying</td>
+                        <td class="more-info-cell">
+                            <div class="image-gallery">
+                                <img src="Images - Table View/HouseHold/BathroomMat.png" alt="Bathroom Mat" class="gallery-image">
+                                <img src="Images - Table View/HouseHold/RubberMat.png" alt="Rubber Mat" class="gallery-image">
+                                <img src="Images - Table View/HouseHold/PlainRubberMat.jpeg" alt="Plain Rubber Mat" class="gallery-image">
+                                <img src="Images - Table View/HouseHold/FootrestMat.png" alt="Footrest Mat" class="gallery-image">
+                            </div>
+                        </td>
                     </tr>
                     
                     <!-- Brushes & Brooms -->
                     <tr>
                         <td class="category-cell"><span class="category-icon">🧹</span><strong>Handcrafted Brooms</strong><button class="quote-btn" onclick="getQuote('Handcrafted Brooms')">💬</button></td>
-                        <td class="characteristics-cell">Natural bristles<br>Handcrafted quality<br>Traditional design<br><div class="strength-indicator"><div class="strength-fill strength-high"></div></div><small>Quality: Premium</small></td>
-                        <td class="use-cell">Household cleaning<br>Traditional use<br>Eco-friendly cleaning</td>
-                        <td class="more-info-cell"></td>
+                        <td class="characteristics-cell">Natural bristles<br>Handcrafted quality<br>Traditional design</td>
+                        <td class="more-info-cell">
+                            <div class="image-gallery">
+                                <img src="Images - Table View/HouseHold/HandCraftedBroom.png" alt="Handcrafted Broom" class="gallery-image">
+                                <img src="Images - Table View/HouseHold/StdGalaBroom.png" alt="Standard Gala Broom" class="gallery-image">
+                                <img src="Images - Table View/HouseHold/StdHandMadeGroom.png" alt="Standard Handmade Broom" class="gallery-image">
+                            </div>
+                        </td>
                     </tr>
                     <tr>
                         <td class="category-cell"><span class="category-icon">🧹</span><strong>Multipurpose Brooms</strong><button class="quote-btn" onclick="getQuote('Multipurpose Brooms')">💬</button></td>
-                        <td class="characteristics-cell">Versatile bristles<br>Ergonomic handle<br>Multi-surface cleaning<br><div class="strength-indicator"><div class="strength-fill strength-high"></div></div><small>Quality: Premium</small></td>
-                        <td class="use-cell">Household cleaning<br>Industrial cleaning<br>Multi-surface use</td>
-                        <td class="more-info-cell"></td>
+                        <td class="characteristics-cell">Versatile bristles<br>Ergonomic handle<br>Multi-surface cleaning</td>
+                        <td class="more-info-cell">
+                            <div class="image-gallery">
+                                <img src="Images - Table View/HouseHold/MultiPropseBroom.png" alt="Multipurpose Broom" class="gallery-image">
+                                <img src="Images - Table View/HouseHold/CelleingCleanAdjustableBroom.png" alt="Ceiling Clean Adjustable Broom" class="gallery-image">
+                                <img src="Images - Table View/HouseHold/AdjustableMob.png" alt="Adjustable Mop" class="gallery-image">
+                                <img src="Images - Table View/HouseHold/SSGripMob.png" alt="SS Grip Mop" class="gallery-image">
+                            </div>
+                        </td>
                     </tr>
                     <tr>
                         <td class="category-cell"><span class="category-icon">🧹</span><strong>Hockey Brushes</strong><button class="quote-btn" onclick="getQuote('Hockey Brushes')">💬</button></td>
-                        <td class="characteristics-cell">Specialized bristles<br>Durable construction<br>Sports-grade quality<br><div class="strength-indicator"><div class="strength-fill strength-medium"></div></div><small>Quality: High</small></td>
-                        <td class="use-cell">Sports equipment<br>Hockey maintenance<br>Equipment cleaning</td>
-                        <td class="more-info-cell"></td>
+                        <td class="characteristics-cell">Specialized bristles<br>Durable construction<br>Sports-grade quality</td>
+                        <td class="more-info-cell">
+                            <div class="image-gallery">
+                                <img src="Images - Table View/HouseHold/DoubleHockeyBrush.png" alt="Double Hockey Brush" class="gallery-image">
+                                <img src="Images - Table View/HouseHold/SingleHockeyBrushes.png" alt="Single Hockey Brushes" class="gallery-image">
+                                <img src="Images - Table View/HouseHold/RoundBrush.png" alt="Round Brush" class="gallery-image">
+                                <img src="Images - Table View/HouseHold/WoodBrush.png" alt="Wood Brush" class="gallery-image">
+                            </div>
+                        </td>
                     </tr>
                     
                     <!-- Niwar and Packaging Items Section -->
@@ -572,21 +610,38 @@
                     <!-- Niwar Tapes -->
                     <tr>
                         <td class="category-cell"><span class="category-icon">📦</span><strong>Niwar Cotton</strong><button class="quote-btn" onclick="getQuote('Niwar Cotton')">💬</button></td>
-                        <td class="characteristics-cell">Heavy-duty cotton<br>Industrial grade<br>High tensile strength<br><div class="strength-indicator"><div class="strength-fill strength-high"></div></div><small>Strength: Very High</small></td>
-                        <td class="use-cell">Industrial packaging<br>Heavy-duty strapping<br>Construction binding</td>
-                        <td class="more-info-cell"></td>
+                        <td class="characteristics-cell">Heavy-duty cotton<br>Industrial grade<br>High tensile strength</td>
+                        <td class="more-info-cell">
+                            <div class="image-gallery">
+                                <img src="Images - Table View/NiwarandTapes/NiwarCotton.png" alt="Niwar Cotton" class="gallery-image">
+                                <img src="Images - Table View/NiwarandTapes/NiwarTapes.jpeg" alt="Niwar Tapes" class="gallery-image">
+                                <img src="Images - Table View/NiwarandTapes/TwineTape.png" alt="Twine Tape" class="gallery-image">
+                            </div>
+                        </td>
                     </tr>
                     <tr>
                         <td class="category-cell"><span class="category-icon">📦</span><strong>Colour Niwar Tapes</strong><button class="quote-btn" onclick="getQuote('Colour Niwar Tapes')">💬</button></td>
-                        <td class="characteristics-cell">Colored options<br>Tear-resistant<br>Weather-resistant<br><div class="strength-indicator"><div class="strength-fill strength-high"></div></div><small>Strength: High</small></td>
-                        <td class="use-cell">Textile binding<br>Decorative strapping<br>Color-coded packaging</td>
-                        <td class="more-info-cell"></td>
+                        <td class="characteristics-cell">Colored options<br>Tear-resistant<br>Weather-resistant</td>
+                        <td class="more-info-cell">
+                            <div class="image-gallery">
+                                <img src="Images - Table View/NiwarandTapes/NiwarColourTapes.jpeg" alt="Niwar Colour Tapes" class="gallery-image">
+                                <img src="Images - Table View/NiwarandTapes/Packaging Items.jpeg" alt="Packaging Items" class="gallery-image">
+                                <img src="Images - Table View/NiwarandTapes/Packaging Items Multi.jpeg" alt="Packaging Items Multi" class="gallery-image">
+                                <img src="Images - Table View/NiwarandTapes/Packaging Items Max.jpeg" alt="Packaging Items Max" class="gallery-image">
+                            </div>
+                        </td>
                     </tr>
                     <tr>
                         <td class="category-cell"><span class="category-icon">📦</span><strong>Plain Straps</strong><button class="quote-btn" onclick="getQuote('Plain Straps')">💬</button></td>
-                        <td class="characteristics-cell">Simple design<br>Cost-effective<br>Reliable strength<br><div class="strength-indicator"><div class="strength-fill strength-medium"></div></div><small>Strength: Medium</small></td>
-                        <td class="use-cell">Basic packaging<br>General strapping<br>Light industrial use</td>
-                        <td class="more-info-cell"></td>
+                        <td class="characteristics-cell">Simple design<br>Cost-effective<br>Reliable strength</td>
+                        <td class="more-info-cell">
+                            <div class="image-gallery">
+                                <img src="Images - Table View/NiwarandTapes/PlainStrap.jpeg" alt="Plain Strap" class="gallery-image">
+                                <img src="Images - Table View/NiwarandTapes/Packaging Items -Sutli.jpeg" alt="Packaging Items Sutli" class="gallery-image">
+                                <img src="Images - Table View/NiwarandTapes/Packaging Items -Sutli_1.jpeg" alt="Packaging Items Sutli 1" class="gallery-image">
+                                <img src="Images - Table View/NiwarandTapes/Needle.png" alt="Needle" class="gallery-image">
+                            </div>
+                        </td>
                     </tr>
                 </tbody>
             </table>

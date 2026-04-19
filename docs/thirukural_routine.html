@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>திருக்குறள் & Daily Routine</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Tamil:wght@400;600;700&family=Playfair+Display:ital,wght@0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --gold: #c9a84c; --gold-light: #f0d080; --dark: #0f0c07;
+      --dark-card: #211a0c; --dark-border: #3a2e14;
+      --text-main: #f2e8d0; --text-muted: #a89060;
+      --accent-red: #b84c2e; --accent-green: #4c8c5a;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--dark); color: var(--text-main); font-family: 'Lato', sans-serif; min-height: 100vh; overflow-x: hidden; }
+    body::before {
+      content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 0;
+      background-image:
+        repeating-linear-gradient(90deg, transparent, transparent 60px, rgba(201,168,76,0.03) 60px, rgba(201,168,76,0.03) 61px),
+        repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(201,168,76,0.02) 40px, rgba(201,168,76,0.02) 41px);
+    }
+    .mandala-bg {
+      position: absolute; top: -120px; left: 50%; transform: translateX(-50%);
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(201,168,76,0.12) 0%, transparent 70%);
+      border-radius: 50%; pointer-events: none;
+    }
+    header { position: relative; text-align: center; padding: 60px 20px 50px; border-bottom: 1px solid var(--dark-border); overflow: hidden; }
+    .header-kural { font-family: 'Noto Serif Tamil', serif; font-size: 13px; color: var(--text-muted); letter-spacing: 2px; margin-bottom: 18px; opacity: 0; animation: fadeUp 0.8s ease forwards 0.2s; }
+    h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem,5vw,3.6rem); font-weight: 700; color: var(--gold); line-height: 1.1; letter-spacing: -1px; opacity: 0; animation: fadeUp 0.8s ease forwards 0.4s; }
+    h1 span { font-style: italic; color: var(--gold-light); }
+    .subtitle { font-size: 14px; color: var(--text-muted); margin-top: 14px; letter-spacing: 1px; text-transform: uppercase; opacity: 0; animation: fadeUp 0.8s ease forwards 0.6s; }
+    .gold-divider { width: 80px; height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent); margin: 20px auto 0; opacity: 0; animation: fadeUp 0.8s ease forwards 0.7s; }
+    main { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; padding: 50px 24px 80px; }
+
+    /* API Key */
+    .apikey-section { background: rgba(201,168,76,0.06); border: 1px solid rgba(201,168,76,0.3); border-radius: 4px; padding: 20px 28px; margin-bottom: 28px; opacity: 0; animation: fadeUp 0.8s ease forwards 0.8s; }
+    .apikey-section label { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: 10px; }
+    .apikey-row { display: flex; gap: 10px; align-items: center; }
+    .apikey-input { flex: 1; background: rgba(0,0,0,0.4); border: 1px solid var(--dark-border); border-radius: 4px; color: var(--text-main); font-family: monospace; font-size: 13px; padding: 10px 14px; outline: none; transition: border-color 0.3s; }
+    .apikey-input:focus { border-color: var(--gold); }
+    .apikey-input::placeholder { color: var(--text-muted); }
+    .apikey-hint { font-size: 12px; color: var(--text-muted); margin-top: 8px; }
+    .apikey-hint a { color: var(--gold); text-decoration: none; }
+    .apikey-hint a:hover { text-decoration: underline; }
+    .btn-save-key { background: rgba(201,168,76,0.2); border: 1px solid var(--gold); border-radius: 4px; color: var(--gold); font-size: 12px; font-weight: 700; letter-spacing: 1px; padding: 10px 16px; cursor: pointer; transition: all 0.2s; white-space: nowrap; }
+    .btn-save-key:hover { background: rgba(201,168,76,0.35); }
+    .key-status { font-size: 12px; margin-top: 8px; min-height: 16px; }
+    .key-status.ok { color: var(--accent-green); }
+    .key-status.err { color: var(--accent-red); }
+
+    /* Input */
+    .input-section { background: var(--dark-card); border: 1px solid var(--dark-border); border-radius: 4px; padding: 36px 40px; position: relative; opacity: 0; animation: fadeUp 0.8s ease forwards 0.9s; }
+    .input-section::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--accent-red), var(--gold), var(--accent-green)); border-radius: 4px 4px 0 0; }
+    .section-label { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+    .input-title { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--text-main); margin-bottom: 24px; }
+    textarea { width: 100%; background: rgba(255,255,255,0.04); border: 1px solid var(--dark-border); border-radius: 4px; color: var(--text-main); font-family: 'Lato', sans-serif; font-size: 15px; line-height: 1.7; padding: 18px 20px; resize: vertical; min-height: 140px; transition: border-color 0.3s, box-shadow 0.3s; outline: none; }
+    textarea::placeholder { color: var(--text-muted); }
+    textarea:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(201,168,76,0.1); }
+    .examples { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+    .example-chip { background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.25); color: var(--text-muted); font-size: 12px; padding: 5px 12px; border-radius: 20px; cursor: pointer; transition: all 0.2s; user-select: none; }
+    .example-chip:hover { background: rgba(201,168,76,0.18); color: var(--gold-light); border-color: var(--gold); }
+    .button-group { margin-top: 24px; display: flex; gap: 12px; align-items: center; }
+    .btn-find { flex: 1; background: linear-gradient(135deg, #a07830, var(--gold)); border: none; border-radius: 4px; color: var(--dark); font-family: 'Lato', sans-serif; font-size: 15px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 16px 32px; cursor: pointer; transition: all 0.3s; }
+    .btn-find:hover { transform: translateY(-1px); box-shadow: 0 6px 24px rgba(201,168,76,0.35); }
+    .btn-find:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+    .btn-clear { background: rgba(255,255,255,0.08); border: 1px solid var(--dark-border); border-radius: 4px; color: var(--text-muted); font-family: 'Lato', sans-serif; font-size: 14px; padding: 12px 20px; cursor: pointer; transition: all 0.3s; }
+    .btn-clear:hover { background: rgba(255,255,255,0.12); border-color: var(--gold); color: var(--gold-light); }
+
+    /* Loading */
+    .loading-state { display: none; text-align: center; padding: 60px 20px; }
+    .loading-state.visible { display: block; }
+    .loading-lamp { font-size: 48px; animation: flicker 1.5s ease-in-out infinite alternate; margin-bottom: 20px; }
+    @keyframes flicker { 0% { opacity: 0.6; transform: scale(0.95); } 100% { opacity: 1; transform: scale(1.05); } }
+    .loading-text { font-family: 'Noto Serif Tamil', serif; font-size: 14px; color: var(--text-muted); letter-spacing: 1px; }
+
+    /* Results */
+    #results { margin-top: 50px; display: none; }
+    #results.visible { display: block; }
+    .results-header { text-align: center; margin-bottom: 36px; }
+    .results-header h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--gold); margin-bottom: 8px; }
+    .routine-echo { font-size: 13px; color: var(--text-muted); font-style: italic; }
+    .kural-card { background: var(--dark-card); border: 1px solid var(--dark-border); border-radius: 4px; padding: 36px 40px; margin-bottom: 24px; position: relative; opacity: 0; transform: translateY(20px); animation: cardReveal 0.6s ease forwards; }
+    @keyframes cardReveal { to { opacity: 1; transform: translateY(0); } }
+    .kural-card::after { content: ''; position: absolute; left: 0; top: 10%; bottom: 10%; width: 3px; background: linear-gradient(180deg, var(--gold), var(--accent-red)); border-radius: 0 2px 2px 0; }
+    .kural-number { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 6px; }
+    .kural-chapter { font-size: 13px; color: var(--gold); margin-bottom: 18px; font-weight: 700; }
+    .kural-tamil { font-family: 'Noto Serif Tamil', serif; font-size: 1.25rem; line-height: 1.9; color: var(--gold-light); margin-bottom: 18px; padding-bottom: 18px; border-bottom: 1px solid var(--dark-border); }
+    .kural-english { font-size: 15px; color: var(--text-main); line-height: 1.7; font-style: italic; margin-bottom: 20px; }
+    .kural-connection { background: rgba(201,168,76,0.06); border-left: 3px solid var(--gold); border-radius: 0 4px 4px 0; padding: 16px 18px; }
+    .kural-connection-label { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+    .kural-connection p { font-size: 14px; color: var(--text-main); line-height: 1.7; }
+
+    /* Error */
+    .error-box { background: rgba(184,76,46,0.1); border: 1px solid rgba(184,76,46,0.4); border-radius: 4px; padding: 20px 24px; color: #e08060; font-size: 14px; display: none; margin-top: 20px; }
+    .error-box.visible { display: block; }
+
+    footer { text-align: center; padding: 30px 20px; color: var(--text-muted); font-size: 12px; letter-spacing: 1px; border-top: 1px solid var(--dark-border); }
+    footer span { font-family: 'Noto Serif Tamil', serif; color: var(--gold); }
+
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+    @media (max-width: 600px) { .input-section { padding: 24px 20px; } .kural-card { padding: 24px 20px; } .apikey-row { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="mandala-bg"></div>
+  <p class="header-kural">அகர முதல எழுத்தெல்லாம் ஆதி பகவன் முதற்றே உலகு</p>
+  <h1>Daily Routine &<br/><span>திருக்குறள்</span></h1>
+  <p class="subtitle">Timeless wisdom for modern living</p>
+  <div class="gold-divider"></div>
+</header>
+
+<main>
+
+  <div class="apikey-section">
+    <label>🔑 Anthropic API Key</label>
+    <div class="apikey-row">
+      <input type="password" id="apiKeyInput" class="apikey-input"
+             placeholder="sk-ant-api03-..." autocomplete="off" spellcheck="false"/>
+      <button class="btn-save-key" onclick="saveKey()">Save Key</button>
+    </div>
+    <p class="apikey-hint">
+      Get a fresh key at <a href="https://console.anthropic.com/settings/keys" target="_blank">console.anthropic.com/settings/keys</a>.
+      It stays only in browser memory — never stored or sent anywhere except directly to Anthropic.
+    </p>
+    <p class="key-status" id="keyStatus"></p>
+  </div>
+
+  <section class="input-section">
+    <p class="section-label">Enter Your Routine</p>
+    <h2 class="input-title">What does your day look like?</h2>
+    <textarea id="routineInput" placeholder="Describe your daily activities, habits, or a specific routine… e.g. 'I wake up at 6am, meditate, go to work, help my colleagues, spend time with family in the evening, and read before bed.'"></textarea>
+    <div class="examples">
+      <span class="section-label" style="align-self:center;margin-bottom:0;margin-right:6px;">Try:</span>
+      <span class="example-chip" onclick="setExample(this)">Morning meditation & exercise</span>
+      <span class="example-chip" onclick="setExample(this)">Hard work & perseverance at office</span>
+      <span class="example-chip" onclick="setExample(this)">Family time & cooking dinner</span>
+      <span class="example-chip" onclick="setExample(this)">Evening reading & self-improvement</span>
+      <span class="example-chip" onclick="setExample(this)">Community service & volunteering</span>
+    </div>
+    <div class="button-group">
+      <button class="btn-find" id="findBtn" onclick="findKurals()">✦ Find My Thirukurals</button>
+      <button class="btn-clear" onclick="clearAll()">Clear</button>
+    </div>
+  </section>
+
+  <div class="error-box" id="errorBox"></div>
+
+  <div class="loading-state" id="loadingState">
+    <div class="loading-lamp">🪔</div>
+    <p class="loading-text">Seeking wisdom from the ancient verses…</p>
+  </div>
+
+  <div id="results">
+    <div class="results-header">
+      <h2>Your Thirukurals</h2>
+      <p class="routine-echo" id="routineEcho"></p>
+    </div>
+    <div id="kuralCards"></div>
+  </div>
+
+</main>
+
+<footer>
+  <span>திருக்குறள்</span> · Composed by Thiruvalluvar · 2000+ years of wisdom
+</footer>
+
+<script>
+  let apiKey = '';
+
+  document.getElementById('apiKeyInput').addEventListener('keydown', e => {
+    if (e.key === 'Enter') saveKey();
+  });
+
+  function saveKey() {
+    const val = document.getElementById('apiKeyInput').value.trim();
+    const status = document.getElementById('keyStatus');
+    if (!val.startsWith('sk-ant-')) {
+      status.textContent = '⚠ Key should start with sk-ant-  — please check and try again.';
+      status.className = 'key-status err';
+      return;
+    }
+    apiKey = val;
+    status.textContent = '✓ Key saved — ready to find Thirukurals!';
+    status.className = 'key-status ok';
+  }
+
+  function setExample(el) {
+    document.getElementById('routineInput').value = el.textContent.trim();
+  }
+
+  function showError(msg) {
+    const box = document.getElementById('errorBox');
+    box.textContent = msg;
+    box.classList.add('visible');
+  }
+
+  function clearAll() {
+    document.getElementById('routineInput').value = '';
+    document.getElementById('results').classList.remove('visible');
+    document.getElementById('errorBox').classList.remove('visible');
+    document.getElementById('loadingState').classList.remove('visible');
+    document.getElementById('findBtn').disabled = false;
+  }
+
+  async function findKurals() {
+    const routine = document.getElementById('routineInput').value.trim();
+    if (!routine) { showError('Please describe your daily routine first.'); return; }
+    if (!apiKey) {
+      showError('Please enter and save your Anthropic API key above first.');
+      document.getElementById('apiKeyInput').focus();
+      return;
+    }
+
+    const btn     = document.getElementById('findBtn');
+    const loading = document.getElementById('loadingState');
+    const results = document.getElementById('results');
+    const errBox  = document.getElementById('errorBox');
+
+    btn.disabled = true;
+    errBox.classList.remove('visible');
+    results.classList.remove('visible');
+    loading.classList.add('visible');
+
+    try {
+      const data = await callClaude(routine);
+      if (!data?.kurals?.length) { showError('No Kurals returned — please try again.'); return; }
+      renderResults(data.kurals, routine);
+    } catch (err) {
+      showError('Error: ' + err.message);
+    } finally {
+      btn.disabled = false;
+      loading.classList.remove('visible');
+    }
+  }
+
+  async function callClaude(routine) {
+    const prompt = `You are a Thirukural scholar and life coach. A person has described their daily routine:
+
+"${routine}"
+
+Identify 3 Thirukural couplets (kurals) that deeply relate to the themes, values, or activities in this routine. For each kural:
+1. Pick a kural that genuinely connects to an aspect of their routine.
+2. Give the kural number (1–1330).
+3. Give the chapter/adhigaram name in English.
+4. Provide the original Tamil couplet (2 lines).
+5. Provide a clean English translation.
+6. Write 2–3 sentences explaining exactly HOW this kural connects to their specific routine.
+
+Respond ONLY with valid JSON, no markdown, no backticks. Format:
+{
+  "kurals": [
+    {
+      "number": 123,
+      "chapter": "Chapter Name",
+      "tamil": "Tamil couplet line 1\\nTamil couplet line 2",
+      "english": "English translation here.",
+      "connection": "How this kural connects to the person's routine."
+    }
+  ]
+}`;
+
+    const response = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': apiKey,
+        'anthropic-version': '2023-06-01',
+        'anthropic-dangerous-direct-browser-access': 'true'
+      },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-5',
+        max_tokens: 1000,
+        messages: [{ role: 'user', content: prompt }]
+      })
+    });
+
+    if (!response.ok) {
+      const err = await response.json().catch(() => ({}));
+      throw new Error(err?.error?.message || `API error ${response.status}`);
+    }
+
+    const apiData = await response.json();
+    const rawText = (apiData.content || [])
+      .filter(b => b.type === 'text').map(b => b.text).join('');
+    const clean = rawText.replace(/^```json\s*/i,'').replace(/^```\s*/i,'').replace(/```\s*$/i,'').trim();
+    return JSON.parse(clean);
+  }
+
+  function renderResults(kurals, routine) {
+    const results = document.getElementById('results');
+    const cards   = document.getElementById('kuralCards');
+    const echo    = document.getElementById('routineEcho');
+
+    echo.textContent = `Based on: "${routine.length > 80 ? routine.slice(0,80)+'…' : routine}"`;
+    cards.innerHTML = '';
+
+    kurals.forEach((k, i) => {
+      const card = document.createElement('div');
+      card.className = 'kural-card';
+      card.style.animationDelay = `${i * 0.15}s`;
+      card.innerHTML = `
+        <p class="kural-number">Kural · ${k.number}</p>
+        <p class="kural-chapter">${k.chapter}</p>
+        <div class="kural-tamil">${(k.tamil||'').replace(/\n/g,'<br/>')}</div>
+        <p class="kural-english">"${k.english}"</p>
+        <div class="kural-connection">
+          <p class="kural-connection-label">✦ Connection to your routine</p>
+          <p>${k.connection}</p>
+        </div>`;
+      cards.appendChild(card);
+    });
+
+    results.classList.add('visible');
+    results.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+</script>
+</body>
+</html>

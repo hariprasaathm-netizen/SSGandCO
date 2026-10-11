@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pinecone Direct Client (Static)</title>
+  <style>
+    body{font-family:Inter,Arial,Helvetica,sans-serif;background:#0b1220;color:#e6f3ff;padding:20px}
+    .card{max-width:900px;margin:24px auto;padding:18px;border-radius:10px;background:#07101a;border:1px solid #12303a}
+    label{display:block;margin:8px 0 4px;font-size:13px;color:#9fb6c8}
+    input,textarea{width:100%;padding:10px;border-radius:6px;border:1px solid #12303a;background:#041018;color:#e6f3ff;font-family:monospace}
+    button{margin-top:10px;padding:10px 14px;border-radius:6px;border:none;background:#ffd54f;color:#08121a;font-weight:700;cursor:pointer}
+    pre{background:#011218;padding:12px;border-radius:6px;color:#bfe9ff;overflow:auto}
+    .note{font-size:13px;color:#8fb0c5;margin-top:8px}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2 style="margin:0 0 8px;color:#ffd54f">Pinecone Direct Client</h2>
+    <p class="note">This is a static client that POSTs directly to Pinecone's /query endpoint. Your API key is used in-browser and will be exposed — only use this for testing.</p>
+
+    <label for="apiKey">Pinecone API Key</label>
+    <input id="apiKey" type="password" placeholder="pcsk_..." />
+
+    <label for="endpoint">Pinecone Endpoint URL</label>
+    <input id="endpoint" type="text" value="https://prod-1-data.ke.pinecone.io/query" />
+
+    <label for="payload">Request JSON (body)</label>
+    <textarea id="payload" rows="8">{
+  "topK": 3,
+  "includeMetadata": true,
+  "vector": [0,0,0],
+  "namespace": "default"
+}</textarea>
+
+    <div style="display:flex;gap:8px;align-items:center;">
+      <button id="send">Send POST</button>
+      <button id="serveNote" onclick="alert('Serve this file over HTTP (python -m http.server 8000) before testing to avoid file:// origin issues')">How to Serve</button>
+    </div>
+
+    <label style="margin-top:12px">Response</label>
+    <pre id="response">(no response yet)</pre>
+
+    <p class="note">If the request fails due to CORS or the server blocks browser requests, the fetch will error — that means Pinecone is not allowing direct browser access. In that case use a server/proxy.</p>
+  </div>
+
+  <script>
+    document.getElementById('send').addEventListener('click', async () => {
+      const apiKey = document.getElementById('apiKey').value.trim();
+      const endpoint = document.getElementById('endpoint').value.trim();
+      const out = document.getElementById('response');
+
+      if (!apiKey) { out.textContent = 'Add your API key above.'; return; }
+      if (!endpoint) { out.textContent = 'Provide the endpoint URL.'; return; }
+
+      let body;
+      try { body = JSON.parse(document.getElementById('payload').value); }
+      catch (e) { out.textContent = 'Invalid JSON payload: ' + e.message; return; }
+
+      out.textContent = 'Sending...';
+
+      try {
+        const resp = await fetch(endpoint, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Api-Key': apiKey
+          },
+          body: JSON.stringify(body)
+        });
+
+        const text = await resp.text();
+        try { out.textContent = JSON.stringify(JSON.parse(text), null, 2); }
+        catch { out.textContent = text; }
+      } catch (err) {
+        out.textContent = 'Fetch error: ' + err.message + '\n\n(If you see a CORS error, the endpoint blocks browser requests.)';
+      }
+    });
+  </script>
+</body>
+</html>
